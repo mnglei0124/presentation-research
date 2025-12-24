@@ -1,0 +1,507 @@
+{
+  "presentations": [
+    {
+      "id": "1",
+      "slug": "product-launch-2024",
+      "title": "Product Launch 2024",
+      "description": "Introducing our revolutionary new platform that transforms how teams collaborate and create together.",
+      "thumbnail": "/thumbnails/product-launch.jpg",
+      "template": "Minimal",
+      "createdAt": "2024-12-20",
+      "accentColor": "from-violet-500 to-purple-600",
+      "sections": [
+        {
+          "id": "hero",
+          "type": "hero",
+          "title": "The Future of Collaboration",
+          "subtitle": "Reimagined",
+          "content": "Introducing a platform that brings teams together in ways never before possible."
+        },
+        {
+          "id": "problem",
+          "type": "content",
+          "title": "The Challenge",
+          "content": "Modern teams are distributed, tools are fragmented, and collaboration feels harder than ever. Information gets lost, context disappears, and productivity suffers."
+        },
+        {
+          "id": "solution",
+          "type": "content",
+          "title": "Our Solution",
+          "content": "A unified workspace that combines the best of documentation, real-time collaboration, and intelligent automation. Everything your team needs, in one place."
+        },
+        {
+          "id": "features",
+          "type": "features",
+          "title": "Key Features",
+          "items": [
+            {
+              "title": "Real-time Sync",
+              "description": "Changes appear instantly across all devices and team members.",
+              "icon": "⚡"
+            },
+            {
+              "title": "Smart Search",
+              "description": "Find anything in seconds with AI-powered semantic search.",
+              "icon": "🔍"
+            },
+            {
+              "title": "Seamless Integration",
+              "description": "Connect with 100+ tools your team already uses.",
+              "icon": "🔗"
+            }
+          ]
+        },
+        {
+          "id": "cta",
+          "type": "cta",
+          "title": "Ready to Transform Your Team?",
+          "content": "Join thousands of teams already using our platform.",
+          "buttonText": "Get Started Free",
+          "buttonUrl": "#"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "slug": "company-journey",
+      "title": "Our Journey",
+      "description": "From a small startup to a global platform — the story of how we got here.",
+      "thumbnail": "/thumbnails/journey.jpg",
+      "template": "Timeline",
+      "createdAt": "2024-12-18",
+      "accentColor": "from-blue-500 to-cyan-500",
+      "sections": [
+        {
+          "id": "intro",
+          "type": "hero",
+          "title": "Our Journey",
+          "subtitle": "A Story of Growth",
+          "content": "From garage startup to serving millions — this is how we got here."
+        },
+        {
+          "id": "2019",
+          "type": "milestone",
+          "year": "2019",
+          "title": "The Beginning",
+          "content": "Started in a small garage with just three founders and a big dream. We believed collaboration could be so much better."
+        },
+        {
+          "id": "2020",
+          "type": "milestone",
+          "year": "2020",
+          "title": "First Funding",
+          "content": "Secured our seed round of $2M. Built our core team of 10 passionate engineers and designers."
+        },
+        {
+          "id": "2021",
+          "type": "milestone",
+          "year": "2021",
+          "title": "Product Launch",
+          "content": "Launched our beta to 1,000 early adopters. The feedback was overwhelming — we knew we were onto something."
+        },
+        {
+          "id": "2022",
+          "type": "milestone",
+          "year": "2022",
+          "title": "Rapid Growth",
+          "content": "Reached 100,000 users. Raised Series A of $15M. Expanded to 50 team members across 3 continents."
+        },
+        {
+          "id": "2023",
+          "type": "milestone",
+          "year": "2023",
+          "title": "Going Global",
+          "content": "1 million users worldwide. Launched in 20 languages. Named one of the fastest-growing startups."
+        },
+        {
+          "id": "2024",
+          "type": "milestone",
+          "year": "2024",
+          "title": "The Future",
+          "content": "Today, we serve teams in 150 countries. But we're just getting started. The best is yet to come."
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "slug": "platform-features",
+      "title": "Platform Features",
+      "description": "Discover the powerful features that make our platform the choice of industry leaders.",
+      "thumbnail": "/thumbnails/features.jpg",
+      "template": "Split",
+      "createdAt": "2024-12-15",
+      "accentColor": "from-emerald-500 to-teal-500",
+      "sections": [
+        {
+          "id": "hero",
+          "type": "hero",
+          "title": "Powerful Features",
+          "subtitle": "Built for Modern Teams",
+          "content": "Everything you need to collaborate, create, and ship faster."
+        },
+        {
+          "id": "feature1",
+          "type": "split",
+          "title": "Intelligent Workspace",
+          "content": "Our AI-powered workspace learns how your team works and adapts to your needs. Get smart suggestions, automated organization, and insights that help you work smarter.",
+          "image": "/features/workspace.jpg",
+          "imagePosition": "right"
+        },
+        {
+          "id": "feature2",
+          "type": "split",
+          "title": "Real-time Collaboration",
+          "content": "Work together seamlessly, no matter where your team is located. See changes in real-time, leave comments, and never lose track of who did what.",
+          "image": "/features/collaboration.jpg",
+          "imagePosition": "left"
+        },
+        {
+          "id": "feature3",
+          "type": "split",
+          "title": "Powerful Integrations",
+          "content": "Connect with the tools you already love. From Slack to GitHub, Figma to Notion — everything works together in perfect harmony.",
+          "image": "/features/integrations.jpg",
+          "imagePosition": "right"
+        },
+        {
+          "id": "feature4",
+          "type": "split",
+          "title": "Enterprise Security",
+          "content": "Bank-grade encryption, SOC 2 compliance, and granular access controls. Your data is safe with enterprise-level security features.",
+          "image": "/features/security.jpg",
+          "imagePosition": "left"
+        },
+        {
+          "id": "cta",
+          "type": "cta",
+          "title": "See It In Action",
+          "content": "Schedule a personalized demo with our team.",
+          "buttonText": "Book a Demo",
+          "buttonUrl": "#"
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "slug": "network-infrastructure-research",
+      "title": "Network Infrastructure Research",
+      "description": "A comprehensive technical research covering broadband access technologies, network protocols, and content delivery systems.",
+      "thumbnail": "/thumbnails/research.jpg",
+      "template": "Research",
+      "createdAt": "2024-12-24",
+      "accentColor": "from-orange-500 to-red-500",
+      "sections": [
+        {
+          "id": "hero",
+          "type": "hero",
+          "title": "Network Infrastructure Research",
+          "subtitle": "Technical Documentation",
+          "content": "An in-depth exploration of modern broadband technologies, network protocols, and content delivery systems used in telecommunications infrastructure."
+        },
+        {
+          "id": "triple-play",
+          "type": "definition",
+          "title": "Triple-play Service",
+          "content": "Triple-play service refers to a business that provides Internet, TV (general broadcast and OTT), and telephone in one bundle. This bundled approach allows service providers to offer comprehensive communication solutions to consumers."
+        },
+        {
+          "id": "home-gateway",
+          "type": "definition",
+          "title": "Home Gateway",
+          "content": "Home gateway is a device that works as both router and modem. Its responsibility is to connect to ISP's network and distribute the internet to local devices."
+        },
+        {
+          "id": "vlan-topic",
+          "type": "topic",
+          "title": "VLAN (Virtual LAN)",
+          "content": "VLAN logically segments a single physical network into multiple separate broadcast domains. This allows devices to communicate as if they were on their own private LAN. A subnet mask is a 32-bit number used in IPv4 networking that helps divide an IP address into the network portion and the host portion."
+        },
+        {
+          "id": "vlan-keypoints",
+          "type": "keypoints",
+          "title": "VLAN Key Concepts",
+          "items": [
+            {
+              "title": "Access Port",
+              "description": "A switchport which belongs to a single VLAN, and usually connects to end hosts like PCs (untagged port)."
+            },
+            {
+              "title": "Trunk Port",
+              "description": "Switchports which carry multiple VLANs (tagged port). Uses 802.1Q tagging."
+            },
+            {
+              "title": "Native VLAN",
+              "description": "VLAN 1 by default on all trunk ports. The switch does not add 802.1Q tag to frames in the native VLAN."
+            },
+            {
+              "title": "VLAN Range",
+              "description": "VLANs 1, 1002-1005 cannot be deleted. Normal range: 1-1005, Extended range: 1006-4094."
+            }
+          ]
+        },
+        {
+          "id": "ethernet-frame",
+          "type": "diagram",
+          "title": "Ethernet Frame Structure",
+          "image": "/images/research/ethernet frame.png",
+          "content": "Standard Ethernet frame structure showing the preamble, destination, source, type/length, data, and FCS fields."
+        },
+        {
+          "id": "802-1q-tag",
+          "type": "diagram",
+          "title": "802.1Q VLAN Tag",
+          "image": "/images/research/802.1q tag.png",
+          "content": "The 802.1Q tag is 4 bytes (32 bits) inserted between source and type/length. TPID is always 0x8100, and TCI contains PCP (priority), DEI (drop eligible), and VID (VLAN ID - 12 bits for 4096 VLANs)."
+        },
+        {
+          "id": "vlan-commands",
+          "type": "code",
+          "title": "Cisco VLAN Configuration Commands",
+          "content": "show vlan brief\ninterface range g1/0 - 3\nswitchport mode access\nswitchport access vlan 10\nvlan 10\nname THE_NAME_TO_VLAN\n\n# Trunk Configuration\ninterface g0/0\nswitchport mode trunk\nswitchport trunk encapsulation dot1q\nshow interfaces trunk"
+        },
+        {
+          "id": "gpon-topic",
+          "type": "topic",
+          "title": "GPON (Gigabit Passive Optical Network)",
+          "content": "GPON is a technology for connecting to the Internet by fiber optic cable. It provides high-speed and stable communication without unnecessary speed losses or failures, and without active equipment on the line. Fiber optic internet is effective because of its energy independence and it does not lose signal over long distances."
+        },
+        {
+          "id": "gpon-components",
+          "type": "components",
+          "title": "GPON Components",
+          "items": [
+            {
+              "title": "OLT (Optical Line Terminal)",
+              "description": "Located at the service provider's data center. Sends downstream signals at 1550nm (video) and 1490nm (voice/data), receives upstream at 1310nm.",
+              "icon": "🏢"
+            },
+            {
+              "title": "Optical Fiber Splitter",
+              "description": "Passive component that splits a single fiber into multiple strands (ratios: 1:64, 1:32, 1:16, 1:8, 1:4) for individual connections.",
+              "icon": "🔀"
+            },
+            {
+              "title": "ONU/ONT (Optical Network Terminal)",
+              "description": "Installed at home or office. Converts optical signals to electrical signals for routers, TVs, and computers.",
+              "icon": "🏠"
+            }
+          ]
+        },
+        {
+          "id": "gpon-diagram",
+          "type": "diagram",
+          "title": "GPON Network Architecture",
+          "image": "/images/research/gpon.png",
+          "content": "GPON network topology showing the flow from OLT through splitters to multiple ONT endpoints."
+        },
+        {
+          "id": "gpon-how-it-works",
+          "type": "keypoints",
+          "title": "How GPON Works",
+          "items": [
+            {
+              "title": "Step 1: Transmission",
+              "description": "Provider equipment transmits data using WDM (Wavelength Division Multiplexing) technology, allowing multiple signals over a single fiber."
+            },
+            {
+              "title": "Step 2: Splitting",
+              "description": "The signal passes through the optical network and reaches the passive splitter, which divides it into separate signals."
+            },
+            {
+              "title": "Step 3: Reception",
+              "description": "The signal reaches your ONU at home, connects to your router, and provides Internet access. Works bidirectionally up to 20km."
+            }
+          ]
+        },
+        {
+          "id": "mdu",
+          "type": "definition",
+          "title": "MDU (Multi-Dwelling Unit) Switch",
+          "content": "MDU switch is a networking device designed for large residential or commercial buildings (like apartment blocks or dorms) to efficiently distribute internet services. It acts as a central point connecting many users using FTTB (Fiber to the Building), supporting VLANs, PPSK for secure Wi-Fi, and centralized management."
+        },
+        {
+          "id": "bras-topic",
+          "type": "topic",
+          "title": "BRAS (Broadband Remote Access Server)",
+          "content": "BRAS is the bridge between the access network and the backbone network. It is a gateway that controls user data in and out of the backbone, performing authentication and billing by cooperating with authentication and billing systems. It's like a toll booth of the highway, managing and billing users."
+        },
+        {
+          "id": "bras-diagram",
+          "type": "diagram",
+          "title": "BRAS Architecture",
+          "image": "/images/research/bras.png",
+          "content": "BRAS positioned between the access network and backbone network, connecting to core routers."
+        },
+        {
+          "id": "dhcp-topic",
+          "type": "topic",
+          "title": "DHCP (Dynamic Host Configuration Protocol)",
+          "content": "DHCP is a network management protocol used on IP networks for automatically assigning IP addresses and other communication parameters to devices. It eliminates the need for individually configuring network devices manually using a client-server architecture."
+        },
+        {
+          "id": "dhcp-types",
+          "type": "keypoints",
+          "title": "DHCP Allocation Methods",
+          "items": [
+            {
+              "title": "Dynamic Allocation",
+              "description": "Administrator reserves a range of IP addresses. DHCP uses lease concept with controllable time period for address reclamation."
+            },
+            {
+              "title": "Automatic Allocation",
+              "description": "DHCP server permanently assigns IP addresses while keeping a table of past assignments for preferential assignment."
+            },
+            {
+              "title": "Manual Allocation (Static)",
+              "description": "Administrator maps unique identifier (client ID or MAC address) to specific IP address. Also called reservation or MAC/IP binding."
+            }
+          ]
+        },
+        {
+          "id": "ixp-topic",
+          "type": "topic",
+          "title": "Internet Exchange Point (IXP)",
+          "content": "An IXP is a physical location where Internet infrastructure companies such as ISPs and CDNs connect with each other. These exist on the 'edge' of different networks, allowing providers to share transit outside their own network, reducing latency and potentially reducing costs."
+        },
+        {
+          "id": "trombone-diagram",
+          "type": "diagram",
+          "title": "The Trombone Effect",
+          "image": "/images/research/trombone effect.png",
+          "content": "Without IXPs, local traffic can travel vast distances to be exchanged and return, known as tromboning. IXPs eliminate this inefficiency."
+        },
+        {
+          "id": "ixp-concepts",
+          "type": "keypoints",
+          "title": "IXP Concepts",
+          "items": [
+            {
+              "title": "Transit",
+              "description": "Paid agreement between customer and upstream provider for full connectivity to the rest of the Internet using BGP."
+            },
+            {
+              "title": "Peering",
+              "description": "Networks sharing IP addresses without intermediary. At IXPs, transferring data is often free (settlement-free peering)."
+            },
+            {
+              "title": "PNI (Private Network Interconnect)",
+              "description": "Dark fiber connection directly between two networks within a datacenter when traffic volume justifies dedicated connection."
+            },
+            {
+              "title": "Depeering",
+              "description": "Process of ending a peering arrangement, often due to imbalanced traffic ratios or monetization decisions."
+            }
+          ]
+        },
+        {
+          "id": "mongolia-ixps",
+          "type": "list",
+          "title": "Internet Exchange Points in Mongolia",
+          "items": [
+            {
+              "title": "MISPA-IXP",
+              "description": "MISPA internet exchange point"
+            },
+            {
+              "title": "MIX MNDC",
+              "description": "Mongolian Internet Exchange & Mongolian National Data Center"
+            }
+          ]
+        },
+        {
+          "id": "cdn-topic",
+          "type": "topic",
+          "title": "CDN (Content Delivery Network)",
+          "content": "A CDN distributes content across geographically distributed servers to deliver data quickly to users. It consists of Origin servers (storing and updating data), Edge servers (delivering from nearest location), and DNS servers (translating domains and routing requests)."
+        },
+        {
+          "id": "cdn-types",
+          "type": "components",
+          "title": "CDN Types",
+          "items": [
+            {
+              "title": "Public CDN",
+              "description": "Accessible to everybody online with a vast global network of servers.",
+              "icon": "🌐"
+            },
+            {
+              "title": "Private CDN",
+              "description": "Dedicated CDN infrastructure for a single organization.",
+              "icon": "🔒"
+            },
+            {
+              "title": "P2P CDN",
+              "description": "Uses peer-to-peer networking to distribute content directly between users.",
+              "icon": "🔗"
+            },
+            {
+              "title": "Hybrid CDN",
+              "description": "Combines public and private CDN elements for optimized delivery.",
+              "icon": "⚡"
+            },
+            {
+              "title": "Push CDN",
+              "description": "Content uploaded to CDN in advance, good for large static files.",
+              "icon": "📤"
+            },
+            {
+              "title": "Pull CDN",
+              "description": "Content fetched on demand, efficient for frequently updated content.",
+              "icon": "📥"
+            }
+          ]
+        },
+        {
+          "id": "cdn-workflow",
+          "type": "keypoints",
+          "title": "How CDN Works",
+          "items": [
+            {
+              "title": "Step 1: Request",
+              "description": "User sends a request for content (e.g., an image) from a website."
+            },
+            {
+              "title": "Step 2: Routing",
+              "description": "CDN identifies user's location and routes request to nearest edge server."
+            },
+            {
+              "title": "Step 3: Cache Check",
+              "description": "If content is cached at edge server, it's delivered directly to user."
+            },
+            {
+              "title": "Step 4: Origin Fetch",
+              "description": "If not cached, edge server retrieves from origin, caches locally, then delivers."
+            },
+            {
+              "title": "Step 5: Caching",
+              "description": "Cached content stored at edge server for future requests, optimizing performance."
+            }
+          ]
+        },
+        {
+          "id": "references",
+          "type": "references",
+          "title": "References",
+          "items": [
+            {
+              "title": "Wikipedia - Triple Play Telecommunications",
+              "description": "https://en.wikipedia.org/wiki/Triple_play_(telecommunications)"
+            },
+            {
+              "title": "BT-PON - Triple Play Guide",
+              "description": "https://bt-pon.com/what-is-triple-play-and-how-to-build-it.html"
+            },
+            {
+              "title": "Unitek Fiber - MDU in FTTH",
+              "description": "https://www.unitekfiber.com/what-is-mdu-in-ftth.html"
+            },
+            {
+              "title": "Wikipedia - Residential Gateway",
+              "description": "https://en.wikipedia.org/wiki/Residential_gateway"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
