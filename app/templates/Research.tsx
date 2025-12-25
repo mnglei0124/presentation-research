@@ -6,13 +6,23 @@ import { MotionWrapper } from '@/app/components/MotionWrapper';
 import Image from 'next/image';
 
 export function Research({ presentation }: TemplateProps) {
+  // Calculate topic indices separately for sequential numbering
+  let topicCounter = 0;
+  const topicIndices = presentation.sections.map(section => {
+    if (section.type === 'topic') {
+      topicCounter++;
+      return topicCounter;
+    }
+    return 0;
+  });
+
   return (
     <div className="min-h-screen">
       {presentation.sections.map((section, index) => (
         <ResearchSection 
           key={section.id} 
           section={section} 
-          index={index}
+          topicIndex={topicIndices[index]}
           accentColor={presentation.accentColor}
         />
       ))}
@@ -22,11 +32,11 @@ export function Research({ presentation }: TemplateProps) {
 
 interface ResearchSectionProps {
   section: Section;
-  index: number;
+  topicIndex: number;
   accentColor: string;
 }
 
-function ResearchSection({ section, index, accentColor }: ResearchSectionProps) {
+function ResearchSection({ section, topicIndex, accentColor }: ResearchSectionProps) {
   switch (section.type) {
     case 'hero':
       return (
@@ -78,7 +88,7 @@ function ResearchSection({ section, index, accentColor }: ResearchSectionProps) 
             <MotionWrapper>
               <div className="flex items-center gap-4 mb-8">
                 <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${accentColor} flex items-center justify-center text-white font-bold text-lg shadow-lg`}>
-                  {String(index).padStart(2, '0')}
+                  {String(topicIndex).padStart(2, '0')}
                 </div>
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
                   {section.title}

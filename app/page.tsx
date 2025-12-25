@@ -43,23 +43,12 @@ export default function Home() {
             className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6"
           >
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-gray-900 via-gray-800 to-gray-600 dark:from-white dark:via-gray-200 dark:to-gray-400">
-              Ideas that
+              PPT
             </span>
-            <br />
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-violet-600 to-purple-600 dark:from-violet-400 dark:to-purple-400">
-              inspire action
+               hub
             </span>
           </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-            className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed"
-          >
-            Explore our collection of beautifully crafted presentations. 
-            Each one designed to tell a compelling story.
-          </motion.p>
 
           {/* Stats */}
           <motion.div
@@ -130,9 +119,6 @@ export default function Home() {
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
               Featured Presentations
             </h2>
-            <p className="text-gray-600 dark:text-gray-400 max-w-2xl">
-              Discover presentations crafted with our modern templates. Click any card to view the full presentation.
-            </p>
           </motion.div>
 
           {/* Grid */}
@@ -157,9 +143,14 @@ export default function Home() {
             </div>
             <span className="font-medium">Presentation Hub</span>
           </div>
-          <p className="text-sm text-gray-500 dark:text-gray-500">
-            Built with Next.js, Tailwind CSS, and Framer Motion
-          </p>
+          <div className="flex items-center gap-6">
+            <a 
+              href="/topology" 
+              className="text-sm text-violet-600 dark:text-violet-400 hover:underline font-medium"
+            >
+              Network Topology →
+            </a>
+          </div>
         </div>
       </footer>
     </div>
