@@ -49,57 +49,63 @@ const masterTopology: TopologyData = {
   color: 'from-violet-500 to-purple-600',
   viewBox: '0 0 1500 850',
   nodes: [
-    // Layer 1: Subscriber (leftmost)
-    { id: 'home', label: 'Home Gateway', x: 30, y: 180, type: 'subscriber', description: 'Triple Play CPE' },
-    { id: 'stb', label: 'STB', x: 30, y: 320, type: 'subscriber', description: 'IPTV Set-top Box' },
-    { id: 'phone', label: 'Telephone', x: 30, y: 460, type: 'subscriber', description: 'VoIP Phone' },
+    // Layer 1: Subscriber devices (leftmost)
+    { id: 'pc', label: 'PC/Laptop', x: 30, y: 150, type: 'subscriber', description: 'Internet Device' },
+    { id: 'stb', label: 'STB', x: 30, y: 280, type: 'subscriber', description: 'IPTV Set-top Box' },
+    { id: 'phone', label: 'Telephone', x: 30, y: 410, type: 'subscriber', description: 'VoIP Phone' },
+    
+    // Home Gateway - central hub for all devices
+    { id: 'home', label: 'Home Gateway', x: 170, y: 280, type: 'subscriber', description: 'Triple Play CPE / VLAN Tagging' },
     
     // Layer 2: Access Network
-    { id: 'ont', label: 'ONT/MDU', x: 170, y: 320, type: 'access', description: 'Optical Terminal' },
-    { id: 'splitter', label: 'Splitter', x: 300, y: 320, type: 'access', description: '1:32 Passive' },
-    { id: 'olt', label: 'OLT', x: 430, y: 320, type: 'access', description: 'GPON Head-end', vlan: 'VLAN 100/200/300' },
+    { id: 'ont', label: 'ONT/MDU', x: 320, y: 280, type: 'access', description: 'Optical Terminal' },
+    { id: 'splitter', label: 'Splitter', x: 450, y: 280, type: 'access', description: '1:32 Passive' },
+    { id: 'olt', label: 'OLT', x: 580, y: 280, type: 'access', description: 'GPON Head-end', vlan: 'VLAN 100/200/300' },
     
     // Layer 3: Aggregation (Metro)
-    { id: 'metro1', label: 'Metro-A', x: 580, y: 280, type: 'aggregation', description: 'Active', ha: true },
-    { id: 'metro2', label: 'Metro-S', x: 580, y: 380, type: 'aggregation', description: 'Standby', ha: true },
+    { id: 'metro1', label: 'Metro-A', x: 730, y: 240, type: 'aggregation', description: 'Active', ha: true },
+    { id: 'metro2', label: 'Metro-S', x: 730, y: 340, type: 'aggregation', description: 'Standby', ha: true },
     
     // Layer 4: Core Services
-    { id: 'bras1', label: 'BRAS-1', x: 740, y: 200, type: 'core', description: 'Active Pair', ha: true },
-    { id: 'bras2', label: 'BRAS-2', x: 740, y: 300, type: 'core', description: 'Standby Pair', ha: true },
-    { id: 'spine', label: 'SPINE', x: 740, y: 450, type: 'core', description: 'Multicast/Unicast' },
+    { id: 'bras1', label: 'BRAS-1', x: 890, y: 180, type: 'core', description: 'Active Pair', ha: true },
+    { id: 'bras2', label: 'BRAS-2', x: 890, y: 280, type: 'core', description: 'Standby Pair', ha: true },
+    { id: 'spine', label: 'SPINE', x: 890, y: 420, type: 'core', description: 'Multicast/Unicast' },
     
     // Layer 5: Core Network
-    { id: 'hcore', label: 'HCORE', x: 900, y: 250, type: 'core', description: 'Core Router' },
-    { id: 'sig', label: 'SIG', x: 1050, y: 250, type: 'core', description: 'NAT/Security' },
+    { id: 'hcore', label: 'HCORE', x: 1050, y: 220, type: 'core', description: 'Core Router' },
+    { id: 'sig', label: 'SIG', x: 1180, y: 220, type: 'core', description: 'NAT/Security' },
     
     // Layer 6: Edge / External
-    { id: 'igw', label: 'IGW', x: 1200, y: 180, type: 'edge', description: 'Internet Gateway' },
-    { id: 'mix', label: 'MIX', x: 1200, y: 320, type: 'external', description: 'Mongolian IXP' },
-    { id: 'public', label: 'Internet', x: 1350, y: 180, type: 'external' },
+    { id: 'igw', label: 'IGW', x: 1310, y: 150, type: 'edge', description: 'Internet Gateway' },
+    { id: 'mix', label: 'MIX', x: 1310, y: 290, type: 'external', description: 'Mongolian IXP' },
+    { id: 'public', label: 'Internet', x: 1410, y: 150, type: 'external' },
     
     // Support Servers
-    { id: 'dhcp', label: 'DHCP', x: 640, y: 80, type: 'server', description: 'IP Assignment' },
-    { id: 'radius', label: 'RADIUS', x: 750, y: 80, type: 'server', description: 'AAA' },
-    { id: 'db', label: 'DB', x: 860, y: 80, type: 'server', description: 'Subscriber DB' },
-    { id: 'dns', label: 'DNS', x: 1000, y: 80, type: 'server', description: 'Name Resolution' },
+    { id: 'dhcp', label: 'DHCP', x: 790, y: 80, type: 'server', description: 'IP Assignment' },
+    { id: 'radius', label: 'RADIUS', x: 900, y: 80, type: 'server', description: 'AAA' },
+    { id: 'db', label: 'DB', x: 1010, y: 80, type: 'server', description: 'Subscriber DB' },
+    { id: 'dns', label: 'DNS', x: 1150, y: 80, type: 'server', description: 'Name Resolution' },
     
     // CDN Layer
-    { id: 'hcdn', label: 'HCDN', x: 1000, y: 450, type: 'server', description: 'CDN Platform' },
-    { id: 'cdn', label: 'CDN Cache', x: 1150, y: 450, type: 'server', description: 'Edge Cache' },
+    { id: 'hcdn', label: 'HCDN', x: 1130, y: 420, type: 'server', description: 'CDN Platform' },
+    { id: 'cdn', label: 'CDN Cache', x: 1280, y: 420, type: 'server', description: 'Edge Cache' },
     
     // VoIP External
-    { id: 'voicecore', label: 'Voice Core', x: 900, y: 550, type: 'external', description: 'SIP/RTP' },
-    { id: 'voiceserver', label: 'Voice Server', x: 1050, y: 550, type: 'external', description: 'PBX' },
+    { id: 'voicecore', label: 'Voice Core', x: 1050, y: 520, type: 'external', description: 'SIP/RTP' },
+    { id: 'voiceserver', label: 'Voice Server', x: 1200, y: 520, type: 'external', description: 'PBX' },
     
     // IPTV Sources  
-    { id: 'multicast', label: 'Live TV', x: 740, y: 580, type: 'server', description: 'Multicast Source' },
-    { id: 'vod', label: 'VOD', x: 860, y: 580, type: 'server', description: 'Unicast VOD' },
+    { id: 'multicast', label: 'Live TV', x: 890, y: 550, type: 'server', description: 'Multicast Source' },
+    { id: 'vod', label: 'VOD', x: 1010, y: 550, type: 'server', description: 'Unicast VOD' },
   ],
   connections: [
-    // Subscriber to Access
+    // All subscriber devices connect to Home Gateway first
+    { from: 'pc', to: 'home', service: 'internet' },
+    { from: 'stb', to: 'home', service: 'iptv' },
+    { from: 'phone', to: 'home', service: 'voip' },
+    
+    // Home Gateway to ONT (all services)
     { from: 'home', to: 'ont', service: 'all' },
-    { from: 'stb', to: 'ont', service: 'iptv' },
-    { from: 'phone', to: 'ont', service: 'voip' },
     
     // Access path
     { from: 'ont', to: 'splitter', service: 'all' },
@@ -149,26 +155,28 @@ const internetTopology: TopologyData = {
   title: 'Internet Service',
   description: 'Best-effort unicast traffic via VLAN 100',
   color: 'from-blue-500 to-cyan-500',
-  viewBox: '0 0 1300 500',
+  viewBox: '0 0 1400 500',
   nodes: [
-    { id: 'home', label: 'Home Gateway', x: 30, y: 220, type: 'subscriber' },
-    { id: 'ont', label: 'ONT', x: 150, y: 220, type: 'access' },
-    { id: 'splitter', label: 'Splitter', x: 270, y: 220, type: 'access' },
-    { id: 'olt', label: 'OLT', x: 390, y: 220, type: 'access', vlan: 'VLAN 100' },
-    { id: 'metro', label: 'Metro Cluster', x: 530, y: 220, type: 'aggregation', ha: true },
-    { id: 'bras', label: 'BRAS', x: 680, y: 220, type: 'core', ha: true },
-    { id: 'hcore', label: 'HCORE', x: 830, y: 220, type: 'core' },
-    { id: 'sig', label: 'SIG', x: 970, y: 220, type: 'core', description: 'CGNAT' },
-    { id: 'igw', label: 'IGW', x: 1100, y: 160, type: 'edge' },
-    { id: 'public', label: 'Internet', x: 1200, y: 160, type: 'external' },
-    { id: 'mix', label: 'MIX', x: 1100, y: 300, type: 'external' },
-    { id: 'dhcp', label: 'DHCP', x: 600, y: 80, type: 'server' },
-    { id: 'radius', label: 'RADIUS', x: 720, y: 80, type: 'server' },
-    { id: 'dns', label: 'DNS', x: 900, y: 80, type: 'server' },
-    { id: 'hcdn', label: 'HCDN', x: 900, y: 380, type: 'server' },
-    { id: 'cdn', label: 'CDN', x: 1050, y: 380, type: 'server' },
+    { id: 'pc', label: 'PC/Laptop', x: 30, y: 220, type: 'subscriber', description: 'Internet Device' },
+    { id: 'home', label: 'Home Gateway', x: 150, y: 220, type: 'subscriber', description: 'Triple Play CPE' },
+    { id: 'ont', label: 'ONT', x: 280, y: 220, type: 'access' },
+    { id: 'splitter', label: 'Splitter', x: 400, y: 220, type: 'access' },
+    { id: 'olt', label: 'OLT', x: 520, y: 220, type: 'access', vlan: 'VLAN 100' },
+    { id: 'metro', label: 'Metro Cluster', x: 660, y: 220, type: 'aggregation', ha: true },
+    { id: 'bras', label: 'BRAS', x: 810, y: 220, type: 'core', ha: true },
+    { id: 'hcore', label: 'HCORE', x: 950, y: 220, type: 'core' },
+    { id: 'sig', label: 'SIG', x: 1080, y: 220, type: 'core', description: 'CGNAT' },
+    { id: 'igw', label: 'IGW', x: 1200, y: 160, type: 'edge' },
+    { id: 'public', label: 'Internet', x: 1300, y: 160, type: 'external' },
+    { id: 'mix', label: 'MIX', x: 1200, y: 300, type: 'external' },
+    { id: 'dhcp', label: 'DHCP', x: 720, y: 80, type: 'server' },
+    { id: 'radius', label: 'RADIUS', x: 840, y: 80, type: 'server' },
+    { id: 'dns', label: 'DNS', x: 1020, y: 80, type: 'server' },
+    { id: 'hcdn', label: 'HCDN', x: 1000, y: 380, type: 'server' },
+    { id: 'cdn', label: 'CDN', x: 1150, y: 380, type: 'server' },
   ],
   connections: [
+    { from: 'pc', to: 'home', service: 'internet' },
     { from: 'home', to: 'ont', service: 'internet' },
     { from: 'ont', to: 'splitter', service: 'internet' },
     { from: 'splitter', to: 'olt', service: 'internet' },
