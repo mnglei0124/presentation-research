@@ -29,8 +29,8 @@ function SplitSection({ section, index, accentColor }: SplitSectionProps) {
   if (section.type === 'hero') {
     return (
       <section className="min-h-screen flex flex-col items-center justify-center px-6 py-24 relative overflow-hidden">
-        <div className={`absolute inset-0 bg-gradient-to-br ${accentColor} opacity-5 dark:opacity-10`} />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-white/50 via-transparent to-transparent dark:from-white/5" />
+        <div className={`absolute inset-0 bg-linear-to-Wbr ${accentColor} opacity-5 dark:opacity-10`} />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,var(--tw-gradient-stops))] from-white/50 via-transparent to-transparent dark:from-white/5" />
         
         <MotionWrapper className="relative z-10 text-center max-w-4xl mx-auto">
           {section.subtitle && (
@@ -38,7 +38,7 @@ function SplitSection({ section, index, accentColor }: SplitSectionProps) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className={`inline-block px-4 py-2 rounded-full text-sm font-medium mb-6 bg-gradient-to-r ${accentColor} text-white`}
+              className={`inline-block px-4 py-2 rounded-full text-sm font-medium mb-6 bg-linear-to-r ${accentColor} text-white`}
             >
               {section.subtitle}
             </motion.span>
@@ -47,7 +47,7 @@ function SplitSection({ section, index, accentColor }: SplitSectionProps) {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-8 bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-400"
+            className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-8 bg-clip-text text-transparent bg-linear-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-400"
           >
             {section.title}
           </motion.h1>
@@ -93,8 +93,8 @@ function SplitSection({ section, index, accentColor }: SplitSectionProps) {
               delay={0.2}
               className={isImageRight ? '' : 'lg:col-start-1 lg:row-start-1'}
             >
-              <div className={`aspect-[4/3] rounded-3xl bg-gradient-to-br ${accentColor} opacity-20 dark:opacity-30 relative overflow-hidden`}>
-                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white/30 via-transparent to-transparent" />
+              <div className={`aspect-4/3 rounded-3xl bg-linear-to-br ${accentColor} opacity-20 dark:opacity-30 relative overflow-hidden`}>
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,var(--tw-gradient-stops))] from-white/30 via-transparent to-transparent" />
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="w-24 h-24 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
                     <svg className="w-12 h-12 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -112,8 +112,8 @@ function SplitSection({ section, index, accentColor }: SplitSectionProps) {
 
   if (section.type === 'cta') {
     return (
-      <section className={`py-24 md:py-32 px-6 bg-gradient-to-br ${accentColor} relative overflow-hidden`}>
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-white/20 via-transparent to-transparent" />
+      <section className={`py-24 md:py-32 px-6 bg-linear-to-br ${accentColor} relative overflow-hidden`}>
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,var(--tw-gradient-stops))] from-white/20 via-transparent to-transparent" />
         <MotionWrapper className="max-w-3xl mx-auto text-center relative z-10">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
             {section.title}

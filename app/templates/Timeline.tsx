@@ -31,7 +31,7 @@ function TimelineSection({ section, index, accentColor, isLast }: TimelineSectio
   if (section.type === 'hero') {
     return (
       <section className="min-h-screen flex flex-col items-center justify-center px-6 py-24 relative overflow-hidden">
-        <div className={`absolute inset-0 bg-gradient-to-br ${accentColor} opacity-5 dark:opacity-10`} />
+        <div className={`absolute inset-0 bg-linear-to-br ${accentColor} opacity-5 dark:opacity-10`} />
         
         <MotionWrapper className="relative z-10 text-center max-w-4xl mx-auto">
           {section.subtitle && (
@@ -48,7 +48,7 @@ function TimelineSection({ section, index, accentColor, isLast }: TimelineSectio
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-8 bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-400"
+            className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-8 bg-clip-text text-transparent bg-linear-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-400"
           >
             {section.title}
           </motion.h1>
@@ -75,7 +75,7 @@ function TimelineSection({ section, index, accentColor, isLast }: TimelineSectio
             {/* Timeline line and dot */}
             <div className="relative flex flex-col items-center">
               <MotionWrapper>
-                <div className={`w-16 h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-br ${accentColor} flex items-center justify-center shadow-lg`}>
+                <div className={`w-16 h-16 md:w-20 md:h-20 rounded-full bg-linear-to-br ${accentColor} flex items-center justify-center shadow-lg`}>
                   <span className="text-white font-bold text-lg md:text-xl">
                     {section.year?.slice(-2) || index}
                   </span>
@@ -87,7 +87,7 @@ function TimelineSection({ section, index, accentColor, isLast }: TimelineSectio
                   whileInView={{ height: '100%' }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.8, delay: 0.3 }}
-                  className="w-0.5 bg-gradient-to-b from-gray-300 to-gray-100 dark:from-gray-600 dark:to-gray-800 absolute top-20 md:top-24"
+                  className="w-0.5 bg-linear-to-b from-gray-300 to-gray-100 dark:from-gray-600 dark:to-gray-800 absolute top-20 md:top-24"
                   style={{ minHeight: '150px' }}
                 />
               )}
@@ -117,7 +117,7 @@ function TimelineSection({ section, index, accentColor, isLast }: TimelineSectio
 
   if (section.type === 'cta') {
     return (
-      <section className={`py-24 md:py-32 px-6 bg-gradient-to-br ${accentColor}`}>
+      <section className={`py-24 md:py-32 px-6 bg-linear-to-br ${accentColor}`}>
         <MotionWrapper className="max-w-3xl mx-auto text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
             {section.title}

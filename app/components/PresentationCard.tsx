@@ -23,10 +23,10 @@ export function PresentationCard({ presentation, index }: PresentationCardProps)
       <Link href={`/presentations/${presentation.slug}`} className="block group">
         <article className="relative overflow-hidden rounded-3xl bg-white dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700/50 shadow-sm hover:shadow-2xl transition-all duration-500 backdrop-blur-sm">
           {/* Thumbnail / Gradient Background */}
-          <div className={`aspect-[16/10] bg-gradient-to-br ${presentation.accentColor} relative overflow-hidden`}>
+          <div className={`aspect-16/10 bg-linear-to-br ${presentation.accentColor} relative overflow-hidden`}>
             {/* Decorative elements */}
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-white/30 via-transparent to-transparent" />
-            <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-black/20 to-transparent" />
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,var(--tw-gradient-stops))] from-white/30 via-transparent to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-linear-to-t from-black/20 to-transparent" />
             
             {/* Template badge */}
             <div className="absolute top-4 left-4">
@@ -53,7 +53,7 @@ export function PresentationCard({ presentation, index }: PresentationCardProps)
 
           {/* Content */}
           <div className="p-6">
-            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-gray-900 group-hover:to-gray-600 dark:group-hover:from-white dark:group-hover:to-gray-400 transition-all duration-300">
+            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-linear-to-r group-hover:from-gray-900 group-hover:to-gray-600 dark:group-hover:from-white dark:group-hover:to-gray-400 transition-all duration-300">
               {presentation.title}
             </h3>
             <p className="text-gray-600 dark:text-gray-400 text-sm line-clamp-2 leading-relaxed">

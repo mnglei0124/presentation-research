@@ -42,8 +42,8 @@ function ResearchSection({ section, topicIndex, accentColor }: ResearchSectionPr
       return (
         <section className="min-h-[80vh] flex flex-col items-center justify-center px-6 py-24 relative overflow-hidden">
           {/* Background pattern */}
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
-          <div className={`absolute inset-0 bg-gradient-to-br ${accentColor} opacity-5 dark:opacity-10`} />
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-size-[24px_24px]" />
+          <div className={`absolute inset-0 bg-linear-to-br ${accentColor} opacity-5 dark:opacity-10`} />
           
           <MotionWrapper className="relative z-10 text-center max-w-4xl mx-auto">
             {section.subtitle && (
@@ -51,7 +51,7 @@ function ResearchSection({ section, topicIndex, accentColor }: ResearchSectionPr
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
-                className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium mb-6 bg-gradient-to-r ${accentColor} text-white`}
+                className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium mb-6 bg-linear-to-r ${accentColor} text-white`}
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -63,7 +63,7 @@ function ResearchSection({ section, topicIndex, accentColor }: ResearchSectionPr
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-8 bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-400"
+              className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-8 bg-clip-text text-transparent bg-linear-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-400"
             >
               {section.title}
             </motion.h1>
@@ -87,7 +87,7 @@ function ResearchSection({ section, topicIndex, accentColor }: ResearchSectionPr
           <div className="max-w-4xl mx-auto">
             <MotionWrapper>
               <div className="flex items-center gap-4 mb-8">
-                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${accentColor} flex items-center justify-center text-white font-bold text-lg shadow-lg`}>
+                <div className={`w-12 h-12 rounded-xl bg-linear-to-br ${accentColor} flex items-center justify-center text-white font-bold text-lg shadow-lg`}>
                   {String(topicIndex).padStart(2, '0')}
                 </div>
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
@@ -113,7 +113,7 @@ function ResearchSection({ section, topicIndex, accentColor }: ResearchSectionPr
             <MotionWrapper>
               <div className="bg-white dark:bg-gray-800/50 rounded-2xl p-8 shadow-sm border border-gray-100 dark:border-gray-700/50">
                 <div className="flex items-start gap-4">
-                  <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${accentColor} flex items-center justify-center flex-shrink-0`}>
+                  <div className={`w-10 h-10 rounded-lg bg-linear-to-br ${accentColor} flex items-center justify-center shrink-0`}>
                     <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
@@ -178,7 +178,7 @@ function ResearchSection({ section, topicIndex, accentColor }: ResearchSectionPr
                   <MotionWrapper key={i} delay={i * 0.1}>
                     <div className="bg-white dark:bg-gray-800/50 rounded-xl p-6 shadow-sm border border-gray-100 dark:border-gray-700/50">
                       <div className="flex items-start gap-4">
-                        <div className={`w-8 h-8 rounded-lg bg-gradient-to-br ${accentColor} flex items-center justify-center flex-shrink-0`}>
+                        <div className={`w-8 h-8 rounded-lg bg-linear-to-br ${accentColor} flex items-center justify-center shrink-0`}>
                           <span className="text-white font-bold text-sm">{i + 1}</span>
                         </div>
                         <div>
@@ -242,7 +242,7 @@ function ResearchSection({ section, topicIndex, accentColor }: ResearchSectionPr
               <ul className="space-y-3">
                 {section.items?.map((item, i) => (
                   <li key={i} className="flex items-start gap-3">
-                    <div className={`w-6 h-6 rounded-full bg-gradient-to-br ${accentColor} flex items-center justify-center flex-shrink-0 mt-0.5`}>
+                    <div className={`w-6 h-6 rounded-full bg-linear-to-br ${accentColor} flex items-center justify-center shrink-0 mt-0.5`}>
                       <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                       </svg>

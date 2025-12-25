@@ -31,8 +31,8 @@ function MinimalSection({ section, index, accentColor }: MinimalSectionProps) {
       return (
         <section className="min-h-screen flex flex-col items-center justify-center px-6 py-24 relative overflow-hidden">
           {/* Background gradient */}
-          <div className={`absolute inset-0 bg-gradient-to-br ${accentColor} opacity-5 dark:opacity-10`} />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white/50 via-transparent to-transparent dark:from-white/5" />
+          <div className={`absolute inset-0 bg-linear-to-br ${accentColor} opacity-5 dark:opacity-10`} />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,var(--tw-gradient-stops))] from-white/50 via-transparent to-transparent dark:from-white/5" />
           
           <MotionWrapper className="relative z-10 text-center max-w-4xl mx-auto">
             {section.subtitle && (
@@ -40,7 +40,7 @@ function MinimalSection({ section, index, accentColor }: MinimalSectionProps) {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
-                className={`inline-block px-4 py-2 rounded-full text-sm font-medium mb-6 bg-gradient-to-r ${accentColor} text-white`}
+                className={`inline-block px-4 py-2 rounded-full text-sm font-medium mb-6 bg-linear-to-r ${accentColor} text-white`}
               >
                 {section.subtitle}
               </motion.span>
@@ -49,7 +49,7 @@ function MinimalSection({ section, index, accentColor }: MinimalSectionProps) {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-8 bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-400"
+              className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-8 bg-clip-text text-transparent bg-linear-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-400"
             >
               {section.title}
             </motion.h1>
@@ -130,8 +130,8 @@ function MinimalSection({ section, index, accentColor }: MinimalSectionProps) {
 
     case 'cta':
       return (
-        <section className={`py-24 md:py-32 px-6 bg-gradient-to-br ${accentColor} relative overflow-hidden`}>
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-white/20 via-transparent to-transparent" />
+        <section className={`py-24 md:py-32 px-6 bg-linear-to-br ${accentColor} relative overflow-hidden`}>
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,var(--tw-gradient-stops))] from-white/20 via-transparent to-transparent" />
           <MotionWrapper className="max-w-3xl mx-auto text-center relative z-10">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
               {section.title}

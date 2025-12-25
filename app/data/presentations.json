@@ -74,16 +74,68 @@
           "id": "access-network-intro",
           "type": "topic",
           "title": "Access Network",
-          "content": "The access network is the physical and logical path connecting subscriber devices to the first provider-managed service node. It handles traffic encapsulation, VLAN tagging, and QoS marking but does not perform IP routing or subscriber authentication—those are tasks for BRAS and HCORE."
+          "content": "The Access Network is the 'last mile' connecting subscriber devices to the ISP's infrastructure. In GPON deployments, it encompasses all physical media and devices from the customer premises up to the Optical Line Terminal (OLT) at the provider's access point. It handles traffic encapsulation, VLAN tagging, and QoS marking but does not perform IP routing or authentication."
+        },
+        {
+          "id": "access-network-media",
+          "type": "keypoints",
+          "title": "Physical Cable Types",
+          "items": [
+            {
+              "title": "Copper (DSL)",
+              "description": "Legacy technology using telephone lines for broadband. Limited speeds, still common in older deployments."
+            },
+            {
+              "title": "Coaxial (HFC)",
+              "description": "Hybrid Fiber-Coax: fiber to neighborhood nodes, then coax to homes. Uses DOCSIS modems for cable TV ISPs."
+            },
+            {
+              "title": "Fiber Optic (GPON)",
+              "description": "Glass/plastic fiber transmitting light pulses. Fastest, most future-proof with minimal interference and extremely high bandwidth."
+            }
+          ]
+        },
+        {
+          "id": "home-gateway-definition",
+          "type": "definition",
+          "title": "Home Gateway",
+          "content": "A home gateway (residential gateway) is a consumer device combining modem/ONT (physical link to ISP), router (manages LAN), Wi-Fi access point, firewall, NAT, and DHCP. It's the demarcation point between the customer's network and the ISP's access network. This single device handles VLAN tagging for Triple Play services before forwarding to ONT."
+        },
+        {
+          "id": "home-gateway-types",
+          "type": "components",
+          "title": "Network Device Roles",
+          "items": [
+            {
+              "title": "Modem",
+              "description": "Converts ISP medium signals (copper, coax, fiber) into Ethernet packets. DSL modem for phone lines, cable modem for coax.",
+              "icon": "📠"
+            },
+            {
+              "title": "Router",
+              "description": "Takes network connection and shares it with multiple devices. Provides routing, NAT, firewall, and LAN management.",
+              "icon": "🔀"
+            },
+            {
+              "title": "Gateway",
+              "description": "Combines modem + router + Wi-Fi in a single ISP-provided unit. Most common in modern GPON deployments.",
+              "icon": "📡"
+            },
+            {
+              "title": "ONT",
+              "description": "Optical Network Terminal: converts fiber light signals into Ethernet for use by local devices.",
+              "icon": "💡"
+            }
+          ]
         },
         {
           "id": "access-network-components",
           "type": "components",
-          "title": "Access Network Components",
+          "title": "ISP Access Network Components",
           "items": [
             {
               "title": "CPE/Home Gateway",
-              "description": "Customer premises equipment providing WiFi, routing, and service demarcation.",
+              "description": "Customer premises equipment providing WiFi, routing, VLAN tagging, and service demarcation.",
               "icon": "📶"
             },
             {
@@ -93,12 +145,12 @@
             },
             {
               "title": "Optical Splitter",
-              "description": "Passive device splitting one fiber into multiple subscriber connections (1:32 or 1:64).",
+              "description": "Passive device splitting one fiber into 1:32 or 1:64 subscriber connections without power.",
               "icon": "🔀"
             },
             {
               "title": "OLT",
-              "description": "Optical Line Terminal at the central office managing all ONTs in the PON tree.",
+              "description": "Optical Line Terminal at central office managing all ONTs in the PON tree.",
               "icon": "🏢"
             },
             {
@@ -109,60 +161,370 @@
           ]
         },
         {
+          "id": "wifi-intro",
+          "type": "definition",
+          "title": "Wi-Fi in Access Networks",
+          "content": "Wi-Fi is not part of the ISP access network itself—it's the last local access technology inside customer premises, bridging user devices to the home gateway. However, Wi-Fi performance directly impacts perceived ISP service quality, which is why ISPs standardize on newer Wi-Fi versions like Wi-Fi 6."
+        },
+        {
+          "id": "wifi-connection",
+          "type": "keypoints",
+          "title": "How Wi-Fi Connection Works",
+          "items": [
+            {
+              "title": "1. Scanning",
+              "description": "Client sends probe requests to detect available networks (SSIDs). Access Points reply with probe responses."
+            },
+            {
+              "title": "2. Authentication",
+              "description": "Client and AP exchange management frames. This is wireless link security (WPA2/WPA3), not internet login."
+            },
+            {
+              "title": "3. Association",
+              "description": "Client sends association request; if accepted, becomes part of the Basic Service Set (BSS) and can exchange data."
+            },
+            {
+              "title": "4. Secure Handshake",
+              "description": "WPA2/WPA3 4-way handshake to derive encryption keys and establish secure connection."
+            },
+            {
+              "title": "5. IP Assignment",
+              "description": "After association, client obtains IP via DHCP. Only then can traffic flow to the ISP access network."
+            }
+          ]
+        },
+        {
+          "id": "wifi-standards",
+          "type": "keypoints",
+          "title": "Wi-Fi Standards Evolution",
+          "items": [
+            {
+              "title": "Wi-Fi 4 (802.11n) - 2009",
+              "description": "Introduced MIMO. 2.4/5 GHz bands. Up to 600 Mbps. First 'modern' Wi-Fi, still in legacy devices."
+            },
+            {
+              "title": "Wi-Fi 5 (802.11ac) - 2014",
+              "description": "5 GHz only. Up to 6.9 Gbps. MU-MIMO. High throughput but struggles with many devices."
+            },
+            {
+              "title": "Wi-Fi 6 (802.11ax) - 2019",
+              "description": "2.4/5 GHz. Up to 9.6 Gbps. OFDMA, TWT, 1024-QAM. Designed for high-density environments."
+            },
+            {
+              "title": "Wi-Fi 6E - 2020",
+              "description": "Same as Wi-Fi 6 but extends into 6 GHz band. More capacity, less interference. Adoption varies by country."
+            },
+            {
+              "title": "Wi-Fi 7 (802.11be) - 2024+",
+              "description": "Multi-Link Operation across 2.4/5/6 GHz. Up to ~46 Gbps. Designed for AR/VR and ultra-low latency."
+            }
+          ]
+        },
+        {
+          "id": "wifi6-benefits",
+          "type": "components",
+          "title": "Why ISPs Choose Wi-Fi 6",
+          "items": [
+            {
+              "title": "OFDMA",
+              "description": "Splits channels into smaller resource units to serve multiple devices simultaneously.",
+              "icon": "📊"
+            },
+            {
+              "title": "MU-MIMO",
+              "description": "Multi-user parallel transmissions for better handling of many connected devices.",
+              "icon": "👥"
+            },
+            {
+              "title": "Target Wake Time",
+              "description": "Schedules device wake times to save battery power on IoT and mobile devices.",
+              "icon": "🔋"
+            },
+            {
+              "title": "Better Latency",
+              "description": "Lower contention and airtime efficiency—ideal for IPTV, VoIP, and gaming.",
+              "icon": "⚡"
+            }
+          ]
+        },
+        {
+          "id": "wifi-gpon-symmetry",
+          "type": "definition",
+          "title": "Wi-Fi 6 and GPON Symmetry",
+          "content": "Both Wi-Fi 6 and GPON rely on centralized scheduling: Wi-Fi uses OFDMA (AP schedules airtime), while GPON uses TDMA (OLT schedules bandwidth). This architectural symmetry makes Wi-Fi 6 a conceptual match for fiber access networks, both handling shared medium access with QoS-aware design."
+        },
+        {
           "id": "access-network-ha",
           "type": "definition",
           "title": "High Availability in Access",
-          "content": "The access network ensures reliability using Active-Standby Metro clusters and redundant OLT uplinks. IPTV multicast replication and VoIP QoS tagging are handled at this layer. Most subscriber-level outages occur here: ONT failures, split fiber cuts, or local power issues. Metro switch and OLT uplink failures are mitigated by HA mechanisms."
+          "content": "The access network ensures reliability using Active-Standby Metro clusters and redundant OLT uplinks. IPTV multicast replication and VoIP QoS tagging are handled at this layer. Most subscriber-level outages occur here: ONT failures, fiber cuts, or local power issues. Metro switch and OLT uplink failures are mitigated by HA mechanisms."
         },
         {
           "id": "core-network-intro",
           "type": "topic",
           "title": "Fixed Core Network",
-          "content": "The Fixed Core network is the intelligence and aggregation layer for all subscriber traffic. It consists of BRAS, HCORE, SIG, and IGW/MIX. This layer provides subscriber authentication, IP assignment, policy enforcement, routing, NAT, and external peering."
+          "content": "The Fixed Core Network is the high-capacity IP/MPLS backbone of a telecommunications provider. It interconnects access networks (GPON, DSL, Metro) with service platforms (Internet, IPTV, VoIP) and external networks, providing routing, transport, policy, and interconnection. It is technology-agnostic regarding access but service-centric and IP/MPLS-centric in design."
         },
         {
-          "id": "core-network-components",
-          "type": "components",
-          "title": "Core Network Components",
+          "id": "core-network-boundary",
+          "type": "definition",
+          "title": "Access vs Core: The Hard Boundary",
+          "content": "The core network never touches physical last-mile media—it operates purely at Layer 3 and above (with MPLS between L2–L3). While the access network handles last-mile aggregation and is subscriber-unaware (dealing with physical access, GPON/OLT, and VLANs), the core network provides centralized backbone services and is subscriber-aware via BRAS, handling logical services through IP and MPLS routing with policy enforcement."
+        },
+        {
+          "id": "core-architecture",
+          "type": "keypoints",
+          "title": "Core Network Logical Architecture",
           "items": [
             {
-              "title": "BRAS",
-              "description": "Subscriber edge device handling authentication, IP assignment (private/public), policy, and AAA.",
-              "icon": "🛡️"
+              "title": "Service Edge (BRAS/BNG)",
+              "description": "Subscriber session termination, authentication, IP assignment, policy enforcement, and QoS marking at the boundary between access and core."
             },
             {
-              "title": "HCORE",
-              "description": "Aggregates BRAS traffic, implements routing/traffic engineering, directs flows to SIG or CDN.",
-              "icon": "🌐"
+              "title": "Core Routing (HCORE)",
+              "description": "High-capacity stateless packet forwarding using MPLS and IP routing. No subscriber logic—pure speed and reliability."
             },
             {
-              "title": "SIG",
-              "description": "Provides NAT (CGNAT for private IPs), security filtering, and external peering to Internet/MIX.",
-              "icon": "🔒"
+              "title": "Service Interconnect (SIG)",
+              "description": "Traffic steering, policy-based routing, and interconnection to service platforms like CDN, DNS, and IPTV middleware."
             },
             {
-              "title": "IGW/MIX",
-              "description": "Internet Gateway and Mongolian Internet Exchange for public peering and transit.",
-              "icon": "🌍"
+              "title": "Internet Gateway (IGW)",
+              "description": "Exit point to global Internet with BGP peering to upstream providers and IXPs like MIX."
+            },
+            {
+              "title": "External Networks",
+              "description": "Public Internet, Internet Exchanges, CDN origins, and inter-carrier connections."
             }
           ]
         },
         {
-          "id": "core-network-features",
-          "type": "keypoints",
-          "title": "Core Network Capabilities",
+          "id": "bras-bng",
+          "type": "definition",
+          "title": "Service Edge: BRAS / BNG",
+          "content": "The BRAS (Broadband Remote Access Server) or BNG (Broadband Network Gateway) is the first true core element—the boundary between access and core. It terminates subscriber sessions (PPPoE or IPoE), interacts with DHCP/RADIUS for IP assignment and AAA, enforces subscriber policies, applies QoS marking and traffic shaping. After BRAS processing, traffic becomes pure IP/MPLS."
+        },
+        {
+          "id": "bras-protocols",
+          "type": "components",
+          "title": "BRAS Protocols & Functions",
           "items": [
             {
-              "title": "Dual IP Support",
-              "description": "Supports both private IP subscribers (CGNAT at SIG) and public IP subscribers with direct routing."
+              "title": "PPPoE / IPoE",
+              "description": "Subscriber session protocols for authentication and connection establishment.",
+              "icon": "🔌"
             },
             {
-              "title": "Session Persistence",
-              "description": "Maintains seamless connectivity and session persistence during BRAS failover events."
+              "title": "DHCP Relay",
+              "description": "Relays IP address requests to DHCP servers for dynamic assignment.",
+              "icon": "📍"
+            },
+            {
+              "title": "RADIUS AAA",
+              "description": "Authentication, Authorization, and Accounting for subscriber management.",
+              "icon": "🔐"
+            },
+            {
+              "title": "QoS / DSCP",
+              "description": "Traffic classification, CoS marking, and shaping per-subscriber policy.",
+              "icon": "📊"
+            },
+            {
+              "title": "VLAN / Q-in-Q",
+              "description": "Handles VLAN tags from access network and strips/translates them.",
+              "icon": "🏷️"
+            },
+            {
+              "title": "ACLs",
+              "description": "Access control lists for security and traffic filtering.",
+              "icon": "🛡️"
+            }
+          ]
+        },
+        {
+          "id": "hcore-layer",
+          "type": "definition",
+          "title": "HCORE: High-Capacity Core Routing",
+          "content": "The HCORE is the heart of the fixed core network. Its only job is to move packets fast, reliably, and redundantly across the ISP backbone. It features extremely high throughput (100G/400G ports), low latency, no subscriber logic, and stateless forwarding. Technologies include IP routing (IPv4/IPv6), MPLS (LDP/RSVP-TE/SR-MPLS), ECMP load balancing, and Fast Reroute (FRR) for sub-50ms recovery."
+        },
+        {
+          "id": "hcore-technologies",
+          "type": "components",
+          "title": "HCORE Technologies",
+          "items": [
+            {
+              "title": "IP Routing",
+              "description": "IPv4 and IPv6 routing for packet forwarding across the backbone.",
+              "icon": "🌐"
+            },
+            {
+              "title": "MPLS",
+              "description": "Label switching for traffic engineering, service separation, and L2/L3 VPNs (LDP, SR-MPLS).",
+              "icon": "🏷️"
+            },
+            {
+              "title": "IGP (IS-IS/OSPF)",
+              "description": "Interior gateway protocols for internal topology discovery and convergence.",
+              "icon": "🗺️"
+            },
+            {
+              "title": "BGP",
+              "description": "Border Gateway Protocol for service routing and external peering.",
+              "icon": "🔗"
+            },
+            {
+              "title": "ECMP",
+              "description": "Equal-Cost Multi-Path for load balancing across parallel links.",
+              "icon": "⚖️"
+            },
+            {
+              "title": "Fast Reroute",
+              "description": "MPLS FRR for sub-50ms failover upon link or node failure.",
+              "icon": "⚡"
+            }
+          ]
+        },
+        {
+          "id": "sig-layer",
+          "type": "definition",
+          "title": "SIG: Service Interconnection Gateway",
+          "content": "The SIG layer connects core routing to service platforms. It provides service separation, traffic steering, and policy-based routing to interconnect with CDN, DNS, IPTV middleware, and VoIP softswitches. SIG acts as a controlled fan-out point—DNS queries route to DNS servers, CDN traffic to HCDN, and Internet traffic to IGW."
+        },
+        {
+          "id": "igw-layer",
+          "type": "definition",
+          "title": "IGW: Internet Gateway",
+          "content": "The Internet Gateway is the exit point from the ISP's network to the global Internet. It handles eBGP peering with upstream providers, BGP peering with IXPs (like MIX), route filtering and policies, traffic engineering via local preference and AS-path prepending, NAT (when needed), and DDoS protection. In your network: SIG → IGW → Public Internet, and SIG → MIX."
+        },
+        {
+          "id": "core-ip-addressing",
+          "type": "keypoints",
+          "title": "IP Addressing in Core Network",
+          "items": [
+            {
+              "title": "Private IPs (RFC1918)",
+              "description": "Assigned at BRAS, used between subscriber and BRAS. Requires CGNAT at SIG/IGW for Internet access."
+            },
+            {
+              "title": "Public IPs",
+              "description": "Assigned directly at BRAS for enterprise or premium subscribers with direct Internet routing."
+            },
+            {
+              "title": "Core Infrastructure",
+              "description": "Core routers, HCORE, SIG, and IGW use public IP addressing for routing and peering."
+            }
+          ]
+        },
+        {
+          "id": "core-redundancy",
+          "type": "components",
+          "title": "Redundancy & High Availability",
+          "items": [
+            {
+              "title": "No Single Point of Failure",
+              "description": "All critical components deployed in pairs with active-active or active-standby configurations.",
+              "icon": "🔄"
+            },
+            {
+              "title": "ECMP Load Balancing",
+              "description": "Traffic distributed across multiple equal-cost paths for bandwidth and resilience.",
+              "icon": "⚖️"
+            },
+            {
+              "title": "MPLS Fast Reroute",
+              "description": "Pre-computed backup paths enable sub-50ms convergence upon failure.",
+              "icon": "⚡"
+            },
+            {
+              "title": "BGP Fast Failover",
+              "description": "BFD-triggered BGP session teardown for rapid peering convergence.",
+              "icon": "🚀"
+            },
+            {
+              "title": "Stateful Switchover",
+              "description": "SSO maintains session state during control plane switchover on redundant routers.",
+              "icon": "🔁"
+            }
+          ]
+        },
+        {
+          "id": "core-failure-domains",
+          "type": "keypoints",
+          "title": "Failure Domains",
+          "items": [
+            {
+              "title": "Access Link Failure",
+              "description": "Single subscriber isolated. No impact to core network."
+            },
+            {
+              "title": "Metro Switch Failure",
+              "description": "Limited regional impact. Traffic reroutes via redundant metro pair."
+            },
+            {
+              "title": "BRAS Failure",
+              "description": "Session drop for affected subscribers. Standby BRAS takes over."
+            },
+            {
+              "title": "Core Link Failure",
+              "description": "Traffic rerouted via MPLS FRR. Invisible to subscribers with <50ms convergence."
+            },
+            {
+              "title": "IGW Failure",
+              "description": "Traffic rerouted to alternate exit. BGP reconverges to backup peering."
+            }
+          ]
+        },
+        {
+          "id": "core-triple-play",
+          "type": "components",
+          "title": "Core Network & Triple Play",
+          "items": [
+            {
+              "title": "Internet",
+              "description": "Unicast routing through BRAS → HCORE → SIG → IGW with best-effort QoS.",
+              "icon": "🌐"
+            },
+            {
+              "title": "IPTV",
+              "description": "Multicast routing via PIM/IGMP. QoS priority for jitter-sensitive video streams.",
+              "icon": "📺"
+            },
+            {
+              "title": "VoIP",
+              "description": "Low-latency routing with strict QoS. DSCP marking preserved end-to-end.",
+              "icon": "📞"
             },
             {
               "title": "CDN Integration",
-              "description": "Interfaces with HCDN for efficient content distribution, caching, and reduced transit costs."
+              "description": "HCDN for local traffic offload, reducing transit costs and latency.",
+              "icon": "💾"
+            }
+          ]
+        },
+        {
+          "id": "core-technical-details",
+          "type": "keypoints",
+          "title": "Critical Technical Details",
+          "items": [
+            {
+              "title": "MTU Consistency",
+              "description": "Uniform MTU (typically 9000 for jumbo frames) across all core links to prevent fragmentation."
+            },
+            {
+              "title": "MPLS Label Stack",
+              "description": "Proper label depth management for VPN and traffic engineering tunnels."
+            },
+            {
+              "title": "Route Reflectors",
+              "description": "Strategic BGP RR placement to scale iBGP without full mesh."
+            },
+            {
+              "title": "Control Plane Protection",
+              "description": "CoPP policies to protect routers from DoS attacks on management/control plane."
+            },
+            {
+              "title": "Clock Synchronization",
+              "description": "PTP/NTP for time-sensitive protocols and logging correlation."
             }
           ]
         },

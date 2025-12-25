@@ -1,8 +1,28 @@
 import { notFound } from 'next/navigation';
-import { getTemplate, Presentation } from '@/app/data/templates';
+import { Presentation } from '@/app/data/templates';
 import presentationsData from '@/app/data/presentations.json';
 import Link from 'next/link';
 import { PrintButton } from '@/app/components/PrintButton';
+import { Minimal } from '@/app/templates/Minimal';
+import { Timeline } from '@/app/templates/Timeline';
+import { Split } from '@/app/templates/Split';
+import { Research } from '@/app/templates/Research';
+
+// Helper function to render the correct template
+function renderTemplate(templateName: string, presentation: Presentation) {
+  switch (templateName) {
+    case 'Minimal':
+      return <Minimal presentation={presentation} />;
+    case 'Timeline':
+      return <Timeline presentation={presentation} />;
+    case 'Split':
+      return <Split presentation={presentation} />;
+    case 'Research':
+      return <Research presentation={presentation} />;
+    default:
+      return null;
+  }
+}
 
 // Generate static paths for all presentations
 export async function generateStaticParams() {
@@ -44,9 +64,9 @@ export default async function PresentationPage({ params }: { params: Promise<{ s
     notFound();
   }
 
-  const Template = getTemplate(presentation.template);
+  const templateContent = renderTemplate(presentation.template, presentation);
 
-  if (!Template) {
+  if (!templateContent) {
     notFound();
   }
 
@@ -67,7 +87,7 @@ export default async function PresentationPage({ params }: { params: Promise<{ s
       <PrintButton />
 
       {/* Render the presentation using the selected template */}
-      <Template presentation={presentation} />
+      {templateContent}
 
       {/* Navigation footer */}
       <nav className="border-t border-gray-100 dark:border-gray-800 no-print">

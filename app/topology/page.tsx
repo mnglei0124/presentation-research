@@ -272,7 +272,7 @@ const nodeTypeStyles: Record<TopologyNode['type'], { fill: string; stroke: strin
   external: { fill: '#fef3c7', stroke: '#f59e0b', darkFill: '#78350f', darkStroke: '#fbbf24' },
 };
 
-function TopologyDiagram({ data, activeService, isDark }: { data: TopologyData; activeService: TopologyType; isDark: boolean }) {
+function TopologyDiagram({ data, isDark }: { data: TopologyData; isDark: boolean }) {
   const [hoveredNode, setHoveredNode] = useState<string | null>(null);
   
   const getNode = (id: string) => data.nodes.find(n => n.id === id);
@@ -473,9 +473,17 @@ export default function TopologyPage() {
   
   useEffect(() => {
     const checkDark = () => document.documentElement.classList.contains('dark');
-    setIsDark(checkDark());
     
-    const observer = new MutationObserver(() => setIsDark(checkDark()));
+    // Use requestAnimationFrame to avoid synchronous setState in effect
+    const updateDarkMode = () => {
+      requestAnimationFrame(() => {
+        setIsDark(checkDark());
+      });
+    };
+    
+    updateDarkMode();
+    
+    const observer = new MutationObserver(updateDarkMode);
     observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
     return () => observer.disconnect();
   }, []);
@@ -525,7 +533,7 @@ export default function TopologyPage() {
                 onClick={() => setActiveTopology(type)}
                 className={`px-5 py-2.5 rounded-xl font-medium transition-all duration-300 flex items-center gap-2 ${
                   isActive 
-                    ? `bg-gradient-to-r ${topo.color} text-white shadow-lg scale-105` 
+                    ? `bg-linear-to-r ${topo.color} text-white shadow-lg scale-105` 
                     : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700'
                 }`}
               >
@@ -551,7 +559,7 @@ export default function TopologyPage() {
               {/* Info Card */}
               <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 mb-5 p-4">
                 <div className="flex items-center gap-3">
-                  <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${currentData.color} flex items-center justify-center shrink-0`}>
+                  <div className={`w-10 h-10 rounded-xl bg-linear-to-br ${currentData.color} flex items-center justify-center shrink-0`}>
                     <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
                     </svg>
@@ -569,7 +577,7 @@ export default function TopologyPage() {
               
               {/* Diagram */}
               <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 p-4 overflow-hidden">
-                <TopologyDiagram data={currentData} activeService={activeTopology} isDark={isDark} />
+                <TopologyDiagram data={currentData} isDark={isDark} />
               </div>
               
               {/* Legend */}
