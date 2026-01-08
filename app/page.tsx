@@ -150,6 +150,12 @@ export default function Home() {
             >
               Network Topology →
             </a>
+            <a 
+              href="/layers" 
+              className="text-sm text-cyan-600 dark:text-cyan-400 hover:underline font-medium"
+            >
+              Network Layers →
+            </a>
           </div>
         </div>
       </footer>
