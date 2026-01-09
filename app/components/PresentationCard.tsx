@@ -20,7 +20,7 @@ export function PresentationCard({ presentation, index }: PresentationCardProps)
         ease: [0.25, 0.4, 0.25, 1],
       }}
     >
-      <Link href={`/presentations/${presentation.slug}`} className="block group">
+      <Link href={presentation.customUrl || `/presentations/${presentation.slug}`} className="block group">
         <article className="relative overflow-hidden rounded-3xl bg-white dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700/50 shadow-sm hover:shadow-2xl transition-all duration-500 backdrop-blur-sm">
           {/* Thumbnail / Gradient Background */}
           <div className={`aspect-16/10 bg-linear-to-br ${presentation.accentColor} relative overflow-hidden`}>

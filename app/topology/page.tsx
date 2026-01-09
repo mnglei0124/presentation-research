@@ -59,56 +59,54 @@ const layerColors = {
 // Enterprise Internet topology
 const enterpriseTopology: TopologyData = {
   title: 'Enterprise Internet',
-  description: 'Dedicated business connectivity via MDU using BRAS1/BRAS2',
+  description: 'Dedicated business connectivity via MDU using BRAS1/BRAS2 with Q-in-Q (802.1ad)',
   color: 'from-blue-500 to-indigo-600',
-  viewBox: '0 0 1200 900',
+  viewBox: '-20 -100 1250 1000',
   vlanInfo: {
-    preConversion: '963 (Internet)',
-    postConversion: '3700-3899',
+    preConversion: '963 (Internet) + Q-in-Q',
+    postConversion: '4000-4100 (S-VLAN)',
   },
   nodes: [
     // Layer 1: Access Network (bottom) - y: 800
-    { id: 'enterprise', label: 'Enterprise Internet', x: 550, y: 820, type: 'subscriber', description: 'Business Customer', layer: 'access' },
+    { id: 'enterprise', label: 'Enterprise Internet', x: 500, y: 820, type: 'subscriber', description: 'Business Customer', layer: 'access' },
     
     // Layer 2: GPON - y: 650-700
-    { id: 'mdu', label: 'MDU', x: 550, y: 680, type: 'access', description: 'Multi-Dwelling Unit', layer: 'gpon' },
-    { id: 'splitter', label: 'Splitter', x: 550, y: 580, type: 'gpon', description: '1:32 Passive', layer: 'gpon' },
-    { id: 'olt', label: 'OLT', x: 550, y: 480, type: 'gpon', description: 'GPON Head-end', layer: 'gpon' },
+    { id: 'mdu', label: 'MDU', x: 500, y: 680, type: 'access', description: 'Multi-Dwelling Unit', layer: 'gpon' },
+    { id: 'splitter', label: 'Splitter', x: 500, y: 580, type: 'gpon', description: '1:32 Passive', layer: 'gpon' },
+    { id: 'olt', label: 'OLT', x: 500, y: 480, type: 'gpon', description: 'GPON Head-end', layer: 'gpon' },
     
     // Layer 3: Core Fixed Network - y: 100-400
-    { id: 'metro', label: 'Metro Cluster', x: 550, y: 380, type: 'core', description: 'Aggregation', ha: true, layer: 'core' },
-    { id: 'bras1', label: 'BRAS1', x: 450, y: 280, type: 'core', description: 'Active', layer: 'core' },
-    { id: 'bras2', label: 'BRAS2', x: 650, y: 280, type: 'core', description: 'Standby', layer: 'core' },
-    { id: 'hcore1', label: 'HCORE1', x: 400, y: 180, type: 'core', layer: 'core' },
-    { id: 'hcore2', label: 'HCORE2', x: 700, y: 180, type: 'core', layer: 'core' },
-    { id: 'sig', label: 'SIG', x: 550, y: 100, type: 'core', description: 'NAT/Security', layer: 'core' },
+    { id: 'metro', label: 'Metro Cluster', x: 500, y: 380, type: 'core', description: 'Aggregation', ha: true, layer: 'core' },
+    { id: 'bras1', label: 'BRAS1', x: 400, y: 280, type: 'core', description: 'Active', layer: 'core' },
+    { id: 'bras2', label: 'BRAS2', x: 600, y: 280, type: 'core', description: 'Standby', layer: 'core' },
+    { id: 'hcore1', label: 'HCORE1', x: 350, y: 180, type: 'core', layer: 'core' },
+    { id: 'hcore2', label: 'HCORE2', x: 650, y: 180, type: 'core', layer: 'core' },
+    { id: 'sig', label: 'SIG', x: 500, y: 100, type: 'core', description: 'NAT/Security', layer: 'core' },
     
     // External/Cloud - y: 20
-    { id: 'igw1', label: 'IGW1', x: 380, y: 20, type: 'cloud', layer: 'core' },
-    { id: 'igw2', label: 'IGW2', x: 550, y: 20, type: 'cloud', layer: 'core' },
-    { id: 'public', label: 'Public Internet', x: 380, y: -60, type: 'cloud', description: 'Internet' },
-    { id: 'mix', label: 'MIX', x: 550, y: -60, type: 'cloud', description: 'Mongolian IXP' },
+    { id: 'igw1', label: 'IGW1', x: 400, y: 20, type: 'cloud', layer: 'core' },
+    { id: 'igw2', label: 'IGW2', x: 600, y: 20, type: 'cloud', layer: 'core' },
+    { id: 'public', label: 'Public Internet', x: 400, y: -60, type: 'cloud', description: 'Internet', layer: 'core' },
+    { id: 'mix', label: 'MIX', x: 600, y: -60, type: 'cloud', description: 'Mongolian IXP', layer: 'core' },
     
-    // CDN Branch
-    { id: 'hcdn', label: 'HCDN Cluster', x: 850, y: 100, type: 'server', layer: 'core' },
-    { id: 'cdn', label: 'CDN Network', x: 1000, y: 100, type: 'cloud' },
+    // CDN Branch (right side)
+    { id: 'hcdn', label: 'HCDN Cluster', x: 800, y: 180, type: 'server', layer: 'core' },
+    { id: 'cdn', label: 'CDN Network', x: 950, y: 180, type: 'cloud', layer: 'core' },
+    { id: 'sig_db', label: 'SIG DB', x: 800, y: 100, type: 'server', layer: 'core' },
     
-    // DNS Branch
+    // DNS Branch (left side)
     { id: 'intswitch', label: 'Internet Switch', x: 200, y: 100, type: 'core', layer: 'core' },
-    { id: 'dns', label: 'DNS', x: 50, y: 100, type: 'server' },
+    { id: 'dns', label: 'DNS', x: 50, y: 100, type: 'server', layer: 'core' },
     
-    // RADIUS Branch (DC_M7K)
-    { id: 'dcm7k', label: 'DC_M7K Switch', x: 550, y: 200, type: 'core', layer: 'core' },
-    { id: 'radius_cpar', label: 'RADIUS (CPAR)', x: 550, y: 280, type: 'server' },
-    { id: 'radius_db', label: 'RADIUS DB', x: 700, y: 280, type: 'server' },
-    
-    // SIG DB
-    { id: 'sig_db', label: 'SIG DB', x: 700, y: 100, type: 'server' },
+    // RADIUS Branch (far left, separate from main flow)
+    { id: 'dcm7k', label: 'DC_M7K Switch', x: 100, y: 280, type: 'core', layer: 'core' },
+    { id: 'radius_cpar', label: 'RADIUS (CPAR)', x: 100, y: 380, type: 'server', layer: 'core' },
+    { id: 'radius_db', label: 'RADIUS DB', x: 250, y: 380, type: 'server', layer: 'core' },
   ],
   connections: [
     // Main path - bottom to top
-    { from: 'enterprise', to: 'mdu', service: 'enterprise', label: 'VLAN 963' },
-    { from: 'mdu', to: 'splitter', service: 'enterprise', label: 'VLAN 3700-3899' },
+    { from: 'enterprise', to: 'mdu', service: 'enterprise' },
+    { from: 'mdu', to: 'splitter', service: 'enterprise'},
     { from: 'splitter', to: 'olt', service: 'enterprise' },
     { from: 'olt', to: 'metro', service: 'enterprise' },
     { from: 'metro', to: 'bras1', service: 'enterprise' },
@@ -126,6 +124,8 @@ const enterpriseTopology: TopologyData = {
     { from: 'sig', to: 'igw1', service: 'enterprise' },
     { from: 'sig', to: 'igw2', service: 'enterprise' },
     { from: 'igw1', to: 'public', service: 'enterprise' },
+    { from: 'igw2', to: 'public', service: 'enterprise' },
+    { from: 'igw1', to: 'mix', service: 'enterprise' },
     { from: 'igw2', to: 'mix', service: 'enterprise' },
     
     // CDN path
@@ -154,7 +154,7 @@ const homeTopology: TopologyData = {
   title: 'Home Internet',
   description: 'Residential connectivity via Home Gateway + MDU/ONT using BRAS3/BRAS4',
   color: 'from-cyan-500 to-teal-500',
-  viewBox: '0 0 1200 900',
+  viewBox: '-20 -160 1250 1100',
   vlanInfo: {
     preConversion: '963 (Internet)',
     postConversion: '3700-3899',
@@ -179,23 +179,23 @@ const homeTopology: TopologyData = {
     { id: 'sig', label: 'SIG', x: 450, y: 40, type: 'core', description: 'NAT/Security', layer: 'core' },
     
     // External/Cloud
-    { id: 'igw1', label: 'IGW1', x: 300, y: -40, type: 'cloud' },
-    { id: 'igw2', label: 'IGW2', x: 450, y: -40, type: 'cloud' },
-    { id: 'public', label: 'Public Internet', x: 300, y: -120, type: 'cloud' },
-    { id: 'mix', label: 'MIX', x: 450, y: -120, type: 'cloud' },
+    { id: 'igw1', label: 'IGW1', x: 300, y: -40, type: 'cloud', layer: 'core' },
+    { id: 'igw2', label: 'IGW2', x: 450, y: -40, type: 'cloud', layer: 'core' },
+    { id: 'public', label: 'Public Internet', x: 300, y: -120, type: 'cloud', layer: 'core' },
+    { id: 'mix', label: 'MIX', x: 450, y: -120, type: 'cloud', layer: 'core' },
     
     // CDN Branch
     { id: 'hcdn', label: 'HCDN Cluster', x: 750, y: 40, type: 'server', layer: 'core' },
-    { id: 'cdn', label: 'CDN Network', x: 900, y: 40, type: 'cloud' },
+    { id: 'cdn', label: 'CDN Network', x: 900, y: 40, type: 'cloud', layer: 'core' },
     
     // DNS Branch
     { id: 'intswitch', label: 'Internet Switch', x: 150, y: 40, type: 'core', layer: 'core' },
-    { id: 'dns', label: 'DNS', x: 20, y: 40, type: 'server' },
+    { id: 'dns', label: 'DNS', x: 20, y: 40, type: 'server', layer: 'core' },
     
     // RADIUS Branch (System Switch + Radiator)
     { id: 'sysswitch', label: 'System Switch', x: 750, y: 220, type: 'core', layer: 'core' },
-    { id: 'radius_radiator', label: 'RADIUS (Radiator)', x: 900, y: 220, type: 'server' },
-    { id: 'radius_db', label: 'RADIUS DB', x: 1050, y: 220, type: 'server' },
+    { id: 'radius_radiator', label: 'RADIUS (Radiator)', x: 900, y: 220, type: 'server', layer: 'core' },
+    { id: 'radius_db', label: 'RADIUS DB', x: 1050, y: 220, type: 'server', layer: 'core' },
   ],
   connections: [
     // Main paths - two entry points
@@ -221,6 +221,8 @@ const homeTopology: TopologyData = {
     { from: 'sig', to: 'igw1', service: 'home' },
     { from: 'sig', to: 'igw2', service: 'home' },
     { from: 'igw1', to: 'public', service: 'home' },
+    { from: 'igw2', to: 'public', service: 'home' },
+    { from: 'igw1', to: 'mix', service: 'home' },
     { from: 'igw2', to: 'mix', service: 'home' },
     
     // CDN path
@@ -267,10 +269,10 @@ const iptvTopology: TopologyData = {
     { id: 'spine', label: 'SPINE', x: 400, y: 200, type: 'core', description: 'IGMP Proxy', layer: 'core' },
     
     // Services at top
-    { id: 'livetv', label: 'Live TV', x: 200, y: 80, type: 'server', description: 'Multicast Streams' },
-    { id: 'vod', label: 'VOD', x: 350, y: 80, type: 'server', description: 'Unicast' },
-    { id: 'dhcp', label: 'DHCP', x: 500, y: 80, type: 'server' },
-    { id: 'dns', label: 'DNS', x: 650, y: 80, type: 'server' },
+    { id: 'livetv', label: 'Live TV', x: 200, y: 80, type: 'server', description: 'Multicast Streams', layer: 'core' },
+    { id: 'vod', label: 'VOD', x: 350, y: 80, type: 'server', description: 'Unicast', layer: 'core' },
+    { id: 'dhcp', label: 'DHCP', x: 500, y: 80, type: 'server', layer: 'core' },
+    { id: 'dns', label: 'DNS', x: 650, y: 80, type: 'server', layer: 'core' },
   ],
   connections: [
     // Main paths
@@ -303,26 +305,26 @@ const voipTopology: TopologyData = {
   },
   nodes: [
     // Layer 1: Access Network (bottom)
-    { id: 'voip', label: 'VoIP Service', x: 450, y: 820, type: 'subscriber', layer: 'access' },
-    { id: 'hg', label: 'Home Gateway', x: 350, y: 720, type: 'subscriber', description: 'SIP ATA', layer: 'access' },
+    { id: 'voip', label: 'VoIP Service', x: 300, y: 820, type: 'subscriber', layer: 'access' },
+    { id: 'hg', label: 'Home Gateway', x: 200, y: 720, type: 'subscriber', description: 'SIP ATA', layer: 'access' },
     
     // Layer 2: GPON
-    { id: 'mdu', label: 'MDU', x: 300, y: 620, type: 'access', layer: 'gpon' },
-    { id: 'ont', label: 'ONT', x: 500, y: 620, type: 'access', layer: 'gpon' },
-    { id: 'splitter', label: 'Splitter', x: 400, y: 520, type: 'gpon', description: '1:32 Passive', layer: 'gpon' },
-    { id: 'olt', label: 'OLT', x: 400, y: 420, type: 'gpon', layer: 'gpon' },
+    { id: 'mdu', label: 'MDU', x: 150, y: 620, type: 'access', layer: 'gpon' },
+    { id: 'ont', label: 'ONT', x: 350, y: 620, type: 'access', layer: 'gpon' },
+    { id: 'splitter', label: 'Splitter', x: 250, y: 520, type: 'gpon', description: '1:32 Passive', layer: 'gpon' },
+    { id: 'olt', label: 'OLT', x: 250, y: 420, type: 'gpon', layer: 'gpon' },
     
     // Layer 3: Core Fixed Network
-    { id: 'metro', label: 'Metro Cluster', x: 400, y: 320, type: 'core', ha: true, layer: 'core' },
-    { id: 'bras1', label: 'BRAS1', x: 300, y: 220, type: 'core', layer: 'core' },
-    { id: 'bras2', label: 'BRAS2', x: 500, y: 220, type: 'core', layer: 'core' },
+    { id: 'metro', label: 'Metro Cluster', x: 250, y: 320, type: 'core', ha: true, layer: 'core' },
+    { id: 'bras1', label: 'BRAS1', x: 150, y: 220, type: 'core', layer: 'core' },
+    { id: 'bras2', label: 'BRAS2', x: 350, y: 220, type: 'core', layer: 'core' },
     
     // Voice Core (cloud)
-    { id: 'voicecore', label: 'Voice Core', x: 400, y: 100, type: 'cloud', description: 'SIP/RTP' },
+    { id: 'voicecore', label: 'Voice Core', x: 250, y: 120, type: 'cloud', description: 'SIP/RTP', layer: 'core' },
     
     // System Switch + DHCP
-    { id: 'sysswitch', label: 'System Switch', x: 700, y: 220, type: 'core', layer: 'core' },
-    { id: 'dhcp', label: 'DHCP', x: 850, y: 220, type: 'server', description: 'VoIP Only' },
+    { id: 'sysswitch', label: 'System Switch', x: 550, y: 220, type: 'core', layer: 'core' },
+    { id: 'dhcp', label: 'DHCP', x: 700, y: 220, type: 'server', description: 'VoIP Only', layer: 'core' },
   ],
   connections: [
     // Main paths
@@ -355,7 +357,7 @@ const masterTopology: TopologyData = {
   viewBox: '0 0 1200 1200',
   vlanInfo: {
     preConversion: '961 (Voice), 962 (IPTV), 963 (Internet)',
-    postConversion: '700-799 (VoIP), 800-999 (IPTV), 3700-3899 (Internet)',
+    postConversion: '700-799 (VoIP), 800-999 (IPTV), 4000-4100 (Enterprise), 3700-3899 (Home)',
   },
   nodes: [
     // Layer 1: Access Network (bottom) - y: 1100-1000
@@ -392,7 +394,8 @@ const masterTopology: TopologyData = {
     { id: 'sig', label: 'SIG', x: 450, y: 250, type: 'core', description: 'NAT/Security', layer: 'core' },
     { id: 'igw1', label: 'IGW1', x: 350, y: 150, type: 'core', description: 'Internet Gateway', layer: 'core' },
     { id: 'igw2', label: 'IGW2', x: 500, y: 150, type: 'core', description: 'Internet Gateway', layer: 'core' },
-    { id: 'public', label: 'Public/MIX', x: 430, y: 50, type: 'cloud' },
+    { id: 'public', label: 'Public', x: 430, y: 50, type: 'cloud', layer: 'core' },
+    { id: 'mix', label: 'MIX', x: 600, y: 50, type: 'cloud', layer: 'core' },
     
     // CDN
     { id: 'hcdn', label: 'HCDN', x: 700, y: 250, type: 'server', layer: 'core' },
@@ -404,12 +407,12 @@ const masterTopology: TopologyData = {
     // IPTV services
     { id: 'livetv', label: 'Live TV', x: 850, y: 350, type: 'server', description: 'Multicast', layer: 'core' },
     { id: 'vod', label: 'VOD', x: 1000, y: 350, type: 'server', description: 'Unicast', layer: 'core' },
-    { id: 'iptv_dhcp', label: 'DHCP', x: 1000, y: 450, type: 'server', layer: 'core' },
-    { id: 'iptv_dns', label: 'DNS', x: 1100, y: 450, type: 'server', layer: 'core' },
+    { id: 'iptv_dhcp', label: 'DHCP', x: 1100, y: 400, type: 'server', layer: 'core' },
+    { id: 'iptv_dns', label: 'DNS', x: 1050, y: 460, type: 'server', layer: 'core' },
     
     // Internet services
     { id: 'intswitch', label: 'Internet Switch', x: 150, y: 250, type: 'core', layer: 'core' },
-    { id: 'dns', label: 'DNS', x: 50, y: 250, type: 'server', layer: 'core' },
+    { id: 'dns', label: 'DNS', x: 35, y: 250, type: 'server', layer: 'core' },
     
     // RADIUS
     { id: 'dcm7k', label: 'DC_M7K', x: 200, y: 530, type: 'core', layer: 'core' },
@@ -420,7 +423,7 @@ const masterTopology: TopologyData = {
   ],
   connections: [
     // Enterprise path (blue)
-    { from: 'enterprise', to: 'mdu', service: 'enterprise', label: 'VLAN 963' },
+    { from: 'enterprise', to: 'mdu', service: 'enterprise' },
     { from: 'mdu', to: 'splitter', service: 'enterprise' },
     
     // Home Internet path (cyan) 
@@ -465,10 +468,14 @@ const masterTopology: TopologyData = {
     { from: 'sig', to: 'igw2', service: 'all' },
     { from: 'igw1', to: 'public', service: 'all' },
     { from: 'igw2', to: 'public', service: 'all' },
+    { from: 'igw1', to: 'mix', service: 'all' },
+    { from: 'igw2', to: 'mix', service: 'all' },
     
     // CDN
     { from: 'hcore1', to: 'hcdn', service: 'all' },
     { from: 'hcore2', to: 'hcdn', service: 'all' },
+    { from: 'bras3', to: 'hcdn', service: 'home' },
+    { from: 'bras4', to: 'hcdn', service: 'home' },
     { from: 'hcdn', to: 'cdn', service: 'all' },
     
     // DNS
@@ -541,13 +548,34 @@ function TopologyDiagram({ data, isDark, serviceType }: { data: TopologyData; is
   };
   
   const getPath = (from: TopologyNode, to: TopologyNode) => {
-    const width = 100;
-    const x1 = from.x + width / 2;
-    const y1 = from.y;
-    const x2 = to.x + width / 2;
-    const y2 = to.y + 48;
+    const fromWidth = from.label.length > 12 ? 120 : 100;
+    const toWidth = to.label.length > 12 ? 120 : 100;
+    const nodeHeight = 48;
     
-    // Vertical path with curve
+    // Check if this is more of a horizontal connection (nodes at similar Y)
+    const isHorizontal = Math.abs(from.y - to.y) < 60;
+    
+    if (isHorizontal) {
+      // Horizontal connection - connect from side of nodes
+      const fromRight = from.x > to.x;
+      const x1 = fromRight ? from.x : from.x + fromWidth;
+      const y1 = from.y + nodeHeight / 2;
+      const x2 = fromRight ? to.x + toWidth : to.x;
+      const y2 = to.y + nodeHeight / 2;
+      
+      const dx = x2 - x1;
+      const cx1 = x1 + dx * 0.4;
+      const cx2 = x2 - dx * 0.4;
+      
+      return `M ${x1} ${y1} C ${cx1} ${y1}, ${cx2} ${y2}, ${x2} ${y2}`;
+    }
+    
+    // Vertical connection - connect from top/bottom of nodes
+    const x1 = from.x + fromWidth / 2;
+    const y1 = from.y;
+    const x2 = to.x + toWidth / 2;
+    const y2 = to.y + nodeHeight - 2;
+    
     const dy = y1 - y2;
     const cy1 = y1 - dy * 0.3;
     const cy2 = y2 + dy * 0.3;
@@ -584,41 +612,7 @@ function TopologyDiagram({ data, isDark, serviceType }: { data: TopologyData; is
         className="w-full h-auto"
         style={{ minHeight: '500px' }}
       >
-        <defs>
-          {/* Arrow markers for each service */}
-          {(['master', 'enterprise', 'home', 'iptv', 'voip'] as const).map(service => (
-            <marker
-              key={service}
-              id={`arrow-${service}`}
-              markerWidth="8"
-              markerHeight="6"
-              refX="7"
-              refY="3"
-              orient="auto"
-            >
-              <polygon 
-                points="0 0, 8 3, 0 6" 
-                fill={serviceColors[service]?.main || '#8b5cf6'} 
-              />
-            </marker>
-          ))}
-          <marker
-            id="arrow-multicast"
-            markerWidth="10"
-            markerHeight="8"
-            refX="9"
-            refY="4"
-            orient="auto"
-          >
-            <polygon 
-              points="0 0, 10 4, 0 8" 
-              fill="#22c55e" 
-            />
-          </marker>
-          <marker id="arrow-highlight" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
-            <polygon points="0 0, 8 3, 0 6" fill="#8b5cf6" />
-          </marker>
-        </defs>
+
         
         {/* Layer backgrounds */}
         {(['access', 'gpon', 'core'] as const).map(layer => {
@@ -662,8 +656,6 @@ function TopologyDiagram({ data, isDark, serviceType }: { data: TopologyData; is
           const isHighlighted = hoveredNode === conn.from || hoveredNode === conn.to;
           const connServiceKey = conn.service || 'all';
           const color = isHighlighted ? '#8b5cf6' : getServiceColor(connServiceKey);
-          const arrowService = serviceType === 'master' ? (connServiceKey !== 'all' ? connServiceKey : 'master') : serviceType;
-          const markerId = conn.style === 'multicast' ? 'arrow-multicast' : (isHighlighted ? 'arrow-highlight' : `arrow-${arrowService}`);
           
           return (
             <g key={i}>
@@ -673,7 +665,6 @@ function TopologyDiagram({ data, isDark, serviceType }: { data: TopologyData; is
                 strokeWidth={isHighlighted ? 3 : (conn.style === 'multicast' ? 3 : 2)}
                 strokeDasharray={conn.style === 'dashed' ? '6,4' : (conn.style === 'multicast' ? '2,2' : undefined)}
                 fill="none"
-                markerEnd={`url(#${markerId})`}
                 className="transition-all duration-200"
               />
               {conn.label && (
@@ -939,13 +930,8 @@ export default function TopologyPage() {
                 </div>
               </div>
               
-              {/* Diagram */}
-              <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 p-4 overflow-hidden">
-                <TopologyDiagram data={currentData} isDark={isDark} serviceType={activeTopology} />
-              </div>
-              
               {/* Legend */}
-              <div className="mt-5 grid md:grid-cols-3 gap-4">
+              <div className="mb-5 grid md:grid-cols-3 gap-4">
                 {/* Layer Legend */}
                 <div className="bg-white dark:bg-gray-800 rounded-xl shadow border border-gray-100 dark:border-gray-700 p-4">
                   <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-3">Network Layers</h3>
@@ -1024,6 +1010,11 @@ export default function TopologyPage() {
                     </div>
                   </div>
                 </div>
+              </div>
+              
+              {/* Diagram */}
+              <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 p-4 overflow-hidden">
+                <TopologyDiagram data={currentData} isDark={isDark} serviceType={activeTopology} />
               </div>
             </motion.div>
           </AnimatePresence>

@@ -35,6 +35,7 @@ export interface Presentation {
   createdAt: string;
   accentColor: string;
   sections: Section[];
+  customUrl?: string; // For standalone pages that don't use the dynamic route
 }
 
 export interface PresentationsData {

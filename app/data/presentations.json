@@ -599,6 +599,18 @@
           "content": "Understanding these four components together allows you to analyze packet flows, failure points, IP mapping, multicast delivery, and redundancy mechanisms. This knowledge is essential for troubleshooting, capacity planning, and network optimization in ISP environments."
         }
       ]
+    },
+    {
+      "id": "2",
+      "slug": "minimal-isp",
+      "title": "ISP Fundamentals",
+      "description": "A minimal, visual guide to Triple-Play, Access Networks, GPON, and Fixed Core architecture.",
+      "thumbnail": "/thumbnails/minimal-isp.jpg",
+      "template": "Minimal",
+      "createdAt": "2026-01-09",
+      "accentColor": "from-violet-500 to-purple-600",
+      "customUrl": "/minimal-isp",
+      "sections": []
     }
   ]
 }

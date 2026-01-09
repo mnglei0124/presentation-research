@@ -145,6 +145,12 @@ export default function Home() {
           </div>
           <div className="flex items-center gap-6">
             <a 
+              href="/minimal-isp" 
+              className="text-sm text-purple-600 dark:text-purple-400 hover:underline font-medium"
+            >
+              ISP Fundamentals →
+            </a>
+            <a 
               href="/topology" 
               className="text-sm text-violet-600 dark:text-violet-400 hover:underline font-medium"
             >
