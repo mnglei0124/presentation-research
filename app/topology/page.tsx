@@ -354,28 +354,28 @@ const masterTopology: TopologyData = {
   title: 'Triple Play Architecture',
   description: 'Complete view: Enterprise Internet, Home Internet, IPTV, and VoIP',
   color: 'from-violet-500 to-purple-600',
-  viewBox: '0 0 1200 1200',
+  viewBox: '0 0 1200 1350',
   vlanInfo: {
     preConversion: '961 (Voice), 962 (IPTV), 963 (Internet)',
     postConversion: '700-799 (VoIP), 800-999 (IPTV), 4000-4100 (Enterprise), 3700-3899 (Home)',
   },
   nodes: [
-    // Layer 1: Access Network (bottom) - y: 1100-1000
-    { id: 'enterprise', label: 'Enterprise', x: 150, y: 1100, type: 'subscriber', description: 'Enterprise Internet', layer: 'access' },
-    { id: 'home_internet', label: 'Home Internet', x: 350, y: 1100, type: 'subscriber', description: 'Residential', layer: 'access' },
-    { id: 'iptv_svc', label: 'IPTV', x: 550, y: 1100, type: 'subscriber', description: 'TV Service', layer: 'access' },
-    { id: 'voip_svc', label: 'VoIP', x: 750, y: 1100, type: 'subscriber', description: 'Voice', layer: 'access' },
+    // Layer 1: Access Network (bottom) - y: 1200-1100
+    { id: 'enterprise', label: 'Enterprise', x: 150, y: 1200, type: 'subscriber', description: 'Enterprise Internet', layer: 'access' },
+    { id: 'home_internet', label: 'Home Internet', x: 350, y: 1200, type: 'subscriber', description: 'Residential', layer: 'access' },
+    { id: 'iptv_svc', label: 'IPTV', x: 550, y: 1200, type: 'subscriber', description: 'TV Service', layer: 'access' },
+    { id: 'voip_svc', label: 'VoIP', x: 750, y: 1200, type: 'subscriber', description: 'Voice', layer: 'access' },
     
-    { id: 'hg', label: 'Home Gateway', x: 450, y: 980, type: 'subscriber', description: 'CPE', layer: 'access' },
+    { id: 'hg', label: 'Home Gateway', x: 350, y: 1055, type: 'subscriber', description: 'CPE', layer: 'access' },
     
-    // Layer 2: GPON - y: 850-700
-    { id: 'mdu', label: 'MDU', x: 350, y: 850, type: 'access', layer: 'gpon' },
-    { id: 'ont', label: 'ONT', x: 600, y: 850, type: 'access', layer: 'gpon' },
-    { id: 'splitter', label: 'Splitter', x: 475, y: 750, type: 'gpon', description: '1:128 Passive', layer: 'gpon' },
-    { id: 'olt', label: 'OLT', x: 475, y: 650, type: 'gpon', description: 'GPON Head-end', layer: 'gpon' },
+    // Layer 2: GPON - y: 950-750
+    { id: 'mdu', label: 'MDU', x: 350, y: 950, type: 'access', layer: 'gpon' },
+    { id: 'ont', label: 'ONT', x: 600, y: 950, type: 'access', layer: 'gpon' },
+    { id: 'splitter', label: 'Splitter', x: 475, y: 850, type: 'gpon', description: '1:128 Passive', layer: 'gpon' },
+    { id: 'olt', label: 'OLT', x: 475, y: 750, type: 'gpon', description: 'GPON Head-end', layer: 'gpon' },
     
     // Layer 3: Core Fixed Network - y: 550-100
-    { id: 'metro', label: 'Metro Cluster', x: 475, y: 550, type: 'core', ha: true, layer: 'core' },
+    { id: 'metro', label: 'Metro Cluster', x: 475, y: 650, type: 'core', ha: true, layer: 'core' },
     
     // BRAS cluster
     { id: 'bras1', label: 'BRAS1', x: 200, y: 450, type: 'core', description: 'Enterprise/VoIP', layer: 'core' },
@@ -419,7 +419,7 @@ const masterTopology: TopologyData = {
     { id: 'sysswitch', label: 'System Switch', x: 750, y: 530, type: 'core', layer: 'core' },
     { id: 'radius_cpar', label: 'RADIUS (CPAR)', x: 50, y: 530, type: 'server', layer: 'core' },
     { id: 'radius_radiator', label: 'RADIUS (Radiator)', x: 900, y: 530, type: 'server', layer: 'core' },
-    { id: 'voip_dhcp', label: 'DHCP (VoIP)', x: 1050, y: 530, type: 'server', layer: 'core' },
+    { id: 'voip_dhcp', label: 'DHCP (VoIP)', x: 900, y: 620, type: 'server', layer: 'core' },
   ],
   connections: [
     // Enterprise path (blue)
@@ -428,16 +428,18 @@ const masterTopology: TopologyData = {
     
     // Home Internet path (cyan) 
     { from: 'home_internet', to: 'hg', service: 'home', label: 'VLAN 963' },
+    { from: 'home_internet', to: 'ont', service: 'home', label: 'VLAN 963' },
     { from: 'hg', to: 'mdu', service: 'home' },
-    { from: 'hg', to: 'ont', service: 'home' },
     { from: 'ont', to: 'splitter', service: 'home' },
     
     // IPTV path (green)
     { from: 'iptv_svc', to: 'hg', service: 'iptv', label: 'VLAN 962' },
+    { from: 'iptv_svc', to: 'ont', service: 'iptv', label: 'VLAN 962' },
     
     // VoIP path (orange)
     { from: 'voip_svc', to: 'hg', service: 'voip', label: 'VLAN 961' },
-    
+    { from: 'voip_svc', to: 'ont', service: 'voip', label: 'VLAN 961' },
+
     // Common GPON path
     { from: 'splitter', to: 'olt', service: 'all' },
     { from: 'olt', to: 'metro', service: 'all' },
@@ -598,9 +600,9 @@ function TopologyDiagram({ data, isDark, serviceType }: { data: TopologyData; is
     const globalMinX = Math.min(...allLayerNodes.map(n => n.x)) - 30;
     const globalMaxX = Math.max(...allLayerNodes.map(n => n.x)) + 150;
     
-    // Calculate Y bounds for this specific layer
-    const minY = Math.min(...layerNodes.map(n => n.y)) - 30;
-    const maxY = Math.max(...layerNodes.map(n => n.y)) + 70;
+    // Calculate Y bounds for this specific layer with reduced padding for gap between layers
+    const minY = Math.min(...layerNodes.map(n => n.y)) - 15;
+    const maxY = Math.max(...layerNodes.map(n => n.y)) + 55;
     
     return { x: globalMinX, y: minY, width: globalMaxX - globalMinX, height: maxY - minY };
   };
