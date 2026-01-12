@@ -53,7 +53,7 @@ const serviceColors = {
 const layerColors = {
   access: { light: 'rgba(251, 191, 36, 0.08)', dark: 'rgba(251, 191, 36, 0.15)', border: '#fbbf24', label: 'Access Network' },
   gpon: { light: 'rgba(59, 130, 246, 0.08)', dark: 'rgba(59, 130, 246, 0.15)', border: '#3b82f6', label: 'GPON' },
-  core: { light: 'rgba(168, 85, 247, 0.08)', dark: 'rgba(168, 85, 247, 0.15)', border: '#a855f7', label: 'Core Fixed Network' },
+  core: { light: 'rgba(168, 85, 247, 0.08)', dark: 'rgba(168, 85, 247, 0.15)', border: '#a855f7', label: 'Fixed Core Network' },
 };
 
 // Enterprise Internet topology
@@ -160,42 +160,42 @@ const homeTopology: TopologyData = {
     postConversion: '3700-3899',
   },
   nodes: [
-    // Layer 1: Access Network (bottom) - y: 800-750
-    { id: 'internet', label: 'Internet Service', x: 550, y: 820, type: 'subscriber', description: 'Home User', layer: 'access' },
-    { id: 'hg', label: 'Home Gateway', x: 400, y: 720, type: 'subscriber', description: 'CPE', layer: 'access' },
+    // Layer 1: Access Network (bottom) - y: 880-780
+    { id: 'internet', label: 'Internet Service', x: 550, y: 880, type: 'subscriber', description: 'Home User', layer: 'access' },
+    { id: 'hg', label: 'Home Gateway', x: 400, y: 780, type: 'subscriber', description: 'CPE', layer: 'access' },
     
-    // Layer 2: GPON - y: 600-500
-    { id: 'mdu', label: 'MDU', x: 350, y: 620, type: 'access', layer: 'gpon' },
-    { id: 'ont', label: 'ONT', x: 550, y: 620, type: 'access', layer: 'gpon' },
-    { id: 'splitter', label: 'Splitter', x: 450, y: 520, type: 'gpon', description: '1:128 Passive', layer: 'gpon' },
-    { id: 'olt', label: 'OLT', x: 450, y: 420, type: 'gpon', description: 'GPON Head-end', layer: 'gpon' },
+    // Layer 2: GPON - y: 680-480
+    { id: 'mdu', label: 'MDU', x: 350, y: 680, type: 'access', layer: 'gpon' },
+    { id: 'ont', label: 'ONT', x: 550, y: 680, type: 'access', layer: 'gpon' },
+    { id: 'splitter', label: 'Splitter', x: 450, y: 580, type: 'gpon', description: '1:128 Passive', layer: 'gpon' },
+    { id: 'olt', label: 'OLT', x: 450, y: 480, type: 'gpon', description: 'GPON Head-end', layer: 'gpon' },
     
-    // Layer 3: Core Fixed Network - y: 100-350
-    { id: 'metro', label: 'Metro Cluster', x: 450, y: 320, type: 'core', ha: true, layer: 'core' },
-    { id: 'bras3', label: 'BRAS3', x: 350, y: 220, type: 'core', description: 'Active', layer: 'core' },
-    { id: 'bras4', label: 'BRAS4', x: 550, y: 220, type: 'core', description: 'Standby', layer: 'core' },
-    { id: 'hcore1', label: 'HCORE1', x: 300, y: 120, type: 'core', layer: 'core' },
-    { id: 'hcore2', label: 'HCORE2', x: 600, y: 120, type: 'core', layer: 'core' },
-    { id: 'sig', label: 'SIG', x: 450, y: 40, type: 'core', description: 'NAT/Security', layer: 'core' },
+    // Layer 3: Core Fixed Network - y: 100-380 (expanded for clarity)
+    { id: 'metro', label: 'Metro Cluster', x: 450, y: 380, type: 'core', ha: true, layer: 'core' },
+    { id: 'bras3', label: 'BRAS3', x: 350, y: 280, type: 'core', description: 'Active', layer: 'core' },
+    { id: 'bras4', label: 'BRAS4', x: 550, y: 280, type: 'core', description: 'Standby', layer: 'core' },
+    { id: 'hcore1', label: 'HCORE1', x: 300, y: 180, type: 'core', layer: 'core' },
+    { id: 'hcore2', label: 'HCORE2', x: 600, y: 180, type: 'core', layer: 'core' },
+    { id: 'sig', label: 'SIG', x: 450, y: 80, type: 'core', description: 'NAT/Security', layer: 'core' },
     
     // External/Cloud
-    { id: 'igw1', label: 'IGW1', x: 300, y: -40, type: 'core', layer: 'core' },
-    { id: 'igw2', label: 'IGW2', x: 450, y: -40, type: 'core', layer: 'core' },
+    { id: 'igw1', label: 'IGW1', x: 300, y: -20, type: 'core', layer: 'core' },
+    { id: 'igw2', label: 'IGW2', x: 450, y: -20, type: 'core', layer: 'core' },
     { id: 'public', label: 'Public Internet', x: 300, y: -120, type: 'cloud', layer: 'core' },
     { id: 'mix', label: 'MIX', x: 450, y: -120, type: 'cloud', layer: 'core' },
     
     // CDN Branch
-    { id: 'hcdn', label: 'HCDN Cluster', x: 750, y: 40, type: 'server', layer: 'core' },
-    { id: 'cdn', label: 'CDN Network', x: 900, y: 40, type: 'cloud', layer: 'core' },
+    { id: 'hcdn', label: 'HCDN Cluster', x: 620, y: 80, type: 'server', layer: 'core' },
+    { id: 'cdn', label: 'CDN Network', x: 780, y: 80, type: 'cloud', layer: 'core' },
     
     // DNS Branch
-    { id: 'intswitch', label: 'Internet Switch', x: 150, y: 40, type: 'core', layer: 'core' },
-    { id: 'dns', label: 'DNS', x: 20, y: 40, type: 'server', layer: 'core' },
+    { id: 'intswitch', label: 'Internet Switch', x: 250, y: 80, type: 'core', layer: 'core' },
+    { id: 'dns', label: 'DNS', x: 80, y: 80, type: 'server', layer: 'core' },
     
     // RADIUS Branch (System Switch + Radiator)
-    { id: 'sysswitch', label: 'System Switch', x: 750, y: 220, type: 'core', layer: 'core' },
-    { id: 'radius_radiator', label: 'RADIUS (Radiator)', x: 900, y: 220, type: 'server', layer: 'core' },
-    { id: 'radius_db', label: 'RADIUS DB', x: 1050, y: 220, type: 'server', layer: 'core' },
+    { id: 'sysswitch', label: 'System Switch', x: 750, y: 280, type: 'core', layer: 'core' },
+    { id: 'radius_radiator', label: 'RADIUS (Radiator)', x: 900, y: 280, type: 'server', layer: 'core' },
+    { id: 'radius_db', label: 'RADIUS DB', x: 1050, y: 280, type: 'server', layer: 'core' },
   ],
   connections: [
     // Main paths - two entry points
