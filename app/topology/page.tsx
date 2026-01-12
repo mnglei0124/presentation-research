@@ -72,7 +72,7 @@ const enterpriseTopology: TopologyData = {
     
     // Layer 2: GPON - y: 650-700
     { id: 'mdu', label: 'MDU', x: 500, y: 680, type: 'access', description: 'Multi-Dwelling Unit', layer: 'gpon' },
-    { id: 'splitter', label: 'Splitter', x: 500, y: 580, type: 'gpon', description: '1:32 Passive', layer: 'gpon' },
+    { id: 'splitter', label: 'Splitter', x: 500, y: 580, type: 'gpon', description: '1:128 Passive', layer: 'gpon' },
     { id: 'olt', label: 'OLT', x: 500, y: 480, type: 'gpon', description: 'GPON Head-end', layer: 'gpon' },
     
     // Layer 3: Core Fixed Network - y: 100-400
@@ -84,8 +84,8 @@ const enterpriseTopology: TopologyData = {
     { id: 'sig', label: 'SIG', x: 500, y: 100, type: 'core', description: 'NAT/Security', layer: 'core' },
     
     // External/Cloud - y: 20
-    { id: 'igw1', label: 'IGW1', x: 400, y: 20, type: 'cloud', layer: 'core' },
-    { id: 'igw2', label: 'IGW2', x: 600, y: 20, type: 'cloud', layer: 'core' },
+    { id: 'igw1', label: 'IGW1', x: 400, y: 20, type: 'core', layer: 'core' },
+    { id: 'igw2', label: 'IGW2', x: 600, y: 20, type: 'core', layer: 'core' },
     { id: 'public', label: 'Public Internet', x: 400, y: -60, type: 'cloud', description: 'Internet', layer: 'core' },
     { id: 'mix', label: 'MIX', x: 600, y: -60, type: 'cloud', description: 'Mongolian IXP', layer: 'core' },
     
@@ -167,7 +167,7 @@ const homeTopology: TopologyData = {
     // Layer 2: GPON - y: 600-500
     { id: 'mdu', label: 'MDU', x: 350, y: 620, type: 'access', layer: 'gpon' },
     { id: 'ont', label: 'ONT', x: 550, y: 620, type: 'access', layer: 'gpon' },
-    { id: 'splitter', label: 'Splitter', x: 450, y: 520, type: 'gpon', description: '1:32 Passive', layer: 'gpon' },
+    { id: 'splitter', label: 'Splitter', x: 450, y: 520, type: 'gpon', description: '1:128 Passive', layer: 'gpon' },
     { id: 'olt', label: 'OLT', x: 450, y: 420, type: 'gpon', description: 'GPON Head-end', layer: 'gpon' },
     
     // Layer 3: Core Fixed Network - y: 100-350
@@ -179,8 +179,8 @@ const homeTopology: TopologyData = {
     { id: 'sig', label: 'SIG', x: 450, y: 40, type: 'core', description: 'NAT/Security', layer: 'core' },
     
     // External/Cloud
-    { id: 'igw1', label: 'IGW1', x: 300, y: -40, type: 'cloud', layer: 'core' },
-    { id: 'igw2', label: 'IGW2', x: 450, y: -40, type: 'cloud', layer: 'core' },
+    { id: 'igw1', label: 'IGW1', x: 300, y: -40, type: 'core', layer: 'core' },
+    { id: 'igw2', label: 'IGW2', x: 450, y: -40, type: 'core', layer: 'core' },
     { id: 'public', label: 'Public Internet', x: 300, y: -120, type: 'cloud', layer: 'core' },
     { id: 'mix', label: 'MIX', x: 450, y: -120, type: 'cloud', layer: 'core' },
     
@@ -261,7 +261,7 @@ const iptvTopology: TopologyData = {
     // Layer 2: GPON
     { id: 'mdu', label: 'MDU', x: 300, y: 620, type: 'access', layer: 'gpon' },
     { id: 'ont', label: 'ONT', x: 500, y: 620, type: 'access', layer: 'gpon' },
-    { id: 'splitter', label: 'Splitter', x: 400, y: 520, type: 'gpon', description: '1:32 Passive', layer: 'gpon' },
+    { id: 'splitter', label: 'Splitter', x: 400, y: 520, type: 'gpon', description: '1:128 Passive', layer: 'gpon' },
     { id: 'olt', label: 'OLT', x: 400, y: 420, type: 'gpon', description: 'Multicast Replication', layer: 'gpon' },
     
     // Layer 3: Core Fixed Network
@@ -311,7 +311,7 @@ const voipTopology: TopologyData = {
     // Layer 2: GPON
     { id: 'mdu', label: 'MDU', x: 150, y: 620, type: 'access', layer: 'gpon' },
     { id: 'ont', label: 'ONT', x: 350, y: 620, type: 'access', layer: 'gpon' },
-    { id: 'splitter', label: 'Splitter', x: 250, y: 520, type: 'gpon', description: '1:32 Passive', layer: 'gpon' },
+    { id: 'splitter', label: 'Splitter', x: 250, y: 520, type: 'gpon', description: '1:128 Passive', layer: 'gpon' },
     { id: 'olt', label: 'OLT', x: 250, y: 420, type: 'gpon', layer: 'gpon' },
     
     // Layer 3: Core Fixed Network
@@ -371,7 +371,7 @@ const masterTopology: TopologyData = {
     // Layer 2: GPON - y: 850-700
     { id: 'mdu', label: 'MDU', x: 350, y: 850, type: 'access', layer: 'gpon' },
     { id: 'ont', label: 'ONT', x: 600, y: 850, type: 'access', layer: 'gpon' },
-    { id: 'splitter', label: 'Splitter', x: 475, y: 750, type: 'gpon', description: '1:32 Passive', layer: 'gpon' },
+    { id: 'splitter', label: 'Splitter', x: 475, y: 750, type: 'gpon', description: '1:128 Passive', layer: 'gpon' },
     { id: 'olt', label: 'OLT', x: 475, y: 650, type: 'gpon', description: 'GPON Head-end', layer: 'gpon' },
     
     // Layer 3: Core Fixed Network - y: 550-100
