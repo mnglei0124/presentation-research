@@ -165,7 +165,7 @@ export default function MinimalISP() {
             {/* Device Cards */}
             <div className="grid md:grid-cols-2 gap-8">
               
-              {/* H101 ONT */}
+              {/* H101 ONT - Huawei HG8245H5 */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -185,37 +185,42 @@ export default function MinimalISP() {
                 <div className="p-6">
                   <div className="flex items-center gap-3 mb-4">
                     <span className="px-3 py-1 rounded-full text-xs font-bold bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300">ONT</span>
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white">H101 ONT</h3>
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white">HG8245H5</h3>
                   </div>
+                  <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">Huawei GPON ONT</p>
                   <p className="text-gray-600 dark:text-gray-400 text-sm mb-4">
-                    Compact Optical Network Terminal for fiber-to-the-home deployments. Converts fiber optic signals to Ethernet for subscriber connectivity.
+                    GPON ONT for basic FTTH deployments. Terminates fiber signal with Wi-Fi 4 and 4 Ethernet ports. Suitable for homes needing basic connectivity.
                   </p>
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between py-2 border-b border-gray-100 dark:border-gray-700">
-                      <span className="text-gray-500 dark:text-gray-400">PON Interface</span>
-                      <span className="font-medium text-gray-900 dark:text-white">GPON SC/APC</span>
+                      <span className="text-gray-500 dark:text-gray-400">Optical Port</span>
+                      <span className="font-medium text-gray-900 dark:text-white">SC/APC GPON</span>
                     </div>
                     <div className="flex justify-between py-2 border-b border-gray-100 dark:border-gray-700">
-                      <span className="text-gray-500 dark:text-gray-400">Downstream</span>
-                      <span className="font-medium text-gray-900 dark:text-white">2.488 Gbps</span>
+                      <span className="text-gray-500 dark:text-gray-400">Wi-Fi</span>
+                      <span className="font-medium text-gray-900 dark:text-white">802.11b/g/n (2.4GHz)</span>
                     </div>
                     <div className="flex justify-between py-2 border-b border-gray-100 dark:border-gray-700">
-                      <span className="text-gray-500 dark:text-gray-400">Upstream</span>
-                      <span className="font-medium text-gray-900 dark:text-white">1.244 Gbps</span>
+                      <span className="text-gray-500 dark:text-gray-400">MIMO</span>
+                      <span className="font-medium text-gray-900 dark:text-white">2×2 MIMO</span>
                     </div>
                     <div className="flex justify-between py-2 border-b border-gray-100 dark:border-gray-700">
-                      <span className="text-gray-500 dark:text-gray-400">Ethernet Ports</span>
-                      <span className="font-medium text-gray-900 dark:text-white">1x GE RJ45</span>
+                      <span className="text-gray-500 dark:text-gray-400">Ethernet</span>
+                      <span className="font-medium text-gray-900 dark:text-white">4× GE/FE RJ-45</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-gray-100 dark:border-gray-700">
+                      <span className="text-gray-500 dark:text-gray-400">Voice</span>
+                      <span className="font-medium text-gray-900 dark:text-white">2× POTS (RJ-11)</span>
                     </div>
                     <div className="flex justify-between py-2">
-                      <span className="text-gray-500 dark:text-gray-400">Power</span>
-                      <span className="font-medium text-gray-900 dark:text-white">12V DC, &lt;6W</span>
+                      <span className="text-gray-500 dark:text-gray-400">Management</span>
+                      <span className="font-medium text-gray-900 dark:text-white">OMCI, TR-069</span>
                     </div>
                   </div>
                 </div>
               </motion.div>
 
-              {/* HG1 Home Gateway */}
+              {/* HG1 Home Gateway - Huawei LG8245X6-10 */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -235,37 +240,42 @@ export default function MinimalISP() {
                 <div className="p-6">
                   <div className="flex items-center gap-3 mb-4">
                     <span className="px-3 py-1 rounded-full text-xs font-bold bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300">Gateway</span>
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white">HG1 Home Gateway</h3>
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white">LG8245X6-10</h3>
                   </div>
+                  <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">Huawei Wi-Fi 6 Home Gateway</p>
                   <p className="text-gray-600 dark:text-gray-400 text-sm mb-4">
-                    All-in-one GPON home gateway with integrated ONT, router, and Wi-Fi 6. Supports Triple Play services with VLAN tagging.
+                    Advanced Wi-Fi 6 home gateway with GPON. Features OFDMA, MU-MIMO, and 1024-QAM for high-density homes requiring premium wireless performance.
                   </p>
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between py-2 border-b border-gray-100 dark:border-gray-700">
                       <span className="text-gray-500 dark:text-gray-400">Wi-Fi</span>
-                      <span className="font-medium text-gray-900 dark:text-white">Wi-Fi 6 (802.11ax)</span>
+                      <span className="font-medium text-gray-900 dark:text-white">802.11ax (Wi-Fi 6)</span>
                     </div>
                     <div className="flex justify-between py-2 border-b border-gray-100 dark:border-gray-700">
-                      <span className="text-gray-500 dark:text-gray-400">Frequency</span>
-                      <span className="font-medium text-gray-900 dark:text-white">2.4GHz + 5GHz Dual Band</span>
+                      <span className="text-gray-500 dark:text-gray-400">Bands</span>
+                      <span className="font-medium text-gray-900 dark:text-white">Dual-band 2.4 + 5GHz</span>
                     </div>
                     <div className="flex justify-between py-2 border-b border-gray-100 dark:border-gray-700">
-                      <span className="text-gray-500 dark:text-gray-400">Ethernet Ports</span>
-                      <span className="font-medium text-gray-900 dark:text-white">4x GE LAN + 1x GE WAN</span>
+                      <span className="text-gray-500 dark:text-gray-400">MIMO</span>
+                      <span className="font-medium text-gray-900 dark:text-white">2×2 MU-MIMO</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-gray-100 dark:border-gray-700">
+                      <span className="text-gray-500 dark:text-gray-400">Ethernet</span>
+                      <span className="font-medium text-gray-900 dark:text-white">4× GE LAN + USB 3.0</span>
                     </div>
                     <div className="flex justify-between py-2 border-b border-gray-100 dark:border-gray-700">
                       <span className="text-gray-500 dark:text-gray-400">Voice</span>
-                      <span className="font-medium text-gray-900 dark:text-white">2x FXS (VoIP)</span>
+                      <span className="font-medium text-gray-900 dark:text-white">2× POTS (VoIP)</span>
                     </div>
                     <div className="flex justify-between py-2">
                       <span className="text-gray-500 dark:text-gray-400">Features</span>
-                      <span className="font-medium text-gray-900 dark:text-white">TR-069, NAT, DHCP</span>
+                      <span className="font-medium text-gray-900 dark:text-white">OFDMA, TWT, WPA3</span>
                     </div>
                   </div>
                 </div>
               </motion.div>
 
-              {/* HG Mesh */}
+              {/* HG Mesh - TP-Link HX220 */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -284,38 +294,43 @@ export default function MinimalISP() {
                 </div>
                 <div className="p-6">
                   <div className="flex items-center gap-3 mb-4">
-                    <span className="px-3 py-1 rounded-full text-xs font-bold bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300">Mesh Gateway</span>
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white">HG Mesh</h3>
+                    <span className="px-3 py-1 rounded-full text-xs font-bold bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300">Mesh System</span>
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white">HX220</h3>
                   </div>
+                  <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">TP-Link Wi-Fi 6 Mesh</p>
                   <p className="text-gray-600 dark:text-gray-400 text-sm mb-4">
-                    Primary mesh gateway with GPON uplink. Acts as the main router while supporting mesh satellite connections for extended coverage.
+                    Wi-Fi 6 AX1800 mesh system with EasyMesh support. Dual-band with OFDMA and beamforming for seamless whole-home coverage.
                   </p>
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between py-2 border-b border-gray-100 dark:border-gray-700">
                       <span className="text-gray-500 dark:text-gray-400">Wi-Fi</span>
-                      <span className="font-medium text-gray-900 dark:text-white">Wi-Fi 6 Mesh Capable</span>
+                      <span className="font-medium text-gray-900 dark:text-white">802.11ax AX1800</span>
                     </div>
                     <div className="flex justify-between py-2 border-b border-gray-100 dark:border-gray-700">
-                      <span className="text-gray-500 dark:text-gray-400">Coverage</span>
-                      <span className="font-medium text-gray-900 dark:text-white">Up to 150m² per unit</span>
+                      <span className="text-gray-500 dark:text-gray-400">Speed</span>
+                      <span className="font-medium text-gray-900 dark:text-white">574 + 1201 Mbps</span>
                     </div>
                     <div className="flex justify-between py-2 border-b border-gray-100 dark:border-gray-700">
-                      <span className="text-gray-500 dark:text-gray-400">Mesh Backhaul</span>
-                      <span className="font-medium text-gray-900 dark:text-white">Dedicated 5GHz band</span>
+                      <span className="text-gray-500 dark:text-gray-400">MIMO</span>
+                      <span className="font-medium text-gray-900 dark:text-white">2×2 MU-MIMO</span>
                     </div>
                     <div className="flex justify-between py-2 border-b border-gray-100 dark:border-gray-700">
-                      <span className="text-gray-500 dark:text-gray-400">Max Satellites</span>
-                      <span className="font-medium text-gray-900 dark:text-white">Up to 6 nodes</span>
+                      <span className="text-gray-500 dark:text-gray-400">Ethernet</span>
+                      <span className="font-medium text-gray-900 dark:text-white">1× WAN + 2× LAN GE</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-gray-100 dark:border-gray-700">
+                      <span className="text-gray-500 dark:text-gray-400">Mesh</span>
+                      <span className="font-medium text-gray-900 dark:text-white">EasyMesh, Band Steering</span>
                     </div>
                     <div className="flex justify-between py-2">
-                      <span className="text-gray-500 dark:text-gray-400">Roaming</span>
-                      <span className="font-medium text-gray-900 dark:text-white">802.11k/v/r Seamless</span>
+                      <span className="text-gray-500 dark:text-gray-400">Features</span>
+                      <span className="font-medium text-gray-900 dark:text-white">Beamforming, WPA3</span>
                     </div>
                   </div>
                 </div>
               </motion.div>
 
-              {/* HM1 Mesh Satellite */}
+              {/* HM1 Mesh Satellite - Huawei OptiXstar K562 */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -334,32 +349,37 @@ export default function MinimalISP() {
                 </div>
                 <div className="p-6">
                   <div className="flex items-center gap-3 mb-4">
-                    <span className="px-3 py-1 rounded-full text-xs font-bold bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300">Mesh Satellite</span>
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white">HM1 Mesh Satellite</h3>
+                    <span className="px-3 py-1 rounded-full text-xs font-bold bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300">Mesh Extender</span>
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white">OptiXstar K562</h3>
                   </div>
+                  <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">Huawei Wi-Fi 6 Extender</p>
                   <p className="text-gray-600 dark:text-gray-400 text-sm mb-4">
-                    Wireless mesh extender that pairs with HG Mesh gateway. Extends Wi-Fi coverage throughout the home with seamless roaming.
+                    Wi-Fi 6 mesh extender with up to 3 Gbps aggregate throughput. Features 160MHz channels, DL MU-MIMO, and eAI optimization for seamless roaming.
                   </p>
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between py-2 border-b border-gray-100 dark:border-gray-700">
                       <span className="text-gray-500 dark:text-gray-400">Wi-Fi</span>
-                      <span className="font-medium text-gray-900 dark:text-white">Wi-Fi 6 (802.11ax)</span>
+                      <span className="font-medium text-gray-900 dark:text-white">802.11ax (~3 Gbps)</span>
                     </div>
                     <div className="flex justify-between py-2 border-b border-gray-100 dark:border-gray-700">
                       <span className="text-gray-500 dark:text-gray-400">Bands</span>
-                      <span className="font-medium text-gray-900 dark:text-white">Tri-band (2.4 + 5 + 5GHz)</span>
+                      <span className="font-medium text-gray-900 dark:text-white">Dual-band 2.4 + 5GHz</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-gray-100 dark:border-gray-700">
+                      <span className="text-gray-500 dark:text-gray-400">MIMO</span>
+                      <span className="font-medium text-gray-900 dark:text-white">2×2 DL MU-MIMO</span>
                     </div>
                     <div className="flex justify-between py-2 border-b border-gray-100 dark:border-gray-700">
                       <span className="text-gray-500 dark:text-gray-400">Ethernet</span>
-                      <span className="font-medium text-gray-900 dark:text-white">2x GE ports</span>
+                      <span className="font-medium text-gray-900 dark:text-white">3× GE LAN/Backhaul</span>
                     </div>
                     <div className="flex justify-between py-2 border-b border-gray-100 dark:border-gray-700">
-                      <span className="text-gray-500 dark:text-gray-400">Setup</span>
-                      <span className="font-medium text-gray-900 dark:text-white">Auto-pairing with gateway</span>
+                      <span className="text-gray-500 dark:text-gray-400">Channel</span>
+                      <span className="font-medium text-gray-900 dark:text-white">160MHz supported</span>
                     </div>
                     <div className="flex justify-between py-2">
-                      <span className="text-gray-500 dark:text-gray-400">LED</span>
-                      <span className="font-medium text-gray-900 dark:text-white">Signal strength indicator</span>
+                      <span className="text-gray-500 dark:text-gray-400">Roaming</span>
+                      <span className="font-medium text-gray-900 dark:text-white">802.11k/v, eAI</span>
                     </div>
                   </div>
                 </div>
