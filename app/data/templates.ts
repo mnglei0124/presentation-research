@@ -3,6 +3,7 @@ import { Minimal } from '@/app/templates/Minimal';
 import { Timeline } from '@/app/templates/Timeline';
 import { Split } from '@/app/templates/Split';
 import { Research } from '@/app/templates/Research';
+import { Slides } from '@/app/templates/Slides';
 
 // Types for presentation data
 export interface SectionItem {
@@ -53,6 +54,7 @@ export const templateRegistry: Record<string, ComponentType<TemplateProps>> = {
   Timeline,
   Split,
   Research,
+  Slides,
 };
 
 // Get template component by name

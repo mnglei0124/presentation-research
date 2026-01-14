@@ -7,6 +7,7 @@ import { Minimal } from '@/app/templates/Minimal';
 import { Timeline } from '@/app/templates/Timeline';
 import { Split } from '@/app/templates/Split';
 import { Research } from '@/app/templates/Research';
+import { Slides } from '@/app/templates/Slides';
 
 // Helper function to render the correct template
 function renderTemplate(templateName: string, presentation: Presentation) {
@@ -19,6 +20,8 @@ function renderTemplate(templateName: string, presentation: Presentation) {
       return <Split presentation={presentation} />;
     case 'Research':
       return <Research presentation={presentation} />;
+    case 'Slides':
+      return <Slides presentation={presentation} />;
     default:
       return null;
   }
