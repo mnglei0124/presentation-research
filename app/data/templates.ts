@@ -14,7 +14,7 @@ export interface SectionItem {
 
 export interface Section {
   id: string;
-  type: 'hero' | 'content' | 'features' | 'cta' | 'milestone' | 'split' | 'topic' | 'definition' | 'diagram' | 'keypoints' | 'components' | 'list' | 'code' | 'references';
+  type: 'hero' | 'content' | 'features' | 'cta' | 'milestone' | 'split' | 'topic' | 'definition' | 'diagram' | 'keypoints' | 'components' | 'list' | 'code' | 'references' | 'image';
   title: string;
   subtitle?: string;
   content?: string;
