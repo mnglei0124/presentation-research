@@ -1,1463 +1,161 @@
 {
   "presentations": [
     {
-      "id": "1",
-      "slug": "isp-network-architecture",
-      "title": "ISP Network Architecture",
-      "description": "A comprehensive technical deep-dive into Triple Play services, Access Networks, Fixed Core, and GPON technology.",
-      "thumbnail": "/thumbnails/isp.jpg",
-      "template": "Research",
-      "createdAt": "2025-12-25",
-      "accentColor": "from-cyan-500 to-blue-600",
+      "id": "kentik-portfolio",
+      "slug": "kentik-product-portfolio",
+      "title": "Kentik Product Portfolio",
+      "description": "A structured overview of Kentik's diverse product ecosystem: The Foundation, The Core, ISP Tools, and Strategic Gaps.",
+      "thumbnail": "/images/kentik-new/npm/npm_1_kentik-map-see-your-network.png",
+      "template": "Slides",
+      "createdAt": "2026-01-16",
+      "accentColor": "from-blue-600 to-indigo-700",
       "sections": [
         {
           "id": "hero",
           "type": "hero",
-          "title": "ISP Network Architecture",
-          "subtitle": "Technical Deep Dive",
-          "content": "Understanding the layered architecture of modern ISP networks: from fiber access to core routing, service delivery, and content optimization."
+          "title": "The Capability Engine",
+          "subtitle": "What is Kentik really?",
+          "content": "It is a Big Data Engine (The 'Kentik Data Engine' or KDE) that ingests trillions of records. It doesn't just 'monitor'—it records every conversation, every packet, and every routing change forever. This means we have a 'Flight Recorder' for our entire ISP business, not just a speedometer.",
+          "image": "/images/kentik-new/npm/npm_1_kentik-map-see-your-network.png"
         },
         {
-          "id": "triple-play-intro",
+          "id": "group1-intro",
           "type": "topic",
-          "title": "Triple Play Service",
-          "content": "Triple Play represents the convergence of Internet, IPTV, and VoIP over a single broadband infrastructure. In modern GPON-based networks, this convergence is achieved by logical separation rather than physical segregation."
+          "title": "Group 1: The Core Platform",
+          "content": "The foundational tools included in our 'Pro' License.",
+          "image": "/images/kentik-new/npm/npm_2_network-explorer-know-your-network.png"
         },
         {
-          "id": "triple-play-vlans",
-          "type": "keypoints",
-          "title": "VLAN Service Separation",
-          "items": [
-            {
-              "title": "Internet Traffic (VLAN 100)",
-              "description": "Best-effort unicast traffic for web browsing, downloads, and general connectivity."
-            },
-            {
-              "title": "IPTV Traffic (VLAN 200)",
-              "description": "Multicast for live TV channels, unicast for on-demand video (VOD) content."
-            },
-            {
-              "title": "VoIP Traffic (VLAN 300)",
-              "description": "Low-latency, real-time unicast streams requiring priority QoS treatment."
-            }
-          ]
-        },
-        {
-          "id": "triple-play-routing",
-          "type": "definition",
-          "title": "Traffic Routing in Triple Play",
-          "content": "Internet and VoIP traffic routes through BRAS for subscriber authentication and policy enforcement, while IPTV traffic bypasses BRAS and reaches the SPINE switch directly. QoS is enforced end-to-end, ensuring VoIP and IPTV maintain priority during high Internet usage."
-        },
-        {
-          "id": "triple-play-devices",
-          "type": "components",
-          "title": "Service-Aware Devices",
-          "items": [
-            {
-              "title": "ONT",
-              "description": "Handles VLAN tagging at customer premises, separating Triple Play services at ingress.",
-              "icon": "\ud83c\udfe0"
-            },
-            {
-              "title": "OLT",
-              "description": "Performs traffic shaping, multicast replication for IPTV, and upstream scheduling.",
-              "icon": "\ud83d\udce1"
-            },
-            {
-              "title": "BRAS",
-              "description": "Manages subscriber authentication, IP policy enforcement, and AAA accounting.",
-              "icon": "\ud83d\udd10"
-            }
-          ]
-        },
-        {
-          "id": "access-network-intro",
-          "type": "topic",
-          "title": "Access Network",
-          "content": "The Access Network is the 'last mile' connecting subscriber devices to the ISP's infrastructure. In GPON deployments, it encompasses all physical media and devices from the customer premises up to the Optical Line Terminal (OLT) at the provider's access point. It handles traffic encapsulation, VLAN tagging, and QoS marking but does not perform IP routing or authentication."
-        },
-        {
-          "id": "access-network-media",
-          "type": "keypoints",
-          "title": "Physical Cable Types",
-          "items": [
-            {
-              "title": "Copper (DSL)",
-              "description": "Legacy technology using telephone lines for broadband. Limited speeds, still common in older deployments."
-            },
-            {
-              "title": "Coaxial (HFC)",
-              "description": "Hybrid Fiber-Coax: fiber to neighborhood nodes, then coax to homes. Uses DOCSIS modems for cable TV ISPs."
-            },
-            {
-              "title": "Fiber Optic (GPON)",
-              "description": "Glass/plastic fiber transmitting light pulses. Fastest, most future-proof with minimal interference and extremely high bandwidth."
-            }
-          ]
-        },
-        {
-          "id": "home-gateway-definition",
-          "type": "definition",
-          "title": "Home Gateway",
-          "content": "A home gateway (residential gateway) is a consumer device combining modem/ONT (physical link to ISP), router (manages LAN), Wi-Fi access point, firewall, NAT, and DHCP. It's the demarcation point between the customer's network and the ISP's access network. This single device handles VLAN tagging for Triple Play services before forwarding to ONT."
-        },
-        {
-          "id": "home-gateway-types",
-          "type": "components",
-          "title": "Network Device Roles",
-          "items": [
-            {
-              "title": "Modem",
-              "description": "Converts ISP medium signals (copper, coax, fiber) into Ethernet packets. DSL modem for phone lines, cable modem for coax.",
-              "icon": "\ud83d\udce0"
-            },
-            {
-              "title": "Router",
-              "description": "Takes network connection and shares it with multiple devices. Provides routing, NAT, firewall, and LAN management.",
-              "icon": "\ud83d\udd00"
-            },
-            {
-              "title": "Gateway",
-              "description": "Combines modem + router + Wi-Fi in a single ISP-provided unit. Most common in modern GPON deployments.",
-              "icon": "\ud83d\udce1"
-            },
-            {
-              "title": "ONT",
-              "description": "Optical Network Terminal: converts fiber light signals into Ethernet for use by local devices.",
-              "icon": "\ud83d\udca1"
-            }
-          ]
-        },
-        {
-          "id": "access-network-components",
-          "type": "components",
-          "title": "ISP Access Network Components",
-          "items": [
-            {
-              "title": "CPE/Home Gateway",
-              "description": "Customer premises equipment providing WiFi, routing, VLAN tagging, and service demarcation.",
-              "icon": "\ud83d\udcf6"
-            },
-            {
-              "title": "ONT/MDU",
-              "description": "Optical Network Terminal converting fiber signals to Ethernet for the subscriber.",
-              "icon": "\ud83d\udca1"
-            },
-            {
-              "title": "Optical Splitter",
-              "description": "Passive device splitting one fiber into 1:32 or 1:64 subscriber connections without power.",
-              "icon": "\ud83d\udd00"
-            },
-            {
-              "title": "OLT",
-              "description": "Optical Line Terminal at central office managing all ONTs in the PON tree.",
-              "icon": "\ud83c\udfe2"
-            },
-            {
-              "title": "Metro Cluster",
-              "description": "Active-Standby aggregation switches providing redundancy and uplink diversity.",
-              "icon": "\ud83d\udd04"
-            }
-          ]
-        },
-        {
-          "id": "wifi-intro",
-          "type": "definition",
-          "title": "Wi-Fi in Access Networks",
-          "content": "Wi-Fi is not part of the ISP access network itself\u2014it's the last local access technology inside customer premises, bridging user devices to the home gateway. However, Wi-Fi performance directly impacts perceived ISP service quality, which is why ISPs standardize on newer Wi-Fi versions like Wi-Fi 6."
-        },
-        {
-          "id": "wifi-connection",
-          "type": "keypoints",
-          "title": "How Wi-Fi Connection Works",
-          "items": [
-            {
-              "title": "1. Scanning",
-              "description": "Client sends probe requests to detect available networks (SSIDs). Access Points reply with probe responses."
-            },
-            {
-              "title": "2. Authentication",
-              "description": "Client and AP exchange management frames. This is wireless link security (WPA2/WPA3), not internet login."
-            },
-            {
-              "title": "3. Association",
-              "description": "Client sends association request; if accepted, becomes part of the Basic Service Set (BSS) and can exchange data."
-            },
-            {
-              "title": "4. Secure Handshake",
-              "description": "WPA2/WPA3 4-way handshake to derive encryption keys and establish secure connection."
-            },
-            {
-              "title": "5. IP Assignment",
-              "description": "After association, client obtains IP via DHCP. Only then can traffic flow to the ISP access network."
-            }
-          ]
-        },
-        {
-          "id": "wifi-standards",
-          "type": "keypoints",
-          "title": "Wi-Fi Standards Evolution",
-          "items": [
-            {
-              "title": "Wi-Fi 4 (802.11n) - 2009",
-              "description": "Introduced MIMO. 2.4/5 GHz bands. Up to 600 Mbps. First 'modern' Wi-Fi, still in legacy devices."
-            },
-            {
-              "title": "Wi-Fi 5 (802.11ac) - 2014",
-              "description": "5 GHz only. Up to 6.9 Gbps. MU-MIMO. High throughput but struggles with many devices."
-            },
-            {
-              "title": "Wi-Fi 6 (802.11ax) - 2019",
-              "description": "2.4/5 GHz. Up to 9.6 Gbps. OFDMA, TWT, 1024-QAM. Designed for high-density environments."
-            },
-            {
-              "title": "Wi-Fi 6E - 2020",
-              "description": "Same as Wi-Fi 6 but extends into 6 GHz band. More capacity, less interference. Adoption varies by country."
-            },
-            {
-              "title": "Wi-Fi 7 (802.11be) - 2024+",
-              "description": "Multi-Link Operation across 2.4/5/6 GHz. Up to ~46 Gbps. Designed for AR/VR and ultra-low latency."
-            }
-          ]
-        },
-        {
-          "id": "wifi6-benefits",
-          "type": "components",
-          "title": "Why ISPs Choose Wi-Fi 6",
-          "items": [
-            {
-              "title": "OFDMA",
-              "description": "Splits channels into smaller resource units to serve multiple devices simultaneously.",
-              "icon": "\ud83d\udcca"
-            },
-            {
-              "title": "MU-MIMO",
-              "description": "Multi-user parallel transmissions for better handling of many connected devices.",
-              "icon": "\ud83d\udc65"
-            },
-            {
-              "title": "Target Wake Time",
-              "description": "Schedules device wake times to save battery power on IoT and mobile devices.",
-              "icon": "\ud83d\udd0b"
-            },
-            {
-              "title": "Better Latency",
-              "description": "Lower contention and airtime efficiency\u2014ideal for IPTV, VoIP, and gaming.",
-              "icon": "\u26a1"
-            }
-          ]
-        },
-        {
-          "id": "wifi-gpon-symmetry",
-          "type": "definition",
-          "title": "Wi-Fi 6 and GPON Symmetry",
-          "content": "Both Wi-Fi 6 and GPON rely on centralized scheduling: Wi-Fi uses OFDMA (AP schedules airtime), while GPON uses TDMA (OLT schedules bandwidth). This architectural symmetry makes Wi-Fi 6 a conceptual match for fiber access networks, both handling shared medium access with QoS-aware design."
-        },
-        {
-          "id": "access-network-ha",
-          "type": "definition",
-          "title": "High Availability in Access",
-          "content": "The access network ensures reliability using Active-Standby Metro clusters and redundant OLT uplinks. IPTV multicast replication and VoIP QoS tagging are handled at this layer. Most subscriber-level outages occur here: ONT failures, fiber cuts, or local power issues. Metro switch and OLT uplink failures are mitigated by HA mechanisms."
-        },
-        {
-          "id": "core-network-intro",
-          "type": "topic",
-          "title": "Fixed Core Network",
-          "content": "The Fixed Core Network is the high-capacity IP/MPLS backbone of a telecommunications provider. It interconnects access networks (GPON, DSL, Metro) with service platforms (Internet, IPTV, VoIP) and external networks, providing routing, transport, policy, and interconnection. It is technology-agnostic regarding access but service-centric and IP/MPLS-centric in design."
-        },
-        {
-          "id": "core-network-boundary",
-          "type": "definition",
-          "title": "Access vs Core: The Hard Boundary",
-          "content": "The core network never touches physical last-mile media\u2014it operates purely at Layer 3 and above (with MPLS between L2\u2013L3). While the access network handles last-mile aggregation and is subscriber-unaware (dealing with physical access, GPON/OLT, and VLANs), the core network provides centralized backbone services and is subscriber-aware via BRAS, handling logical services through IP and MPLS routing with policy enforcement."
-        },
-        {
-          "id": "core-architecture",
-          "type": "keypoints",
-          "title": "Core Network Logical Architecture",
-          "items": [
-            {
-              "title": "Service Edge (BRAS/BNG)",
-              "description": "Subscriber session termination, authentication, IP assignment, policy enforcement, and QoS marking at the boundary between access and core."
-            },
-            {
-              "title": "Core Routing (HCORE)",
-              "description": "High-capacity stateless packet forwarding using MPLS and IP routing. No subscriber logic\u2014pure speed and reliability."
-            },
-            {
-              "title": "Service Interconnect (SIG)",
-              "description": "Traffic steering, policy-based routing, and interconnection to service platforms like CDN, DNS, and IPTV middleware."
-            },
-            {
-              "title": "Internet Gateway (IGW)",
-              "description": "Exit point to global Internet with BGP peering to upstream providers and IXPs like MIX."
-            },
-            {
-              "title": "External Networks",
-              "description": "Public Internet, Internet Exchanges, CDN origins, and inter-carrier connections."
-            }
-          ]
-        },
-        {
-          "id": "bras-bng",
-          "type": "definition",
-          "title": "Service Edge: BRAS / BNG",
-          "content": "The BRAS (Broadband Remote Access Server) or BNG (Broadband Network Gateway) is the first true core element\u2014the boundary between access and core. It terminates subscriber sessions (PPPoE or IPoE), interacts with DHCP/RADIUS for IP assignment and AAA, enforces subscriber policies, applies QoS marking and traffic shaping. After BRAS processing, traffic becomes pure IP/MPLS."
-        },
-        {
-          "id": "bras-protocols",
-          "type": "components",
-          "title": "BRAS Protocols & Functions",
-          "items": [
-            {
-              "title": "PPPoE / IPoE",
-              "description": "Subscriber session protocols for authentication and connection establishment.",
-              "icon": "\ud83d\udd0c"
-            },
-            {
-              "title": "DHCP Relay",
-              "description": "Relays IP address requests to DHCP servers for dynamic assignment.",
-              "icon": "\ud83d\udccd"
-            },
-            {
-              "title": "RADIUS AAA",
-              "description": "Authentication, Authorization, and Accounting for subscriber management.",
-              "icon": "\ud83d\udd10"
-            },
-            {
-              "title": "QoS / DSCP",
-              "description": "Traffic classification, CoS marking, and shaping per-subscriber policy.",
-              "icon": "\ud83d\udcca"
-            },
-            {
-              "title": "VLAN / Q-in-Q",
-              "description": "Handles VLAN tags from access network and strips/translates them.",
-              "icon": "\ud83c\udff7\ufe0f"
-            },
-            {
-              "title": "ACLs",
-              "description": "Access control lists for security and traffic filtering.",
-              "icon": "\ud83d\udee1\ufe0f"
-            }
-          ]
-        },
-        {
-          "id": "hcore-layer",
-          "type": "definition",
-          "title": "HCORE: High-Capacity Core Routing",
-          "content": "The HCORE is the heart of the fixed core network. Its only job is to move packets fast, reliably, and redundantly across the ISP backbone. It features extremely high throughput (100G/400G ports), low latency, no subscriber logic, and stateless forwarding. Technologies include IP routing (IPv4/IPv6), MPLS (LDP/RSVP-TE/SR-MPLS), ECMP load balancing, and Fast Reroute (FRR) for sub-50ms recovery."
-        },
-        {
-          "id": "hcore-technologies",
-          "type": "components",
-          "title": "HCORE Technologies",
-          "items": [
-            {
-              "title": "IP Routing",
-              "description": "IPv4 and IPv6 routing for packet forwarding across the backbone.",
-              "icon": "\ud83c\udf10"
-            },
-            {
-              "title": "MPLS",
-              "description": "Label switching for traffic engineering, service separation, and L2/L3 VPNs (LDP, SR-MPLS).",
-              "icon": "\ud83c\udff7\ufe0f"
-            },
-            {
-              "title": "IGP (IS-IS/OSPF)",
-              "description": "Interior gateway protocols for internal topology discovery and convergence.",
-              "icon": "\ud83d\uddfa\ufe0f"
-            },
-            {
-              "title": "BGP",
-              "description": "Border Gateway Protocol for service routing and external peering.",
-              "icon": "\ud83d\udd17"
-            },
-            {
-              "title": "ECMP",
-              "description": "Equal-Cost Multi-Path for load balancing across parallel links.",
-              "icon": "\u2696\ufe0f"
-            },
-            {
-              "title": "Fast Reroute",
-              "description": "MPLS FRR for sub-50ms failover upon link or node failure.",
-              "icon": "\u26a1"
-            }
-          ]
-        },
-        {
-          "id": "sig-layer",
-          "type": "definition",
-          "title": "SIG: Service Interconnection Gateway",
-          "content": "The SIG layer connects core routing to service platforms. It provides service separation, traffic steering, and policy-based routing to interconnect with CDN, DNS, IPTV middleware, and VoIP softswitches. SIG acts as a controlled fan-out point\u2014DNS queries route to DNS servers, CDN traffic to HCDN, and Internet traffic to IGW."
-        },
-        {
-          "id": "igw-layer",
-          "type": "definition",
-          "title": "IGW: Internet Gateway",
-          "content": "The Internet Gateway is the exit point from the ISP's network to the global Internet. It handles eBGP peering with upstream providers, BGP peering with IXPs (like MIX), route filtering and policies, traffic engineering via local preference and AS-path prepending, NAT (when needed), and DDoS protection. In your network: SIG \u2192 IGW \u2192 Public Internet, and SIG \u2192 MIX."
-        },
-        {
-          "id": "core-ip-addressing",
-          "type": "keypoints",
-          "title": "IP Addressing in Core Network",
-          "items": [
-            {
-              "title": "Private IPs (RFC1918)",
-              "description": "Assigned at BRAS, used between subscriber and BRAS. Requires CGNAT at SIG/IGW for Internet access."
-            },
-            {
-              "title": "Public IPs",
-              "description": "Assigned directly at BRAS for enterprise or premium subscribers with direct Internet routing."
-            },
-            {
-              "title": "Core Infrastructure",
-              "description": "Core routers, HCORE, SIG, and IGW use public IP addressing for routing and peering."
-            }
-          ]
-        },
-        {
-          "id": "core-redundancy",
-          "type": "components",
-          "title": "Redundancy & High Availability",
-          "items": [
-            {
-              "title": "No Single Point of Failure",
-              "description": "All critical components deployed in pairs with active-active or active-standby configurations.",
-              "icon": "\ud83d\udd04"
-            },
-            {
-              "title": "ECMP Load Balancing",
-              "description": "Traffic distributed across multiple equal-cost paths for bandwidth and resilience.",
-              "icon": "\u2696\ufe0f"
-            },
-            {
-              "title": "MPLS Fast Reroute",
-              "description": "Pre-computed backup paths enable sub-50ms convergence upon failure.",
-              "icon": "\u26a1"
-            },
-            {
-              "title": "BGP Fast Failover",
-              "description": "BFD-triggered BGP session teardown for rapid peering convergence.",
-              "icon": "\ud83d\ude80"
-            },
-            {
-              "title": "Stateful Switchover",
-              "description": "SSO maintains session state during control plane switchover on redundant routers.",
-              "icon": "\ud83d\udd01"
-            }
-          ]
-        },
-        {
-          "id": "core-failure-domains",
-          "type": "keypoints",
-          "title": "Failure Domains",
-          "items": [
-            {
-              "title": "Access Link Failure",
-              "description": "Single subscriber isolated. No impact to core network."
-            },
-            {
-              "title": "Metro Switch Failure",
-              "description": "Limited regional impact. Traffic reroutes via redundant metro pair."
-            },
-            {
-              "title": "BRAS Failure",
-              "description": "Session drop for affected subscribers. Standby BRAS takes over."
-            },
-            {
-              "title": "Core Link Failure",
-              "description": "Traffic rerouted via MPLS FRR. Invisible to subscribers with <50ms convergence."
-            },
-            {
-              "title": "IGW Failure",
-              "description": "Traffic rerouted to alternate exit. BGP reconverges to backup peering."
-            }
-          ]
-        },
-        {
-          "id": "core-triple-play",
-          "type": "components",
-          "title": "Core Network & Triple Play",
-          "items": [
-            {
-              "title": "Internet",
-              "description": "Unicast routing through BRAS \u2192 HCORE \u2192 SIG \u2192 IGW with best-effort QoS.",
-              "icon": "\ud83c\udf10"
-            },
-            {
-              "title": "IPTV",
-              "description": "Multicast routing via PIM/IGMP. QoS priority for jitter-sensitive video streams.",
-              "icon": "\ud83d\udcfa"
-            },
-            {
-              "title": "VoIP",
-              "description": "Low-latency routing with strict QoS. DSCP marking preserved end-to-end.",
-              "icon": "\ud83d\udcde"
-            },
-            {
-              "title": "CDN Integration",
-              "description": "HCDN for local traffic offload, reducing transit costs and latency.",
-              "icon": "\ud83d\udcbe"
-            }
-          ]
-        },
-        {
-          "id": "core-technical-details",
-          "type": "keypoints",
-          "title": "Critical Technical Details",
-          "items": [
-            {
-              "title": "MTU Consistency",
-              "description": "Uniform MTU (typically 9000 for jumbo frames) across all core links to prevent fragmentation."
-            },
-            {
-              "title": "MPLS Label Stack",
-              "description": "Proper label depth management for VPN and traffic engineering tunnels."
-            },
-            {
-              "title": "Route Reflectors",
-              "description": "Strategic BGP RR placement to scale iBGP without full mesh."
-            },
-            {
-              "title": "Control Plane Protection",
-              "description": "CoPP policies to protect routers from DoS attacks on management/control plane."
-            },
-            {
-              "title": "Clock Synchronization",
-              "description": "PTP/NTP for time-sensitive protocols and logging correlation."
-            }
-          ]
-        },
-        {
-          "id": "gpon-intro",
-          "type": "topic",
-          "title": "GPON Technology",
-          "content": "GPON (Gigabit Passive Optical Network) is the access technology backbone for modern fiber broadband. It multiplexes multiple subscribers over a single fiber using Time-Division Multiple Access (TDMA) for upstream and broadcast for downstream."
-        },
-        {
-          "id": "gpon-features",
-          "type": "keypoints",
-          "title": "GPON Technical Features",
-          "items": [
-            {
-              "title": "ONT Identification",
-              "description": "Each ONT is identified by serial and port ID, authenticated via OLT using PLOAM messages."
-            },
-            {
-              "title": "Downstream Encryption",
-              "description": "Traffic is encrypted per ONT using AES-128, ensuring subscriber privacy on shared fiber."
-            },
-            {
-              "title": "Bandwidth Allocation",
-              "description": "Deterministic bandwidth per subscriber through T-CONT and Dynamic Bandwidth Allocation (DBA)."
-            },
-            {
-              "title": "Multicast Efficiency",
-              "description": "IPTV multicast streams are replicated efficiently at the OLT, reducing upstream bandwidth."
-            }
-          ]
-        },
-        {
-          "id": "gpon-scale",
-          "type": "definition",
-          "title": "GPON Scalability",
-          "content": "GPON enables the access network to scale to thousands of subscribers while preserving QoS and HA. Service separation (Internet, IPTV, VoIP) occurs at the physical layer with VLAN-based isolation. Unicast VOD flows are forwarded to SPINE switches while multicast is replicated at OLT level."
-        },
-        {
-          "id": "unified-intro",
-          "type": "topic",
-          "title": "Unified Architecture View",
-          "content": "Together, Triple Play, Access Network, Fixed Core, and GPON form a layered architecture that delivers reliable, scalable, and differentiated services to subscribers."
-        },
-        {
-          "id": "unified-layers",
-          "type": "keypoints",
-          "title": "Architecture Layers",
-          "items": [
-            {
-              "title": "Layer 1: GPON",
-              "description": "Fiber-based physical foundation connecting subscriber premises to metro aggregation."
-            },
-            {
-              "title": "Layer 2: Access Network",
-              "description": "ONTs, splitters, OLTs, and metro clusters ensuring HA and proper service separation."
-            },
-            {
-              "title": "Layer 3: Fixed Core",
-              "description": "Subscriber logic, routing, policy enforcement, NAT, and content optimization."
-            },
-            {
-              "title": "Layer 4: Triple Play Services",
-              "description": "Internet, IPTV, and VoIP delivered over these layers with VLANs and QoS ensuring coexistence."
-            }
-          ]
-        },
-        {
-          "id": "unified-analysis",
-          "type": "definition",
-          "title": "Unified Analysis Capability",
-          "content": "Understanding these four components together allows you to analyze packet flows, failure points, IP mapping, multicast delivery, and redundancy mechanisms. This knowledge is essential for troubleshooting, capacity planning, and network optimization in ISP environments."
-        }
-      ]
-    },
-    {
-      "id": "2",
-      "slug": "minimal-isp",
-      "title": "ISP Fundamentals",
-      "description": "A minimal, visual guide to Triple-Play, Access Networks, GPON, and Fixed Core architecture.",
-      "thumbnail": "/thumbnails/minimal-isp.jpg",
-      "template": "Minimal",
-      "createdAt": "2026-01-09",
-      "accentColor": "from-violet-500 to-purple-600",
-      "customUrl": "/minimal-isp",
-      "sections": []
-    },
-    {
-      "id": "3",
-      "slug": "kentik-products",
-      "title": "Kentik Products Overview",
-      "description": " structured breakdown into Core Products, Engine Room modules, and Specialized Add-ons.",
-      "thumbnail": "/images/kentik-redownload/npm/npm_1.png",
-      "template": "Slides",
-      "createdAt": "2026-01-14",
-      "accentColor": "from-blue-600 to-indigo-700",
-      "sections": [
-        {
-          "id": "kentik-hero",
-          "type": "hero",
-          "title": "Kentik Product Portfolio",
-          "subtitle": "Comprehensive Network Observability",
-          "content": "From the 'Big Box' solutions to the specialized inner workings.",
-          "image": "/images/kentik-redownload/npm/npm_1.png"
-        },
-        {
-          "id": "topic-1",
-          "type": "topic",
-          "title": "1. Core Products",
-          "content": "The foundational pillars of the Kentik platform.",
-          "image": "/images/kentik-redownload/npm/npm_1.png"
-        },
-        {
-          "id": "prod-npm",
+          "id": "npm-overview",
           "type": "split",
-          "title": "Network Performance Monitoring (NPM)",
-          "content": "The core 'classic' engine. Analyzes flow data (NetFlow/sFlow/IPFIX) to visualize traffic volume, sources, and destinations.",
-          "image": "/images/kentik-redownload/npm/npm_1.png",
+          "title": "Core Traffic Visibility (NPM)",
+          "content": "The primary engine for visualizing traffic flow, bandwidth usage, and historical trends across the backbone.\n\nKey Tech Specs:\n• Traffic Explorer: Visualizes Top Talkers by App, ASN, and Geo.\n• Capacity Planning: Automated AI forecasting of bandwidth exhaustion.\n• Data Retention: 13 months of history (crucial for Year-over-Year planning).",
+          "image": "/images/kentik-new/npm/npm_2_network-explorer-know-your-network.png",
           "imagePosition": "right"
         },
         {
-          "id": "feat-npm",
-          "type": "keypoints",
-          "title": "Key Capabilities",
-          "items": [
-            {
-              "title": "Protocols",
-              "description": "Supports NetFlow (v5/v9), sFlow, IPFIX, and VPC Flow Logs."
-            },
-            {
-              "title": "Traffic Explorer",
-              "description": "Visualizes top talkers (by IP, App, Geo, ASN) via Sankey diagrams and time-series graphs."
-            },
-            {
-              "title": "Capacity Planning",
-              "description": "Predicts when an interface will hit saturation based on historical trends."
-            },
-            {
-              "title": "Ultimate Granularity",
-              "description": "Retains raw flow records for months (unlike competitors that \"roll up\" or average data after a few days), allowing you to investigate a specific 1-second spike that happened 3 months ago."
-            },
-            {
-              "title": "Feature",
-              "description": "See your networks"
-            },
-            {
-              "title": "Unlock your telemetry",
-              "description": "Leverage the full capabilities of your network telemetry data in one unified platform."
-            },
-            {
-              "title": "One view to see them all",
-              "description": "Multi-vendor networks. Distributed architectures. On-prem, cloud, edge, and hybrid environments. No network is too complex \u2014 see everything in a true single pane of glass."
-            },
-            {
-              "title": "Deep internet insights",
-              "description": "View performance, uptime, and connectivity state of common public SaaS apps, clouds, and services your network relies on."
-            },
-            {
-              "title": "Feature",
-              "description": "Know your network"
-            },
-            {
-              "title": "Automation and alerting",
-              "description": "Intelligent automation delivers meaningful insights without alert fatigue."
-            },
-            {
-              "title": "Understand your data",
-              "description": "Understand SNMP, traffic flows, VPC logs, host agents, and synthetic monitoring \u2013 for a comprehensive performance view."
-            },
-            {
-              "title": "Multi-cloud performance",
-              "description": "Keep track of traffic performance to and from, between, and within hybrid and multi-clouds."
-            },
-            {
-              "title": "Feature",
-              "description": "Optimize your network"
-            },
-            {
-              "title": "Rapid troubleshooting",
-              "description": "Dive into network map visualizations to isolate and investigate problems quickly for faster resolution."
-            },
-            {
-              "title": "Proactive QoE monitoring",
-              "description": "Keep a pulse on your network, optimize application performance, and uncover issues before they impact customer experience or critical operations."
-            },
-            {
-              "title": "Break down silos",
-              "description": "Foster greater collaboration across network, cloud, and security teams with robust integrations."
-            }
-          ]
-        },
-        {
-          "id": "prod-nms",
+          "id": "nms-overview",
           "type": "split",
-          "title": "Network Monitoring System (NMS)",
-          "content": "Device Health monitoring. Tracks CPU, Memory, Temperature, and Interface status via SNMP/Streaming Telemetry.",
-          "image": "/images/kentik-redownload/nms/nms_1.png",
+          "title": "Infrastructure Health (NMS)",
+          "content": "Replaces legacy SNMP tools by monitoring physical device health alongside traffic.\n\nKey Tech Specs:\n• Metrics: CPU, Memory, Temp, Fan Speed (SNMP).\n• Streaming Telemetry: Sub-minute (seconds-level) resolution for critical backbone routers.\n• Device Support: Works with Cisco, Juniper, Arista, and more.",
+          "image": "/images/kentik-new/nms/nms_2_nms-dashboard.png",
           "imagePosition": "left"
         },
         {
-          "id": "feat-nms",
-          "type": "keypoints",
-          "title": "Key Capabilities",
-          "items": [
-            {
-              "title": "Protocols",
-              "description": "SNMP (v2/v3) and Streaming Telemetry (gNMI)."
-            },
-            {
-              "title": "Device Metrics",
-              "description": "Monitors CPU load, memory usage, temperature, fan status, and interface errors (CRC, drops)."
-            },
-            {
-              "title": "Ranger Discovery",
-              "description": "Automatically scans subnets to find and onboard new devices."
-            },
-            {
-              "title": "Unified View",
-              "description": "Overlays device health on top of traffic charts (e.g., \"Did CPU spike cause the traffic drop, or did the traffic spike cause high CPU?\")."
-            },
-            {
-              "title": "Feature",
-              "description": "Run your network like it\u2019s 2025"
-            },
-            {
-              "title": "Today\u2019s monitoring, finally",
-              "description": "Equip experts with natural language query and troubleshooting assist to dig deep into complex networks."
-            },
-            {
-              "title": "Poll faster, act faster",
-              "description": "Use faster polling to know what\u2019s broken faster, so the team can fix it faster."
-            },
-            {
-              "title": "Unlock streaming telemetry",
-              "description": "Reduce monitoring strain by leveraging event-based monitoring for your most important (and most expensive) gear."
-            },
-            {
-              "title": "Feature",
-              "description": "Boost efficiency \u2014 not cost"
-            },
-            {
-              "title": "Shrink MTTR",
-              "description": "Identify root cause quickly with traffic pattern insights and a holistic view of device health."
-            },
-            {
-              "title": "Optimize device lifecycle management",
-              "description": "Plan, scale, and report on capacity and performance in one platform."
-            },
-            {
-              "title": "Monitoring, covered",
-              "description": "Get the alerts, device support, and integrations you need to be productive, minus the maintenance."
-            },
-            {
-              "title": "Feature",
-              "description": "Do more than keep the lights on"
-            },
-            {
-              "title": "Eliminate monitoring overhead",
-              "description": "Detect faulty network devices with the continuous monitoring and alerts you need, delivered as SaaS."
-            },
-            {
-              "title": "Answer any question about your network",
-              "description": "Kentik AI makes it easy to rapidly troubleshoot complex issues."
-            },
-            {
-              "title": "Deliver exceptional application experiences",
-              "description": "Proactively address network issues before they impact users by combining metrics, traffic analysis, and synthetic testing."
-            }
-          ]
-        },
-        {
-          "id": "prod-syn",
+          "id": "synthetic-overview",
           "type": "split",
           "title": "Synthetic Monitoring",
-          "content": "Active testing suite. Sends 'fake' traffic (Ping, HTTP, DNS) to verify uptime and performance before users complain.",
-          "image": "/images/kentik-redownload/synthetic/synthetic_1.png",
+          "content": "Active testing robots that continuously 'ping' external services to prove network quality.\n\nKey Tech Specs:\n• Autonomous Tests: Auto-detects top traffic destinations and tests them.\n• Global Agents: 200+ testing nodes worldwide.\n• Page Load Tests: Checks HTTP/DNS response times for specific portals.",
+          "image": "/images/kentik-new/firehose/firehose_4_Kentik-Close-Up-Unfurling_ep-03.png",
           "imagePosition": "right"
         },
         {
-          "id": "feat-syn",
-          "type": "keypoints",
-          "title": "Key Capabilities",
-          "items": [
-            {
-              "title": "Test Types",
-              "description": "Ping, Traceroute, DNS resolution, HTTP/HTTPS (page load), and BGP Monitor."
-            },
-            {
-              "title": "Global Agents",
-              "description": "Run tests from Kentik\u2019s 200+ global managed agents (to see how your site performs from London, Tokyo, etc.) or your own Private Agents."
-            },
-            {
-              "title": "Autonomous Tests",
-              "description": "Uniquely, Kentik analyzes your real traffic (NPM) to automatically create tests for your critical destinations, so you don't have to manually configure everything."
-            },
-            {
-              "title": "Feature",
-              "description": "Emulate real user experiences"
-            },
-            {
-              "title": "Feature",
-              "description": "Test page load times and user transactions (STM) from public or private agents."
-            },
-            {
-              "title": "Feature",
-              "description": "Mimic the experience your users are getting and pinpoint issues wherever they might be."
-            },
-            {
-              "title": "Feature",
-              "description": "Alert on performance issues, anomalies, and SLAs."
-            },
-            {
-              "title": "Feature",
-              "description": "See the health of your entire network"
-            },
-            {
-              "title": "Feature",
-              "description": "Instantly launch complex, multi-site performance mesh tests to see problems at a glance."
-            },
-            {
-              "title": "Feature",
-              "description": "Click any cell to view performance metrics and drill down to the root cause of issues."
-            },
-            {
-              "title": "Feature",
-              "description": "Understand how applications connect between data centers, campuses, and public clouds."
-            },
-            {
-              "title": "Feature",
-              "description": "Visualize and examine delivery paths"
-            },
-            {
-              "title": "Feature",
-              "description": "Get a hop-by-hop view that makes it easy to drill into the root of performance problems."
-            },
-            {
-              "title": "Feature",
-              "description": "Visualize AS paths, monitor route announcement frequency, and get alerted to changes."
-            },
-            {
-              "title": "Feature",
-              "description": "Gauge CDN performance"
-            },
-            {
-              "title": "Feature",
-              "description": "Measure performance and track connectivity to CDNs or ASNs autonomously."
-            },
-            {
-              "title": "Feature",
-              "description": "See synthetic test results in the context of real traffic from content providers."
-            },
-            {
-              "title": "Feature",
-              "description": "Evaluate CDN performance using Kentik\u2019s global CDN map and scenario testing capabilities."
-            },
-            {
-              "title": "Feature",
-              "description": "Identify connectivity issues"
-            },
-            {
-              "title": "Feature",
-              "description": "Understand user connectivity issues are related to VPN overload."
-            },
-            {
-              "title": "Feature",
-              "description": "See performance test metrics and traffic flows side-by-side."
-            },
-            {
-              "title": "Feature",
-              "description": "Quickly identify if there is a correlation between test results and traffic overload."
-            },
-            {
-              "title": "Feature",
-              "description": "Real and test traffic together"
-            },
-            {
-              "title": "Feature",
-              "description": "The only network observability solution that has real and synthetic monitoring in the one platform."
-            },
-            {
-              "title": "Feature",
-              "description": "See performance test metrics and traffic flows side-by-side."
-            },
-            {
-              "title": "Feature",
-              "description": "Quickly identify if there is a correlation between test results and traffic overload."
-            },
-            {
-              "title": "Feature",
-              "description": "Use real traffic to automatically set up synthetic tests."
-            }
-          ]
-        },
-        {
-          "id": "prod-cloud",
+          "id": "ai-advisor-overview",
           "type": "split",
-          "title": "Multi-Cloud Observability",
-          "content": "Single pane of glass for AWS, Azure, GCP, and OCI networking. Maps topologies and tracks cross-cloud traffic costs.",
-          "image": "/images/kentik-redownload/multicloud/multicloud_1.png",
+          "title": "AI Advisor",
+          "content": "The 'Brain' of the platform that allows engineers to query network data using natural language.\n\nKey Tech Specs:\n• Natural Language Query: No SQL/coding required.\n• Root Cause Analysis: AI scans for 'Unusual' patterns automatically.",
+          "image": "/images/kentik-new/ai-advisor/ai-advisor_4_feature-ai-advisor.png",
           "imagePosition": "left"
         },
         {
-          "id": "feat-cloud",
-          "type": "keypoints",
-          "title": "Key Capabilities",
-          "items": [
-            {
-              "title": "Map View",
-              "description": "Auto-generates a topology map of all your VPCs, TGWs (Transit Gateways), and Direct Connects."
-            },
-            {
-              "title": "Cost Optimization",
-              "description": "Detects expensive traffic patterns (e.g., traffic crossing availability zones or regions unnecessarily)."
-            },
-            {
-              "title": "Connectivity Checker",
-              "description": "Troubleshooting tool that simulates a packet to see if Security Groups or ACLs would block it."
-            },
-            {
-              "title": "Feature",
-              "description": "Understand hybrid cloud connectivity and health"
-            },
-            {
-              "title": "Feature",
-              "description": "Get alerts on critical anomalies and insights"
-            },
-            {
-              "title": "Feature",
-              "description": "Know where your traffic is going, and whether inter-region data exchange is compliant."
-            },
-            {
-              "title": "Feature",
-              "description": "Automatically flag communication with watchlisted hosts."
-            },
-            {
-              "title": "Feature",
-              "description": "Troubleshoot instantly with Connectivity Checker"
-            },
-            {
-              "title": "Feature",
-              "description": "Check live connectivity between any instance, subnet, or network interface on demand."
-            },
-            {
-              "title": "Feature",
-              "description": "Search by IP, CIDR block, VPC ID, Subnet ID, or DNS name to quickly pinpoint connectivity."
-            },
-            {
-              "title": "Feature",
-              "description": "See public cloud performance, uptime, and connectivity"
-            },
-            {
-              "title": "Feature",
-              "description": "Configure global synthetic tests to detect issues with mission-critical upstream services."
-            },
-            {
-              "title": "Feature",
-              "description": "Excel at cloud migration"
-            },
-            {
-              "title": "Feature",
-              "description": "Analyze traffic before, during, and after migration to balance performance with cost."
-            },
-            {
-              "title": "Feature",
-              "description": "Rapidly interrogate network data in Data Explorer"
-            },
-            {
-              "title": "Feature",
-              "description": "Understand, compare, and visualize real-time and historical connectivity and performance."
-            },
-            {
-              "title": "Feature",
-              "description": "Automatically enrich data with your business, application, and security context."
-            }
-          ]
-        },
-        {
-          "id": "prod-sdwan",
-          "type": "split",
-          "title": "SD-WAN Monitoring",
-          "content": "Visualizes overlay tunnel performance (Jitter, Latency, Loss) for branch office connections.",
-          "image": "/images/kentik-redownload/sdwan/sdwan_1.png",
-          "imagePosition": "right"
-        },
-        {
-          "id": "feat-sdwan",
-          "type": "keypoints",
-          "title": "Key Capabilities",
-          "items": [
-            {
-              "title": "Vendor Support",
-              "description": "Deep integration with Silver Peak, VeloCloud, Versa, Cisco SD-WAN (Viptela), and Fortinet."
-            },
-            {
-              "title": "Tunnel Metrics",
-              "description": "Visualizes Jitter, Latency, and Packet Loss specifically per-tunnel."
-            },
-            {
-              "title": "Underlay vs. Overlay",
-              "description": "Helps you prove if the issue is the ISP (Underlay) or the SD-WAN box configuration (Overlay)."
-            },
-            {
-              "title": "Feature",
-              "description": "Quickly answer any network performance question"
-            },
-            {
-              "title": "Feature",
-              "description": "Understand application performance first-hand with synthetic tests."
-            },
-            {
-              "title": "Feature",
-              "description": "Optimize application delivery with public internet insight"
-            },
-            {
-              "title": "Feature",
-              "description": "Understand how global internet weather impacts your applications."
-            },
-            {
-              "title": "Feature",
-              "description": "Alert on connectivity to critical public resources such as public DNS servers and SaaS providers."
-            },
-            {
-              "title": "Feature",
-              "description": "Secure your data with commercial-grade tools"
-            },
-            {
-              "title": "Feature",
-              "description": "Protect against malware, phishing, DDoS, and APT threats with fine-grained alerts."
-            },
-            {
-              "title": "Feature",
-              "description": "Validate SD-WAN policy to keep traffic links secure and compliant."
-            },
-            {
-              "title": "Feature",
-              "description": "Keep routes safe from leaks with RKPI validation and analysis."
-            },
-            {
-              "title": "Feature",
-              "description": "Monitor upstream providers to alert on BGP route hijacks."
-            },
-            {
-              "title": "Feature",
-              "description": "Tune the networks you own, and the networks you don\u2019t"
-            },
-            {
-              "title": "Feature",
-              "description": "Use CDN Analytics to ensure and enforce CDN performance."
-            },
-            {
-              "title": "Feature",
-              "description": "Catch user experience issues before customers do"
-            }
-          ]
-        },
-        {
-          "id": "prod-sec",
-          "type": "split",
-          "title": "Network Security (Protect)",
-          "content": "DDoS detection and mitigation. Identifies volumetric attacks and botnet activity using behavioral analysis.",
-          "image": "/images/kentik-redownload/security/security_1.png",
-          "imagePosition": "left"
-        },
-        {
-          "id": "feat-sec",
-          "type": "keypoints",
-          "title": "Key Capabilities",
-          "items": [
-            {
-              "title": "DDoS Detection",
-              "description": "Identifies Volumetric attacks (floods), Protocol attacks, and Application layer attacks in seconds."
-            },
-            {
-              "title": "Auto-Mitigation",
-              "description": "Can automatically push a \"remote trigger blackhole\" (RTBH) or Flowspec rule to your edge routers to block the attack."
-            },
-            {
-              "title": "Botnet Detection",
-              "description": "Correlates your traffic against threat intelligence feeds to see if internal hosts are talking to known C2 (Command & Control) servers."
-            },
-            {
-              "title": "Feature",
-              "description": "AI-driven anomaly detection"
-            },
-            {
-              "title": "Feature",
-              "description": "Identify network-probing behavior across your network."
-            },
-            {
-              "title": "Feature",
-              "description": "Audit unusual internet traffic."
-            },
-            {
-              "title": "Feature",
-              "description": "Detect traffic to or from embargoed countries."
-            },
-            {
-              "title": "Feature",
-              "description": "Quickly detect DDoS attacks with confidence"
-            },
-            {
-              "title": "Feature",
-              "description": "Minimize false positives and negatives with advanced detection algorithms."
-            },
-            {
-              "title": "Feature",
-              "description": "Customize out-of-the-box attack profiles."
-            },
-            {
-              "title": "Feature",
-              "description": "See across all networks in real time."
-            },
-            {
-              "title": "Feature",
-              "description": "Streamline attack response"
-            },
-            {
-              "title": "Feature",
-              "description": "Mitigate attacks using your own infrastructure via RTBH/Flowspec."
-            },
-            {
-              "title": "Feature",
-              "description": "Invoke mitigation through integrations with providers like Cloudflare, Radware, and A10."
-            },
-            {
-              "title": "Feature",
-              "description": "Validate policy compliance"
-            },
-            {
-              "title": "Feature",
-              "description": "Identify and alert on rejected traffic anomalies."
-            },
-            {
-              "title": "Feature",
-              "description": "Verify RPKI enforcement."
-            },
-            {
-              "title": "Feature",
-              "description": "Validate cloud ACLs."
-            },
-            {
-              "title": "Feature",
-              "description": "Detect mis-routed traffic"
-            },
-            {
-              "title": "Feature",
-              "description": "Find BGP leaks and hijacks."
-            },
-            {
-              "title": "Feature",
-              "description": "Test BGP reachability."
-            },
-            {
-              "title": "Feature",
-              "description": "Track BGP route changes."
-            },
-            {
-              "title": "Feature",
-              "description": "Identify malware communication"
-            },
-            {
-              "title": "Feature",
-              "description": "Alert in real time on blacklisted IPs and domains."
-            },
-            {
-              "title": "Feature",
-              "description": "Audit traffic to and from prohibited geographies."
-            },
-            {
-              "title": "Feature",
-              "description": "Filter out VPC black holes."
-            },
-            {
-              "title": "Feature",
-              "description": "Full fidelity forensics"
-            },
-            {
-              "title": "Feature",
-              "description": "Understand historical data exfiltration/infiltration."
-            },
-            {
-              "title": "Feature",
-              "description": "Determine what accessed the network with security and business enriched."
-            },
-            {
-              "title": "Feature",
-              "description": "Identify users with ID enriched flow data."
-            }
-          ]
-        },
-        {
-          "id": "prod-peer",
-          "type": "split",
-          "title": "Peering & Interconnection (Edge)",
-          "content": "BGP analytics for ISPs and heavy traffic networks. Optimizes connectivity costs and peering relationships.",
-          "image": "/images/kentik-redownload/peering/peering_1.png",
-          "imagePosition": "right"
-        },
-        {
-          "id": "feat-peer",
-          "type": "keypoints",
-          "title": "Key Capabilities",
-          "items": [
-            {
-              "title": "PeeringDB Integration",
-              "description": "Shows you which potential peering partners are at which exchanges."
-            },
-            {
-              "title": "Cost Analytics",
-              "description": "Calculates \"If I peer with Netflix directly at IX-Denver, how much money will I save on transit costs?\""
-            },
-            {
-              "title": "BGP Analytics",
-              "description": "Monitors route leaks, hijacks, and AS path changes."
-            },
-            {
-              "title": "Feature",
-              "description": "Discover Peers"
-            },
-            {
-              "title": "Feature",
-              "description": "PeeringDB integration"
-            },
-            {
-              "title": "Feature",
-              "description": "Connectivity Costs"
-            },
-            {
-              "title": "Feature",
-              "description": "Manage all connectivity costs and monitor monthly spending in any currency."
-            },
-            {
-              "title": "Feature",
-              "description": "Automate flat, tiered, and custom calculations."
-            },
-            {
-              "title": "Feature",
-              "description": "See costs broken down by provider, connectivity type, sites, or markets to track cost per Mbps."
-            },
-            {
-              "title": "Feature",
-              "description": "Share reports with business teams to drive decisions."
-            },
-            {
-              "title": "Feature",
-              "description": "Kentik Market Intelligence"
-            },
-            {
-              "title": "Feature",
-              "description": "See the providers, peers, and customers for any AS."
-            },
-            {
-              "title": "Feature",
-              "description": "Enable efficient sales prospecting with competitor insights, including single-homed customers."
-            },
-            {
-              "title": "Feature",
-              "description": "Generate dynamic, tailored market alerts."
-            },
-            {
-              "title": "Feature",
-              "description": "CDN Analytics"
-            },
-            {
-              "title": "Feature",
-              "description": "Determine connectivity mix on- and off-net for each CDN handing traffic over to your network."
-            },
-            {
-              "title": "Feature",
-              "description": "Benchmark CDNs in detail to improve traffic delivery and enhance service quality."
-            },
-            {
-              "title": "Feature",
-              "description": "OTT Service Tracking"
-            },
-            {
-              "title": "Feature",
-              "description": "Uncover drivers behind bandwidth utilization and costs without expensive DPI."
-            },
-            {
-              "title": "Feature",
-              "description": "Identify CDNs, 850+ OTT services, and 650+ OTT providers across more than 40 categories."
-            }
-          ]
-        },
-        {
-          "id": "prod-sp",
-          "type": "split",
-          "title": "Kentik for Service Providers",
-          "content": "Tailored solutions for ISPs to resell analytics to their own customers via white-labeled portals.",
-          "image": "/images/kentik-redownload/sp/sp_1.png",
-          "imagePosition": "left"
-        },
-        {
-          "id": "topic-2",
+          "id": "group2-intro",
           "type": "topic",
-          "title": "2. The Engine Room",
-          "content": "Essential tools and modules you use daily within the core products.",
-          "image": "/images/kentik-redownload/npm/npm_1.png"
+          "title": "Group 2: The ISP Specialized Tools",
+          "content": "Specialized tools for Edge analytics and Service Provider revenue.",
+          "image": "/images/kentik-new/edge/edge_2_connectivity-costs.png"
         },
         {
-          "id": "mod-explorer",
+          "id": "edge-overview",
           "type": "split",
-          "title": "Universal Data Explorer",
-          "content": "The main graphing interface found inside NPM.\n\nRun ad-hoc queries, filter by any dimension (Geo, IP, ASN, Interface), and visualize complex datasets instantly.",
-          "image": "/images/kentik-redownload/npm/npm_1.png",
+          "title": "Kentik Edge (Peering)",
+          "content": "The 'Financial' module for managing BGP relationships and transit costs.\n\nKey Tech Specs:\n• Cost Snapshots: Dollar-per-megabit analysis of every interface.\n• BGP Visualization: See AS Paths and Route Leaks in real-time.",
+          "image": "/images/kentik-new/edge/edge_2_connectivity-costs.png",
           "imagePosition": "right"
         },
         {
-          "id": "mod-capacity",
+          "id": "sp-analytics-overview",
           "type": "split",
-          "title": "Capacity Planning",
-          "content": "A predictive engine found inside NPM.\n\nTells you 'Link A will be full in 4 days' based on historical trends, allowing proactive upgrades.",
-          "image": "/images/kentik-redownload/npm/npm_1.png",
+          "title": "Service Provider Analytics (My Kentik)",
+          "content": "A white-label portal that lets ISP customers see their own traffic data.\n\nKey Tech Specs:\n• White Label Portal: Your logo, your URL, their data.\n• OTT Analytics: See exactly how much bandwidth Netflix/YouTube/Hulu is consuming per subscriber.",
+          "image": "/images/kentik-new/sp-analytics/sp-analytics_1_amazon-prime-video-service-quality.png",
           "imagePosition": "left"
         },
         {
-          "id": "mod-te",
-          "type": "split",
-          "title": "Traffic Engineering",
-          "content": "Found inside Peering module.\n\nHelps automate BGP route changes to optimize costs and performance across transit providers.",
-          "image": "/images/kentik-redownload/peering/peering_1.png",
-          "imagePosition": "right"
-        },
-        {
-          "id": "mod-deck",
-          "type": "split",
-          "title": "Observation Deck",
-          "content": "The customizable home dashboard.\n\nPin your favorite widgets, maps, and status indicators for a personalized 'morning coffee' view.",
-          "image": "/images/kentik-redownload/uidashboard/uidashboard_1.png",
-          "imagePosition": "left"
-        },
-        {
-          "id": "mod-portal",
-          "type": "split",
-          "title": "My Kentik Portal",
-          "content": "The white-label login system for Service Providers.\n\nAllows end-customers to log in and see their own traffic graphs under your brand.",
-          "image": "/images/kentik-redownload/sp/sp_1.png",
-          "imagePosition": "right"
-        },
-        {
-          "id": "topic-3",
+          "id": "group3-intro",
           "type": "topic",
-          "title": "3. Specialized & Add-Ons",
-          "content": "Distinct powerful modules often bundled or hidden.",
-          "image": "/images/kentik-redownload/ai/ai_1.png"
+          "title": "Group 3: The Gap Products",
+          "content": "High-value strategic add-ons for Security and Market Intelligence.",
+          "image": "/images/kentik-new/protect/protect_1_ddos-defense-dashboard.png"
         },
         {
-          "id": "prod-kube",
+          "id": "protect-overview",
           "type": "split",
-          "title": "Kentik Kube",
-          "content": "The Kubernetes observability module.\n\n**Why it's hidden:** Often bundled under 'Cloud' or 'NPM', but requires a special agent (kappa) and understands container specific context (Pods, Namespaces).",
-          "image": "/images/kentik-redownload/kube/kube_1.png",
+          "title": "Kentik Protect (Advanced)",
+          "content": "Enterprise-grade security to detect and mitigate attacks before they take down the network.\n\nKey Tech Specs:\n• Botnet Detection: Finds infected subscriber devices.\n• Mitigation: Automates BGP Flowspec and RTBH (Remote Trigger Black Hole).",
+          "image": "/images/kentik-new/protect/protect_1_ddos-defense-dashboard.png",
           "imagePosition": "right"
         },
         {
-          "id": "feat-kube",
-          "type": "keypoints",
-          "title": "Key Capabilities",
-          "items": [
-            {
-              "title": "eBPF Agent",
-              "description": "Uses a lightweight agent (called kappa) to see traffic inside the node without modifying application code."
-            },
-            {
-              "title": "K8s Context",
-              "description": "Enriches network traffic with Kubernetes tags (Pod Name, Namespace, Service, Node)."
-            },
-            {
-              "title": "Service Map",
-              "description": "Visualizes which services are talking to which, identifying dependencies and \"east-west\" traffic bottlenecks."
-            },
-            {
-              "title": "Feature",
-              "description": "How Kentik Kube works"
-            },
-            {
-              "title": "Kentik Kube to",
-              "description": ""
-            },
-            {
-              "title": "Ensure Kubernetes performance",
-              "description": "Discover which services and pods are experiencing network delays in order to troubleshoot and fix problems faster. Configure alert policies to proactively find high latency nodes, pods, workloads, or services."
-            },
-            {
-              "title": "Optimize costs",
-              "description": "Quickly detect traffic changes tied to new deployments or misconfigurations before egress, inter-region transfer, and gateway charges get out of control."
-            },
-            {
-              "title": "Get total infrastructure visibility",
-              "description": "Know which pods were deployed on which nodes \u2014 even historically. See which pods and services are communicating with other clusters, non-Kubernetes infrastructure, or the internet. Quickly detect top talkers. Identify Kubernetes clusters sending traffic to embargoed countries or unapproved external destinations."
-            },
-            {
-              "title": "Determine top talkers",
-              "description": "Identify clients/requesters consuming your Kubernetes services so you can track down problematic connections. Know exactly who was talking to which pod, and when."
-            },
-            {
-              "title": "Feature",
-              "description": "Visualizing with Kentik Kube"
-            },
-            {
-              "title": "Kentik provides a unique level of network-layer expertise and network-centric visibility in Kubernetes out of the box, including",
-              "description": ""
-            },
-            {
-              "title": "Feature",
-              "description": "Deep, automated flow log enrichment"
-            },
-            {
-              "title": "Feature",
-              "description": "Pod-level visibility into traffic spikes, transit and transfer, and egress"
-            },
-            {
-              "title": "Feature",
-              "description": "Alerts and auditing on traffic to and from embargoed, prohibited, or watchlisted domains"
-            }
-          ]
-        },
-        {
-          "id": "prod-kmi",
+          "id": "kmi-overview",
           "type": "split",
           "title": "Kentik Market Intelligence (KMI)",
-          "content": "A competitive analysis tool for global internet trends. \n\n**Why it's distinct:** It doesn't look at *your* network; it looks at the *entire internet*. Used by ISPs and traders to answer 'How is traffic flowing between Netflix and Comcast right now?'",
-          "image": "/images/kentik-redownload/ai/ai_1.png",
+          "content": "'Spyglass' into the global internet routing table to see competitor traffic and market trends.\n\nKey Tech Specs:\n• AS Rankings: Global leaderboard of ISPs by country/region.\n• Market Share: See 'Eyeball' vs. 'Content' market share in any country.",
+          "image": "/images/kentik-new/kmi/kmi_1_kmi-top-insights.png",
           "imagePosition": "left"
         },
         {
-          "id": "prod-forensic",
+          "id": "multicloud-overview",
           "type": "split",
-          "title": "Forensic Raw Flow Storage",
-          "content": "Optional add-on for security teams.\n\n**Why it's distinct:** Standard Kentik retains data for ~90 days. This allows long-term, unaggregated storage for legal or criminal forensics investigation.",
-          "image": "/images/kentik-redownload/firehose/firehose_1.png",
+          "title": "Multi-Cloud Observability",
+          "content": "Visibility into public cloud networking (AWS/Azure) if your ISP offers 'Direct Connect' services.\n\nKey Tech Specs:\n• Cloud Map: Visualizes VPCs, TGWs, and Direct Connects.\n• Cost Analysis: Identifies expensive cross-region cloud traffic.",
+          "image": "/images/kentik-new/multi-cloud/multi-cloud_1_map-main-view-aws-connections.png",
           "imagePosition": "right"
+        },
+        {
+          "id": "firehose-overview",
+          "type": "split",
+          "title": "Firehose (Data Export)",
+          "content": "Pushes enriched Kentik data to other internal systems.\n\nKey Tech Specs:\n• Integrations: Kafka, Splunk, New Relic, InfluxDB, S3.\n• Format: JSON, NetFlow, or Influx Line Protocol.",
+          "image": "/images/kentik-new/firehose/firehose_3_firehose-p1-1.png",
+          "imagePosition": "left"
+        },
+        {
+          "id": "investment-inventory",
+          "type": "keypoints",
+          "title": "The Investment & Inventory",
+          "items": [
+            {
+              "title": "Paid & Underutilized (The Waste)",
+              "description": "Included in Pro but unused: NPM, NMS, Synthetic, AI Advisor."
+            },
+            {
+              "title": "Fully Utilized (The Value)",
+              "description": "Currently driving ROI: Kentik Edge, SP Analytics."
+            },
+            {
+              "title": "Strategic Gaps (The Upsell)",
+              "description": "Missing capabilities: Protect (DDoS), KMI (Market Intel), Multi-Cloud."
+            }
+          ]
+        },
+        {
+          "id": "summary",
+          "type": "keypoints",
+          "title": "Summary: The Profit Roadmap",
+          "items": [
+            {
+              "title": "Immediate Activation (Stop the Waste)",
+              "description": "We are wasting 40% of our license.\n• Deploy NMS to decommission old SNMP servers.\n• Activate Synthetics for an 'Early Warning System'."
+            },
+            {
+              "title": "Security Upgrade (The Revenue)",
+              "description": "DDoS is currently a cost center.\n• Evaluate Protect Advanced to offer 'Premium Clean Pipe' security services to customers."
+            },
+            {
+              "title": "Market Positioning (Domination)",
+              "description": "We are negotiating blind.\n• Acquire KMI to spy on competitors' routing and win more enterprise contracts."
+            }
+          ]
         }
       ]
     }
