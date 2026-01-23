@@ -186,9 +186,60 @@
       ]
     },
     {
+      "id": "virtualization-types",
+      "type": "topic",
+      "title": "5. Types of Virtualization",
+      "content": "Exploring the different layers of virtualization beyond just servers: Application, Network, Desktop, Storage, and Data."
+    },
+    {
+      "id": "types-app-desktop",
+      "type": "keypoints",
+      "title": "App & Desktop Virtualization",
+      "items": [
+        {
+          "title": "Application Virtualization",
+          "description": "Encapsulates apps to run independently of the OS. Benefits: Portability, isolation. Examples: Citrix Virtual Apps, VMware ThinApp."
+        },
+        {
+          "title": "Desktop Virtualization (VDI)",
+          "description": "Hosted desktop environments on central servers. Users access via thin clients. Benefits: Security, centralized management. Examples: VMware Horizon, Amazon WorkSpaces."
+        }
+      ]
+    },
+    {
+      "id": "types-network-server",
+      "type": "keypoints",
+      "title": "Network & Server Virtualization",
+      "items": [
+         {
+          "title": "Network Virtualization (SDN)",
+          "description": "Decouples network services from hardware. Logical switching, routing, firewalls. Examples: VMware NSX, Cisco ACI."
+        },
+        {
+          "title": "Server Virtualization",
+          "description": "Partitioning physical servers into multiple VMs. The foundation of cloud computing. Examples: vSphere, KVM, Hyper-V."
+        }
+      ]
+    },
+    {
+      "id": "types-storage-data",
+      "type": "keypoints",
+      "title": "Storage & Data Virtualization",
+      "items": [
+        {
+          "title": "Storage Virtualization",
+          "description": "Pooling physical storage into a single logical device. SAN, vSAN, Cloud Storage (S3)."
+        },
+        {
+          "title": "Data Virtualization",
+          "description": "Abstract layer for accessing data from multiple sources as a single view without moving data. Examples: Denodo, Tibco."
+        }
+      ]
+    },
+    {
       "id": "section5-intro",
       "type": "topic",
-      "title": "5. Platforms & Technologies",
+      "title": "6. Platforms & Technologies",
       "content": "Detailed analysis of major virtualization platforms: VMware ESXi, KVM, Hyper-V, Xen, and VirtualBox."
     },
     {
@@ -398,7 +449,7 @@
     {
       "id": "section6-intro",
       "type": "topic",
-      "title": "6. Comparison Matrix",
+      "title": "7. Comparison Matrix",
       "content": "Side-by-side comparison of virtualization platforms by features, pricing, and enterprise readiness."
     },
     {
@@ -458,7 +509,7 @@
     {
       "id": "section7-intro",
       "type": "topic",
-      "title": "7. Benefits & Tradeoffs",
+      "title": "8. Benefits & Tradeoffs",
       "content": "Understanding the advantages and limitations of virtualization technology."
     },
     {
@@ -522,7 +573,7 @@
     {
       "id": "section8-intro",
       "type": "topic",
-      "title": "8. Modern Extensions",
+      "title": "9. Modern Extensions",
       "content": "Exploring containers, cloud virtualization, and nested virtualization."
     },
     {
@@ -579,16 +630,17 @@
         }
       ]
     },
+
     {
       "id": "conclusion",
       "type": "topic",
-      "title": "9. Conclusion",
+      "title": "10. Conclusion",
       "content": "Key takeaways and recommendations for choosing the right virtualization approach."
     },
     {
       "id": "summary",
       "type": "keypoints",
-      "title": "Summary & Recommendations",
+      "title": "Summary",
       "items": [
         {
           "title": "Virtualization is Foundational",
@@ -609,6 +661,35 @@
         {
           "title": "Containers Complement, Don't Replace",
           "description": "Use VMs for isolation and multi-OS. Use containers for microservices and rapid scaling. Often used together."
+        }
+      ]
+    },
+    {
+      "id": "references-topic",
+      "type": "topic",
+      "title": "11. References",
+      "content": "Authoritative sources and further reading."
+    },
+    {
+      "id": "references-list",
+      "type": "keypoints",
+      "title": "Key References",
+      "items": [
+        {
+          "title": "Virtualization Fundamentals",
+          "description": "ibm.com/topics/virtualization, redhat.com/topics/virtualization"
+        },
+        {
+          "title": "Hypervisor Platforms",
+          "description": "docs.vmware.com, linux-kvm.org, learn.microsoft.com/virtualization"
+        },
+        {
+          "title": "Modern Extensions",
+          "description": "aws.amazon.com/ec2/nitro, docs.docker.com, kubernetes.io/docs"
+        },
+        {
+          "title": "Further Reading",
+          "description": "xenproject.org, virtualbox.org, geeksforgeeks.org"
         }
       ]
     }
