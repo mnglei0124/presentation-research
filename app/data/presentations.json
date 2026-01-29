@@ -173,61 +173,22 @@
           "id": "hero",
           "type": "hero",
           "title": "Virtualization Technology",
-          "subtitle": "Research Presentation",
-          "content": "A comprehensive exploration of virtualization fundamentals, hypervisor architectures, platform comparisons, and modern extensions including containers and cloud virtualization."
+          "subtitle": "Essential Research (16-Slide Overview)",
+          "content": "A condensed technical exploration of virtualization fundamentals, hypervisor architectures, platform comparisons, and modern extensions."
         },
         {
-          "id": "section1-intro",
-          "type": "topic",
-          "title": "1. Fundamentals",
-          "content": "Understanding virtualization: what it is, why it exists, and how it's architected."
-        },
-        {
-          "id": "what-is-virtualization",
+          "id": "fundamentals",
           "type": "split",
-          "title": "What is Virtualization?",
-          "content": "Virtualization enables multiple operating systems and applications to run on a single physical machine by creating isolated virtual environments.\n\n• A hypervisor (VMM) abstracts physical hardware\n• Each VM gets virtualized CPU, memory, storage, network\n• VMs are isolated from each other\n• Hardware resources are dynamically allocated",
+          "title": "Virtualization Fundamentals",
+          "content": "Virtualization abstracts physical hardware to run multiple isolated environments on one machine.\n\n• **Core Goal**: Maximize utilization (from 10% to 80%+) and reduce server sprawl.\n• **Architecture**: A Hypervisor (VMM) translates and allocates physical resources.\n• **Benefits**: Rapid provisioning, lower TCO, and simplified disaster recovery.",
           "image": "/images/virtualization/virtualization_architecture.png",
           "imagePosition": "right"
-        },
-        {
-          "id": "why-virtualization",
-          "type": "keypoints",
-          "title": "Why Virtualization Exists",
-          "items": [
-            {
-              "title": "Hardware Underutilization",
-              "description": "Physical servers often ran at 5-15% capacity. Virtualization achieves 60-80%+ utilization."
-            },
-            {
-              "title": "Server Sprawl",
-              "description": "One application per server model led to data center bloat. VMs consolidate workloads."
-            },
-            {
-              "title": "High Costs",
-              "description": "Expensive hardware, power, cooling, and real estate. Fewer physical servers = lower costs."
-            },
-            {
-              "title": "Slow Provisioning",
-              "description": "Weeks to procure new servers. VMs can be deployed in minutes."
-            },
-            {
-              "title": "Complex Disaster Recovery",
-              "description": "VMs enable simple snapshots, replication, and rapid recovery."
-            }
-          ]
-        },
-        {
-          "id": "section2-intro",
-          "type": "topic",
-          "title": "2. How Virtualization Works",
-          "content": "The technical mechanisms behind CPU, memory, and I/O virtualization."
         },
         {
           "id": "cpu-virtualization",
           "type": "split",
           "title": "CPU Virtualization",
-          "content": "The x86 architecture uses privilege rings (0-3):\n\n• Ring 0: Kernel mode (highest privilege)\n• Ring 3: User applications (lowest privilege)\n\nThe Challenge: Guest OS expects Ring 0, but hypervisor needs it.\n\nSolutions:\n• Binary Translation: Software intercepts privileged instructions\n• Hardware-Assisted: Intel VT-x / AMD-V provides VMX Root and Non-Root modes for near-native performance",
+          "content": "Hardware-assisted CPU virtualization enables near-native performance for virtual workloads.\n\n• **Protection Rings**: x86 uses rings 0-3. Hypervisors use Ring -1 (Root Mode) to manage Guest OS in Ring 0.\n• **Hardware Support**: Intel VT-x and AMD-V provide the necessary VMX instruction sets.\n• **VM Exits**: Minimizes expensive transitions between Guest and Host modes.",
           "image": "/images/virtualization/cpu_rings.png",
           "imagePosition": "right"
         },
@@ -235,622 +196,163 @@
           "id": "memory-virtualization",
           "type": "split",
           "title": "Memory Virtualization",
-          "content": "Three levels of memory addresses:\n\n• GVA: Guest Virtual Address\n• GPA: Guest Physical Address  \n• HPA: Host Physical Address\n\nShadow Page Tables (Software):\n• Hypervisor maintains shadow tables\n• Frequent VM exits, high overhead (10-30%)\n\nEPT/NPT (Hardware-Assisted):\n• Intel EPT / AMD NPT\n• Two-stage translation in hardware\n• Minimal VM exits, near-native performance",
-          "image": "/images/virtualization/memory_virtualization.png",
-          "imagePosition": "left"
+          "content": "Efficient address translation is the backbone of virtualized memory management.\n\n• **Address Layers**: Translates Guest Virtual Address (GVA) to Guest Physical (GPA) to Host Physical (HPA).\n• **Hardware Tables**: Extended/Nested Page Tables (EPT/NPT) handle this translation in hardware silicon.\n• **Performance**: Significantly reduces memory access latency and hypervisor overhead.",
+          "image": "/images/virtualization/memory_management.png",
+          "imagePosition": "right"
         },
         {
           "id": "io-virtualization",
           "type": "split",
-          "title": "I/O Virtualization",
-          "content": "Three approaches with different trade-offs:\n\n1. Emulation\n   • Full device simulation, maximum compatibility\n   • Highest overhead, very slow\n\n2. Paravirtualization (Virtio)\n   • Guest-aware drivers, shared queues\n   • Moderate overhead, good performance\n\n3. SR-IOV (Hardware)\n   • Direct VF access, bypasses hypervisor\n   • Near bare-metal performance",
+          "title": "I/O Virtualization Techniques",
+          "content": "Efficient I/O is critical for networking and storage performance.\n\n• **Emulation**: Full simulation; maximum compatibility but highest overhead.\n• **Paravirtualization (Virtio)**: Guest-aware drivers with shared memory queues; balanced performance.\n• **SR-IOV**: Direct hardware function access; bypasses hypervisor for true bare-metal speeds.",
           "image": "/images/virtualization/io_virtualization.png",
           "imagePosition": "right"
         },
         {
-          "id": "section3-intro",
-          "type": "topic",
-          "title": "3. Hypervisors",
-          "content": "Understanding hypervisor types, architectures, and the key differences between them."
-        },
-        {
-          "id": "what-is-hypervisor",
-          "type": "definition",
-          "title": "What is a Hypervisor?",
-          "content": "A hypervisor (Virtual Machine Monitor - VMM) is software that creates, runs, and manages virtual machines by abstracting and allocating underlying physical hardware resources.\n\nKey Responsibilities:\n• Resource allocation (CPU, memory, storage, network)\n• VM isolation and security\n• Hardware emulation or passthrough\n• VM lifecycle management"
-        },
-        {
-          "id": "type1-vs-type2",
+          "id": "hypervisor-architecture",
           "type": "split",
           "title": "Type 1 vs Type 2 Hypervisors",
-          "content": "Type 1 (Bare-Metal):\n• Installs directly on hardware\n• No host OS required\n• Superior performance\n• Examples: ESXi, KVM, Hyper-V, Xen\n\nType 2 (Hosted):\n• Runs on top of host OS\n• Additional layer of overhead\n• Easier installation\n• Examples: VirtualBox, VMware Workstation",
+          "content": "The choice of architecture defines the performance and use-case boundaries.\n\n• **Type 1 (Bare-Metal)**: Installs directly on hardware. Best for production, enterprise, and cloud. (ESXi, KVM, Hyper-V).\n• **Type 2 (Hosted)**: Runs as an app on a host OS. Best for development, testing, and classrooms. (VirtualBox, Workstation).",
           "image": "/images/virtualization/type1_vs_type2.png",
           "imagePosition": "right"
         },
         {
-          "id": "section4-intro",
-          "type": "topic",
-          "title": "4. Hypervisor Internals",
-          "content": "Deep dive into VM lifecycle, scheduling, isolation, and performance considerations."
-        },
-        {
-          "id": "vm-lifecycle",
+          "id": "internals-lifecycle",
           "type": "keypoints",
-          "title": "VM Lifecycle Management",
+          "title": "Hypervisor Internals & Lifecycle",
           "items": [
             {
-              "title": "Create",
-              "description": "Define VM specs: vCPUs, memory, disk, network adapters, boot order."
+              "title": "VM Lifecycle",
+              "description": "Snapshotting for rollback, cloning for scale, and Live Migration (vMotion) for zero-downtime maintenance."
             },
             {
-              "title": "Snapshot",
-              "description": "Capture point-in-time state for rollback. Includes memory, disk, and configuration."
+              "title": "CPU Scheduling",
+              "description": "Mapping vCPUs to pCPUs via fair-share algorithms, reservations, and affinity pinning."
             },
             {
-              "title": "Clone",
-              "description": "Create full or linked copy. Linked clones share base disk to save space."
+              "title": "Resource Isolation",
+              "description": "Hardware enforcement of memory boundaries (EPT) and device separation (IOMMU) for security."
             },
             {
-              "title": "Live Migration",
-              "description": "Move running VM between hosts (vMotion, Live Migration). Zero-downtime maintenance."
-            },
-            {
-              "title": "Suspend/Resume",
-              "description": "Save complete VM state to disk. Faster than full boot on resume."
+              "title": "Management Layer",
+              "description": "Orchestration, monitoring, and automated workload balancing across clusters."
             }
           ]
         },
         {
-          "id": "scheduling-isolation",
+          "id": "types-of-virtualization",
           "type": "keypoints",
-          "title": "Scheduling & Isolation",
+          "title": "Survey of Virtualization Types",
           "items": [
             {
-              "title": "vCPU Scheduling",
-              "description": "Map virtual CPUs to physical cores. Fair-share allocation based on CPU shares, reservations, and limits."
+              "title": "Application",
+              "description": "Encapsulating apps (App-V, ThinApp) to run independently of the local OS."
             },
             {
-              "title": "Memory Management",
-              "description": "Memory ballooning, transparent page sharing, overcommitment with swap."
+              "title": "Desktop (VDI)",
+              "description": "Centrally hosting user desktops (Horizon, WorkSpaces) for remote access."
             },
             {
-              "title": "Hardware Isolation",
-              "description": "VT-x/AMD-V enforces VM boundaries. EPT/NPT provides memory isolation. IOMMU isolates DMA devices."
+              "title": "Network (SDN)",
+              "description": "Decoupling routing and switching (NSX, VPC) from physical hardware."
             },
             {
-              "title": "Security Boundaries",
-              "description": "Each VM has isolated address space. Side-channel mitigations (Spectre, Meltdown). VM escape prevention."
+              "title": "Storage",
+              "description": "Pooling physical disks into software-defined storage fabrics (vSAN)."
+            },
+            {
+              "title": "Server",
+              "description": "The foundation: partitioning physical servers into multiple VMs (ESXi, KVM)."
+            },
+            {
+              "title": "Data",
+              "description": "Abstracting diverse data sources into a single, unified access layer (Denodo)."
             }
           ]
         },
         {
-          "id": "performance-overhead",
-          "type": "keypoints",
-          "title": "Performance Overhead Sources",
-          "items": [
-            {
-              "title": "VM Exits",
-              "description": "Transitions from guest to hypervisor. Mitigated by hardware-assisted virtualization."
-            },
-            {
-              "title": "Memory Translation",
-              "description": "GVA → GPA → HPA lookups. EPT/NPT and large pages reduce overhead."
-            },
-            {
-              "title": "I/O Emulation",
-              "description": "Software device emulation is slow. Use Virtio or SR-IOV for better performance."
-            },
-            {
-              "title": "Context Switches",
-              "description": "Saving/restoring VM state. CPU pinning and NUMA awareness help."
-            }
-          ]
-        },
-        {
-          "id": "virtualization-types",
-          "type": "topic",
-          "title": "5. Types of Virtualization",
-          "content": "Exploring the different layers of virtualization beyond just servers: Application, Network, Desktop, Storage, and Data."
-        },
-        {
-          "id": "types-app-desktop",
-          "type": "keypoints",
-          "title": "App & Desktop Virtualization",
-          "items": [
-            {
-              "title": "Application Virtualization",
-              "description": "Encapsulates apps to run independently of the OS. Benefits: Portability, isolation. Examples: Citrix Virtual Apps, VMware ThinApp."
-            },
-            {
-              "title": "Desktop Virtualization (VDI)",
-              "description": "Hosted desktop environments on central servers. Users access via thin clients. Benefits: Security, centralized management. Examples: VMware Horizon, Amazon WorkSpaces."
-            }
-          ]
-        },
-        {
-          "id": "types-network-server",
-          "type": "keypoints",
-          "title": "Network & Server Virtualization",
-          "items": [
-             {
-              "title": "Network Virtualization (SDN)",
-              "description": "Decouples network services from hardware. Logical switching, routing, firewalls. Examples: VMware NSX, Cisco ACI."
-            },
-            {
-              "title": "Server Virtualization",
-              "description": "Partitioning physical servers into multiple VMs. The foundation of cloud computing. Examples: vSphere, KVM, Hyper-V."
-            }
-          ]
-        },
-        {
-          "id": "types-storage-data",
-          "type": "keypoints",
-          "title": "Storage & Data Virtualization",
-          "items": [
-            {
-              "title": "Storage Virtualization",
-              "description": "Pooling physical storage into a single logical device. SAN, vSAN, Cloud Storage (S3)."
-            },
-            {
-              "title": "Data Virtualization",
-              "description": "Abstract layer for accessing data from multiple sources as a single view without moving data. Examples: Denodo, Tibco."
-            }
-          ]
-        },
-        {
-          "id": "section5-intro",
-          "type": "topic",
-          "title": "6. Platforms & Technologies",
-          "content": "Detailed analysis of major virtualization platforms: VMware ESXi, KVM, Hyper-V, Xen, and VirtualBox."
-        },
-        {
-          "id": "vmware-ecosystem",
-          "type": "keypoints",
-          "title": "VMware Ecosystem (Broadcom)",
-          "items": [
-            {
-              "title": "Core Bundles (Subscription)",
-              "description": "VMware Cloud Foundation (VCF): Full SDDC via vSphere Ent+, vSAN, NSX, Aria. vSphere Foundation (VVF): Mid-market bundle."
-            },
-            {
-              "title": "Key Components",
-              "description": "ESXi (Hypervisor), vCenter (Mgmt), vSAN (Storage), NSX (Networking/Security), Tanzu (Kubernetes), Aria (Automation)."
-            },
-            {
-              "title": "Strengths",
-              "description": "Most mature SDDC, extensive ecosystem, best-in-class management, strong enterprise support."
-            },
-            {
-              "title": "Challenges (2024+)",
-              "description": "Significantly increased costs (bundling), complex full-stack deployment, per-core licensing model."
-            },
-            {
-              "title": "Desktop Virtualization",
-              "description": "Workstation Pro (Windows/Linux) and Fusion Pro (macOS) are now free for personal use."
-            }
-          ]
-        },
-        {
-          "id": "proxmox-ve",
-          "type": "keypoints",
-          "title": "Proxmox VE",
-          "items": [
-            {
-              "title": "Architecture",
-              "description": "Open-source platform based on Debian. Integrates KVM for VMs and LXC for Containers."
-            },
-            {
-              "title": "Storage & Networking",
-              "description": "Native ZFS and Ceph support for HCI. Open vSwitch networking."
-            },
-            {
-              "title": "Management",
-              "description": "Unified Web GUI for single node or cluster. Built-in Backup Server integration."
-            },
-            {
-              "title": "Licensing",
-              "description": "AGPL v3 (Free). Optional Enterprise subscription for stable repos and support."
-            }
-          ]
-        },
-        {
-          "id": "nutanix-ahv",
-          "type": "keypoints",
-          "title": "Nutanix AHV",
-          "items": [
-            {
-              "title": "Overview",
-              "description": "Enterprise-grade, license-free hypervisor included with Nutanix HCI."
-            },
-            {
-              "title": "Architecture",
-              "description": "Customized KVM base. Controller VM (CVM) handles distributed storage fabric."
-            },
-            {
-              "title": "Prism Management",
-              "description": "Single-pane-of-glass for compute, storage, and networking. 1-click upgrades."
-            },
-            {
-              "title": "Features",
-              "description": "Flow for micro-segmentation, Files/Objects storage services, self-healing clusters."
-            }
-          ]
-        },
-        {
-          "id": "apache-cloudstack",
-          "type": "keypoints",
-          "title": "Apache CloudStack",
-          "items": [
-            {
-              "title": "Overview",
-              "description": "Turnkey open-source IaaS platform. Orchestrates hypervisors (KVM, ESXi, Xen)."
-            },
-            {
-              "title": "Vs OpenStack",
-              "description": "Simpler monolithic architecture vs OpenStack's complex microservices. Easier to deploy/maintain."
-            },
-            {
-              "title": "Networking",
-              "description": "Advanced virtual networking: isolated networks, VPCs, VPNs, load scalers."
-            },
-            {
-              "title": "Target Audience",
-              "description": "Service providers, telecom operators, and enterprises building private clouds."
-            }
-          ]
-        },
-        {
-          "id": "kvm",
-          "type": "keypoints",
-          "title": "KVM (Kernel-based Virtual Machine)",
-          "items": [
-            {
-              "title": "Architecture",
-              "description": "Open-source Type 1 hypervisor integrated into Linux kernel. Each VM is a Linux process. QEMU provides device emulation."
-            },
-            {
-              "title": "Key Features",
-              "description": "VirtIO paravirtualized drivers, vhost-net zero-copy networking, PCI/GPU passthrough, NUMA awareness, cgroups integration."
-            },
-            {
-              "title": "Strengths",
-              "description": "Free and open-source (GPL v2). Excellent Linux performance. Foundation for AWS, GCP, OpenStack, Proxmox."
-            },
-            {
-              "title": "Weaknesses",
-              "description": "Linux-only host. Management tools vary in quality. Steeper learning curve. Enterprise support requires commercial distribution."
-            },
-            {
-              "title": "Use Cases",
-              "description": "Cloud infrastructure, Linux-based enterprises, DevOps platforms, cost-conscious deployments."
-            }
-          ]
-        },
-        {
-          "id": "hyper-v",
-          "type": "keypoints",
-          "title": "Microsoft Hyper-V",
-          "items": [
-            {
-              "title": "Architecture",
-              "description": "Type 1 hypervisor built into Windows Server. Parent partition hosts drivers and management. VMBus provides high-speed I/O."
-            },
-            {
-              "title": "Key Features",
-              "description": "Live Migration, Hyper-V Replica (DR), Dynamic Memory, Nested Virtualization, PowerShell Direct, SR-IOV, GPU-P."
-            },
-            {
-              "title": "Strengths",
-              "description": "Included with Windows Server (no extra cost). Native Azure integration. Excellent Windows guest performance."
-            },
-            {
-              "title": "Weaknesses",
-              "description": "Windows-centric. Requires Windows Server license. Fewer third-party integrations than VMware."
-            },
-            {
-              "title": "Use Cases",
-              "description": "Windows Server workloads, Azure hybrid environments, SMB Microsoft shops, Windows desktop virtualization."
-            }
-          ]
-        },
-        {
-          "id": "xen",
-          "type": "keypoints",
-          "title": "Xen Hypervisor",
-          "items": [
-            {
-              "title": "Architecture",
-              "description": "Open-source Type 1 microkernel design. Dom0 (privileged) manages hardware, DomU (unprivileged) runs guest VMs."
-            },
-            {
-              "title": "Key Features",
-              "description": "Paravirtualization (PV), HVM, PVH hybrid mode. Memory ballooning. XSM/Flask security policies. ~200k lines of code."
-            },
-            {
-              "title": "Strengths",
-              "description": "Security-focused design (used by Qubes OS). Small trusted computing base. Powers AWS EC2 (historically)."
-            },
-            {
-              "title": "Weaknesses",
-              "description": "Smaller community than KVM. Dom0 can be I/O bottleneck. Steeper learning curve. Citrix XenServer is expensive."
-            },
-            {
-              "title": "Use Cases",
-              "description": "Security-sensitive environments, cloud infrastructure, academic/research, existing Citrix deployments."
-            }
-          ]
-        },
-        {
-          "id": "virtualbox",
-          "type": "keypoints",
-          "title": "Oracle VirtualBox",
-          "items": [
-            {
-              "title": "Architecture",
-              "description": "Type 2 hosted hypervisor running on Windows, macOS, Linux, Solaris. Guest Additions provide paravirtual drivers."
-            },
-            {
-              "title": "Key Features",
-              "description": "Snapshots, cloning, shared folders/clipboard, USB passthrough (Extension Pack), VRDP remote display, OVF import/export."
-            },
-            {
-              "title": "Strengths",
-              "description": "Completely free (GPL v2). Simple, beginner-friendly. Cross-platform. Great for learning and development."
-            },
-            {
-              "title": "Weaknesses",
-              "description": "Limited 3D graphics (128MB VRAM). Performance below VMware Workstation. Not suitable for production."
-            },
-            {
-              "title": "Use Cases",
-              "description": "Learning and education, software development, running multiple OS on personal computer, compatibility testing."
-            }
-          ]
-        },
-        {
-          "id": "section6-intro",
-          "type": "topic",
-          "title": "7. Comparison Matrix",
-          "content": "Side-by-side comparison of virtualization platforms by features, pricing, and enterprise readiness."
-        },
-        {
-          "id": "feature-comparison",
-          "type": "keypoints",
-          "title": "Feature Comparison",
-          "items": [
-            {
-              "title": "VMware Ecosystem",
-              "description": "Type 1 • vCenter • vSAN • NSX • Tanzu • Most mature Enterprise SDDC."
-            },
-            {
-              "title": "Proxmox VE",
-              "description": "Type 1 (Debian) • KVM + LXC • Native ZFS/Ceph • Built-in Backup • Free/Open Source."
-            },
-            {
-              "title": "Nutanix AHV",
-              "description": "Type 1 (KVM) • HCI Focused • Prism Management • Flow Security • License-free with HW."
-            },
-            {
-              "title": "Microsoft Hyper-V",
-              "description": "Type 1 • Native Azure Integration • Best Windows Performance • Included in Windows Server."
-            },
-            {
-              "title": "KVM (Open Source)",
-              "description": "Type 1 • Kernel-based • Basis for AWS/GCP/OpenStack • Max flexibility • Linux-centric."
-            }
-          ]
-        },
-        {
-          "id": "pricing-comparison",
-          "type": "keypoints",
-          "title": "Pricing Comparison (2024-2025)",
-          "items": [
-            {
-              "title": "VMware VCF / VVF",
-              "description": "Subscription model. VVF ~$135/core/yr. VCF ~$350/core/yr. Significant price hike in 2024."
-            },
-            {
-              "title": "Proxmox / KVM",
-              "description": "Software is Free (AGPL/GPL). Proxmox Enterprise support ~$110/socket/year. Great value."
-            },
-            {
-              "title": "Nutanix AHV",
-              "description": "Included with Nutanix Cloud Platform license. No separate hypervisor cost (\"Tax\")."
-            },
-            {
-              "title": "Microsoft Hyper-V",
-              "description": "Included with Windows Server Datacenter (unlimited VMs). Licensing cost is per-core for OS."
-            },
-            {
-              "title": "Citrix / XCP-ng",
-              "description": "Citrix XenServer is premium priced. XCP-ng is a free open-source fork (paid pro support)."
-            }
-          ]
-        },
-        {
-          "id": "section7-intro",
-          "type": "topic",
-          "title": "8. Benefits & Tradeoffs",
-          "content": "Understanding the advantages and limitations of virtualization technology."
-        },
-        {
-          "id": "benefits",
-          "type": "keypoints",
-          "title": "Key Benefits",
-          "items": [
-            {
-              "title": "Server Consolidation",
-              "description": "Run multiple VMs on single server. 60-80% hardware reduction. Better ROI."
-            },
-            {
-              "title": "Cost Reduction",
-              "description": "Lower hardware, power, cooling costs. 40-70% OpEx savings typical."
-            },
-            {
-              "title": "Isolation",
-              "description": "Workload separation for security and stability. Reduced blast radius on failures."
-            },
-            {
-              "title": "Rapid Provisioning",
-              "description": "Deploy new VMs in minutes vs weeks. Faster time-to-market."
-            },
-            {
-              "title": "Disaster Recovery",
-              "description": "VM-level backup/restore, replication. Lower RTO/RPO. Hardware-independent recovery."
-            },
-            {
-              "title": "Live Migration",
-              "description": "Move running VMs between hosts. Zero-downtime maintenance and load balancing."
-            }
-          ]
-        },
-        {
-          "id": "limitations",
-          "type": "keypoints",
-          "title": "Limitations & Challenges",
-          "items": [
-            {
-              "title": "Performance Overhead",
-              "description": "2-10% CPU overhead vs bare-metal. Memory and I/O can add more. Mitigated by hardware-assisted virtualization."
-            },
-            {
-              "title": "Complexity",
-              "description": "Additional management layer. Requires training and expertise. More moving parts to troubleshoot."
-            },
-            {
-              "title": "Licensing Costs",
-              "description": "VMware especially expensive post-Broadcom (150-1000% increases reported). Guest OS licenses add up."
-            },
-            {
-              "title": "Single Point of Failure",
-              "description": "Host failure affects multiple VMs. Requires clustering, HA, and proper DR planning."
-            },
-            {
-              "title": "Resource Contention",
-              "description": "\"Noisy neighbor\" problem in shared environments. Requires resource reservations and QoS."
-            }
-          ]
-        },
-        {
-          "id": "section8-intro",
-          "type": "topic",
-          "title": "9. Modern Extensions",
-          "content": "Exploring containers, cloud virtualization, and nested virtualization."
-        },
-        {
-          "id": "containers-vs-vms",
+          "id": "family-partitioned",
           "type": "split",
-          "title": "Containers vs Virtual Machines",
-          "content": "Virtual Machines:\n• Full OS per VM (GB size)\n• Strong hardware-level isolation\n• Seconds to minutes to start\n• 10s per host typically\n\nContainers:\n• Share host kernel (MB size)\n• Process-level isolation\n• Milliseconds to start\n• 100s-1000s per host\n\nUse VMs for: Multi-OS, strong isolation, legacy apps\nUse containers for: Microservices, CI/CD, cloud-native",
+          "title": "1. The Partitioned Family (Hyper-V)",
+          "content": "Microsoft uses a Partitioned architecture where the Root (Parent) partition manages the hardware.\n\n• **Root Partition**: The main Windows OS; owns the physical drivers.\n• **Child Partitions**: The VMs. Use Virtualization Service Clients (VSC).\n• **The VMBus**: High-speed communication tunnel for child-to-parent I/O.\n• **Products**: Windows Server (Hyper-V), Azure Stack HCI, Windows Pro.",
+          "image": "/images/virtualization/partitioned_architecture_hv.png",
+          "imagePosition": "right"
+        },
+        {
+          "id": "family-monolithic",
+          "type": "split",
+          "title": "2. The Monolithic Family (VMware)",
+          "content": "VMware ESXi is a self-contained 'mini-OS' designed specifically for virtualization.\n\n• **VMkernel**: A specialized, monolithic kernel that includes its own drivers and management stack.\n• **Independence**: No 'main OS' (like Windows) runs on top. The hypervisor is the only thing on the hardware.\n• **Products**: vSphere (Enterprise), Workstation (Desktop), and Fusion (Mac).",
+          "image": "/images/virtualization/monolithic_architecture_vmw.png",
+          "imagePosition": "right"
+        },
+        {
+          "id": "family-microkernel",
+          "type": "split",
+          "title": "3. The Microkernel Family (Xen)",
+          "content": "Xen uses a tiny core hypervisor that offloads hardware management to a privileged VM.\n\n• **Dom0 (Domain 0)**: A highly-privileged VM that manages hardware drivers and other domains.\n• **DomU (User Domains)**: Standard, unprivileged virtual machines.\n• **Security**: Extreme isolation; this design was the original foundation for AWS EC2.",
+          "image": "/images/virtualization/microkernel_architecture_xen.png",
+          "imagePosition": "right"
+        },
+        {
+          "id": "family-kernel-based",
+          "type": "split",
+          "title": "4. The Kernel-Based Family (KVM)",
+          "content": "KVM turns the Linux kernel itself into a Type 1 hypervisor via a simple kernel module.\n\n• **VMs as Processes**: Each VM is literally a standard Linux process (manageable via `kill` or `top`).\n• **Native Efficiency**: Levages existing Linux features for memory and task scheduling.\n• **Products**: Proxmox, Nutanix AHV, and the engine for AWS Nitro & Google Cloud.",
+          "image": "/images/virtualization/kernel_based_architecture_kvm.png",
+          "imagePosition": "right"
+        },
+        {
+          "id": "family-os-level",
+          "type": "split",
+          "title": "5. The OS-Level Family (LXC)",
+          "content": "Linux Containers (LXC) provide isolated sandboxes without the need for hardware virtualization.\n\n• **The 'Cheat'**: Shares the host's kernel and uses Namespaces (isolation) and Cgroups (limits).\n• **Performance**: Near-zero overhead and millisecond startup times.\n• **The Limit**: Host and Guest must share the same kernel (Linux-only). Products: LXD, Incus, Proxmox.",
           "image": "/images/virtualization/containers_vs_vms.png",
           "imagePosition": "right"
         },
         {
-          "id": "cloud-virtualization",
+          "id": "arch-comparison",
+          "type": "split",
+          "title": "Architectural Comparison Matrix",
+          "content": "A high-level view of how core logic and drivers are distributed across these five major models.",
+          "image": "/images/virtualization/beautiful_architecture_comparison_matrix.png",
+          "imagePosition": "right"
+        },
+        {
+          "id": "ecosystem-products",
           "type": "keypoints",
-          "title": "Cloud Virtualization",
+          "title": "The Global Virtualization Ecosystem",
           "items": [
             {
-              "title": "AWS EC2",
-              "description": "Nitro (KVM-based) hypervisor. Custom Nitro cards offload networking. Largest market share."
+              "title": "Microsoft Stack",
+              "description": "Windows Server, Azure Stack HCI, and Desktop Pro/Enterprise."
             },
             {
-              "title": "Azure VMs",
-              "description": "Microsoft Hyper-V based. Native integration with Azure services. Strong Windows workload support."
+              "title": "Open Source & Cloud",
+              "description": "Proxmox (KVM/LXC), Citrix (Xen), Qubes OS, and AWS Nitro (Custom KVM)."
             },
             {
-              "title": "Google Cloud Compute",
-              "description": "Custom KVM-based hypervisor. Andromeda networking. Live migration during maintenance."
-            },
-            {
-              "title": "Cloud Optimizations",
-              "description": "Custom hypervisors, hardware offload (DPUs), auto-scaling, spot/preemptible instances for cost savings."
+              "title": "Enterprise HCI",
+              "description": "Nutanix AHV (KVM-based) and VMware vSphere (Monolithic)."
             }
           ]
         },
         {
-          "id": "nested-virtualization",
+          "id": "conclusion-refs",
           "type": "keypoints",
-          "title": "Nested Virtualization",
+          "title": "Conclusion & Key References",
           "items": [
             {
-              "title": "What It Is",
-              "description": "Running a hypervisor inside a VM. VMs within VMs. L0 (host) → L1 (nested hypervisor) → L2 (nested VMs)."
+              "title": "Final Summary",
+              "description": "Virtualization is no longer just one thing. It's a spectrum from heavy Monolithic stacks to lightweight Container sandboxes."
             },
             {
-              "title": "Use Cases",
-              "description": "Hypervisor training/certification, testing vSphere/Hyper-V environments, cloud-based development, Hyper-V containers."
-            },
-            {
-              "title": "Performance Impact",
-              "description": "CPU-bound: ~10% degradation. I/O-bound: 20-30%+ impact. Not recommended for production workloads."
-            },
-            {
-              "title": "Requirements",
-              "description": "VT-x/AMD-V exposed to L1 VM. Sufficient resources. All major hypervisors support nested virtualization."
-            }
-          ]
-        },
-
-        {
-          "id": "conclusion",
-          "type": "topic",
-          "title": "10. Conclusion",
-          "content": "Key takeaways and recommendations for choosing the right virtualization approach."
-        },
-        {
-          "id": "summary",
-          "type": "keypoints",
-          "title": "Summary",
-          "items": [
-            {
-              "title": "Virtualization is Foundational",
-              "description": "Core technology for modern IT. Server consolidation, cloud computing, and DevOps all depend on it."
-            },
-            {
-              "title": "Hardware Acceleration is Essential",
-              "description": "VT-x/AMD-V, EPT/NPT, SR-IOV are required for production performance. Don't rely on software-only."
-            },
-            {
-              "title": "Choose Platform Based on Needs",
-              "description": "VMware: Mixed OS enterprise. KVM: Linux/cloud. Hyper-V: Windows/Azure. VirtualBox: Desktop/learning."
-            },
-            {
-              "title": "Consider Total Cost",
-              "description": "VMware expensive post-Broadcom. Open-source (KVM, XCP-ng) as cost-effective alternatives. Hyper-V if already Windows Server."
-            },
-            {
-              "title": "Containers Complement, Don't Replace",
-              "description": "Use VMs for isolation and multi-OS. Use containers for microservices and rapid scaling. Often used together."
-            }
-          ]
-        },
-        {
-          "id": "references-topic",
-          "type": "topic",
-          "title": "11. References",
-          "content": "Authoritative sources and further reading."
-        },
-        {
-          "id": "references-list",
-          "type": "keypoints",
-          "title": "Key References",
-          "items": [
-            {
-              "title": "Virtualization Fundamentals",
-              "description": "ibm.com/topics/virtualization, redhat.com/topics/virtualization"
-            },
-            {
-              "title": "Hypervisor Platforms",
-              "description": "docs.vmware.com, linux-kvm.org, learn.microsoft.com/virtualization"
-            },
-            {
-              "title": "Modern Extensions",
-              "description": "aws.amazon.com/ec2/nitro, docs.docker.com, kubernetes.io/docs"
+              "title": "Technical Hubs",
+              "description": "linux-kvm.org, xenproject.org, docs.vmware.com, microsoft.com/hv"
             },
             {
               "title": "Further Reading",
-              "description": "xenproject.org, virtualbox.org, geeksforgeeks.org"
+              "description": "Proxmox.com, linuxcontainers.org, aws.amazon.com/nitro"
             }
           ]
         }
