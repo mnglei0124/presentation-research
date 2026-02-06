@@ -357,6 +357,550 @@
           ]
         }
       ]
+    },
+    {
+      "id": "linux-deep-dive",
+      "slug": "linux-deep-dive",
+      "title": "Linux & OS Architecture Deep Dive",
+      "description": "A comprehensive technical presentation covering OS fundamentals, Linux internals, Ubuntu, CentOS, and advanced system administration.",
+      "thumbnail": "/images/linux/linux_thumbnail.png",
+      "template": "Slides",
+      "createdAt": "2026-02-06",
+      "accentColor": "from-blue-600 to-cyan-600",
+      "sections": [
+        {
+          "id": "hero",
+          "type": "hero",
+          "title": "Linux & OS Architecture Deep Dive",
+          "subtitle": "From Kernel to User Space",
+          "content": "A condensed technical exploration of operating system fundamentals, Linux internals, distribution comparisons, and advanced administration."
+        },
+        {
+          "id": "os-fundamentals",
+          "type": "keypoints",
+          "title": "OS Fundamentals",
+          "items": [
+            {
+              "title": "What is an OS?",
+              "description": "The resource allocator and control program. Manages Processes, Memory, Storage, and Security."
+            },
+            {
+              "title": "The Kernel (The Core)",
+              "description": "Monolithic (Linux): All drivers & FS in one space (Fast). Microkernel: Minimal core, services in user space (Stable)."
+            },
+            {
+              "title": "Protection Rings",
+              "description": "Ring 0: Kernel Mode (Full Access). Ring 3: User Mode (Restricted)."
+            }
+          ]
+        },
+        {
+          "id": "what-is-linux",
+          "type": "topic",
+          "title": "What is Linux?",
+          "content": "Linux is a free, open-source Unix-like operating system kernel created by Linus Torvalds in 1991. Combined with GNU tools, it forms a complete operating system powering everything from smartphones to supercomputers."
+        },
+        {
+          "id": "linux-distros",
+          "type": "keypoints",
+          "title": "Linux Distributions",
+          "items": [
+            {
+              "title": "The Formula",
+              "description": "Linux Kernel + GNU Tools + Package Manager + Desktop/Server Config = Distribution (Distro)"
+            },
+            {
+              "title": "Why Multiple Distros?",
+              "description": "Different philosophies: Stability vs Cutting-edge, Simplicity vs Control, Enterprise vs Community."
+            },
+            {
+              "title": "Core Components",
+              "description": "All distros share the Linux kernel but differ in package management, init systems, and default software."
+            }
+          ]
+        },
+        {
+          "id": "popular-distros",
+          "type": "keypoints",
+          "title": "Popular Distros & Use Cases",
+          "items": [
+            {
+              "title": "Debian Family",
+              "description": "Ubuntu, Debian, Linux Mint. Best for: Desktops, cloud, beginners. Package: .deb (APT)."
+            },
+            {
+              "title": "RHEL Family",
+              "description": "CentOS, Rocky, Fedora, AlmaLinux. Best for: Servers, enterprises, ISPs. Package: .rpm (DNF/YUM)."
+            },
+            {
+              "title": "Arch Family",
+              "description": "Arch, Manjaro. Best for: Advanced users, customization. Package: pacman. Rolling release."
+            },
+            {
+              "title": "SUSE Family",
+              "description": "openSUSE, SLES. Best for: European enterprises, YaST configuration tool."
+            },
+            {
+              "title": "Specialized",
+              "description": "Alpine (containers), Kali (security), Raspberry Pi OS (embedded)."
+            }
+          ]
+        },
+        {
+          "id": "linux-internals",
+          "type": "keypoints",
+          "title": "Linux Internals & Boot Process",
+          "items": [
+            {
+              "title": "BIOS/UEFI",
+              "description": "Hardware check (POST)."
+            },
+            {
+              "title": "GRUB2",
+              "description": "Loads Kernel & Initrd."
+            },
+            {
+              "title": "Kernel",
+              "description": "Mounts root FS, starts init."
+            },
+            {
+              "title": "Systemd",
+              "description": "Parallel service startup."
+            },
+            {
+              "title": "Inter-Process Communication (IPC)",
+              "description": "How apps talk: Pipes, Sockets, Signals, Shared Memory."
+            }
+          ]
+        },
+        {
+          "id": "filesystem",
+          "type": "keypoints",
+          "title": "The Filesystem (FHS)",
+          "items": [
+            {
+              "title": "/bin",
+              "description": "Essential binary or executable programs required for basic system operation."
+            },
+            {
+              "title": "/etc",
+              "description": "System-wide configuration files used to control system behavior (e.g., fstab, passwd)."
+            },
+            {
+              "title": "/home",
+              "description": "User home directories and default working directory for users."
+            },
+            {
+              "title": "/opt",
+              "description": "Optional or third-party software packages installed separately from the system."
+            },
+            {
+              "title": "/tmp",
+              "description": "Temporary storage space for files, typically cleared on system reboot."
+            },
+            {
+              "title": "/usr",
+              "description": "User-related programs, utilities, and shared resources."
+            },
+            {
+              "title": "/var",
+              "description": "Variable data such as log files that change frequently during system operation."
+            },
+            {
+              "title": "/proc & /dev",
+              "description": "Virtual filesystems: /proc (kernel runtime info), /dev (hardware devices like sda)."
+            }
+          ]
+        },
+        {
+          "id": "command-mastery",
+          "type": "keypoints",
+          "title": "Command Mastery",
+          "items": [
+            {
+              "title": "Service Management (Systemd)",
+              "description": "systemctl start/stop/status [service], systemctl enable (Start at boot)"
+            },
+            {
+              "title": "Monitoring & Logs",
+              "description": "Live: top, htop, vmstat 1, iostat. Logs: journalctl -u [service] -f (Real-time)."
+            },
+            {
+              "title": "Networking",
+              "description": "Modern: ip a, ss -tunlp (Check ports)."
+            }
+          ]
+        },
+        {
+          "id": "ubuntu-intro",
+          "type": "topic",
+          "title": "Ubuntu - The Developer's Choice",
+          "content": "Debian-based distribution focused on ease of use, developer productivity, and cutting-edge features."
+        },
+        {
+          "id": "ubuntu-features",
+          "type": "keypoints",
+          "title": "Ubuntu Key Features",
+          "items": [
+            {
+              "title": "Package Management",
+              "description": "APT (Advanced Package Tool): apt update && apt install. Snap packages for universal apps."
+            },
+            {
+              "title": "Release Cycle",
+              "description": "LTS (Long Term Support): 5 years of updates. Regular releases every 6 months for latest features."
+            },
+            {
+              "title": "Default Shell",
+              "description": "Dash for scripts (faster), Bash for interactive users."
+            },
+            {
+              "title": "Firewall",
+              "description": "UFW (Uncomplicated Firewall): Simple syntax, perfect for beginners and quick setups."
+            },
+            {
+              "title": "Security",
+              "description": "AppArmor: Mandatory Access Control with application profiles."
+            },
+            {
+              "title": "Best For",
+              "description": "Development workstations, cloud instances, beginners, and rapid prototyping."
+            }
+          ]
+        },
+        {
+          "id": "centos-intro",
+          "type": "topic",
+          "title": "CentOS/Rocky - Enterprise Stability",
+          "content": "RHEL-based distribution designed for mission-critical enterprise environments requiring maximum stability and long-term support."
+        },
+        {
+          "id": "centos-features",
+          "type": "keypoints",
+          "title": "CentOS/Rocky Key Features",
+          "items": [
+            {
+              "title": "Package Management",
+              "description": "DNF/YUM: dnf install, dnf history. RPM packages with strong dependency resolution."
+            },
+            {
+              "title": "Release Cycle",
+              "description": "CentOS Stream (Rolling), Rocky Linux (Fixed, 10-year support). Ultra-stable, conservative updates."
+            },
+            {
+              "title": "Default Shell",
+              "description": "Bash for both scripts and interactive use."
+            },
+            {
+              "title": "Firewall",
+              "description": "firewalld: Zone-based configuration, runtime and permanent rules, enterprise-grade."
+            },
+            {
+              "title": "Security",
+              "description": "SELinux (Security-Enhanced Linux): Strict mandatory access control, government-certified."
+            },
+            {
+              "title": "Best For",
+              "description": "Production servers, enterprise infrastructure, compliance requirements, long-term deployments."
+            }
+          ]
+        },
+        {
+          "id": "comparison",
+          "type": "keypoints",
+          "title": "Ubuntu vs CentOS/Rocky",
+          "items": [
+            {
+              "title": "Philosophy",
+              "description": "Ubuntu: Innovation & ease of use. CentOS: Stability & enterprise reliability."
+            },
+            {
+              "title": "Package Ecosystem",
+              "description": "Ubuntu: .deb (APT), larger repository, newer versions. CentOS: .rpm (DNF), curated, battle-tested."
+            },
+            {
+              "title": "Update Frequency",
+              "description": "Ubuntu: More frequent updates, cutting-edge. CentOS: Conservative, only critical patches."
+            },
+            {
+              "title": "Learning Curve",
+              "description": "Ubuntu: Beginner-friendly, extensive documentation. CentOS: Steeper, enterprise-focused."
+            },
+            {
+              "title": "Use Case",
+              "description": "Ubuntu: Dev environments, cloud, startups. CentOS: Banks, telecoms, government, ISPs."
+            }
+          ]
+        },
+        {
+          "id": "advanced-security",
+          "type": "keypoints",
+          "title": "Advanced & Security",
+          "items": [
+            {
+              "title": "SSH Security",
+              "description": "Disable Root Login. Key-based authentication only (No passwords). Change default port (22 -> 2222)."
+            },
+            {
+              "title": "LVM (Logical Volume Management)",
+              "description": "Flexible storage resizing. PV -> VG -> LV hierarchy."
+            },
+            {
+              "title": "Bash Scripting",
+              "description": "Automate repetitive tasks. Variables, Loops, and Conditionals."
+            }
+          ]
+        },
+        {
+          "id": "isp-summary",
+          "type": "keypoints",
+          "title": "Why Ubuntu & CentOS for ISP Work",
+          "items": [
+            {
+              "title": "Network Stack Maturity",
+              "description": "Both distros have battle-tested TCP/IP stacks, BGP routing support, and extensive networking tools (iproute2, iptables, nftables)."
+            },
+            {
+              "title": "Long-Term Support (LTS)",
+              "description": "Ubuntu LTS: 5 years. Rocky Linux: 10 years. Critical for ISP infrastructure that runs 24/7/365 without frequent reinstalls."
+            },
+            {
+              "title": "Package Availability",
+              "description": "Rich repositories for ISP-specific tools: BIRD, FRRouting, Quagga, NetFlow collectors, SNMP agents, and monitoring stacks."
+            },
+            {
+              "title": "Enterprise & Community Support",
+              "description": "Ubuntu: Canonical support + massive community. CentOS/Rocky: RHEL compatibility + enterprise-grade documentation."
+            },
+            {
+              "title": "Performance & Stability",
+              "description": "Optimized for server workloads, minimal bloat, proven uptime records. Both excel in high-throughput, low-latency network environments."
+            },
+            {
+              "title": "ISP Ecosystem Compatibility",
+              "description": "Most ISP vendors (Cisco, Juniper, Nokia) test and certify their management tools on Ubuntu and RHEL-based systems."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dhcp-deep-dive",
+      "slug": "dhcp-deep-dive",
+      "title": "DHCP - Dynamic Host Configuration Protocol",
+      "description": "A comprehensive technical presentation covering DHCP fundamentals, DORA process, Linux implementation, and ISP deployment strategies.",
+      "thumbnail": "/images/dhcp/dhcp_thumbnail.png",
+      "template": "Slides",
+      "createdAt": "2026-02-06",
+      "accentColor": "from-green-600 to-teal-600",
+      "sections": [
+        {
+          "id": "hero",
+          "type": "hero",
+          "title": "DHCP",
+          "subtitle": "Dynamic Host Configuration Protocol",
+          "content": "Automatic IP address assignment and network configuration for modern networks."
+        },
+        {
+          "id": "what-is-dhcp",
+          "type": "topic",
+          "title": "What is DHCP?",
+          "content": "DHCP is an application layer protocol that automatically assigns IP addresses and network configuration to devices. It operates on UDP ports 67 (server) and 68 (client), eliminating manual IP configuration and preventing address conflicts."
+        },
+        {
+          "id": "dhcp-components",
+          "type": "keypoints",
+          "title": "DHCP Components",
+          "items": [
+            {
+              "title": "DHCP Server",
+              "description": "Stores IP addresses and configuration details. Allocates addresses dynamically to clients."
+            },
+            {
+              "title": "DHCP Client",
+              "description": "A device (PC, phone, printer, etc.) that requests and receives network configuration from the server."
+            },
+            {
+              "title": "DHCP Relay",
+              "description": "Acts as a bridge between clients and servers when they are not on the same subnet."
+            },
+            {
+              "title": "IP Address Pool",
+              "description": "A predefined range of IP addresses that the DHCP server can lease to devices."
+            },
+            {
+              "title": "Lease",
+              "description": "The time period for which an IP address is assigned to a client. After expiry, the client must renew or request a new lease."
+            },
+            {
+              "title": "Options",
+              "description": "Additional parameters like subnet mask, default gateway, DNS servers, domain name, and time servers."
+            }
+          ]
+        },
+        {
+          "id": "dora-overview",
+          "type": "keypoints",
+          "title": "DORA Process Overview",
+          "items": [
+            {
+              "title": "D - Discover",
+              "description": "Client broadcasts to find DHCP servers on the network."
+            },
+            {
+              "title": "O - Offer",
+              "description": "Server responds with an available IP address and configuration."
+            },
+            {
+              "title": "R - Request",
+              "description": "Client accepts the offer and requests the IP address."
+            },
+            {
+              "title": "A - Acknowledge",
+              "description": "Server confirms the lease and binds the IP to the client."
+            }
+          ]
+        },
+        {
+          "id": "dhcp-discover",
+          "type": "split",
+          "title": "1. DHCP Discover",
+          "content": "**Client Broadcasts:**\n\n- Source IP: 0.0.0.0 (client has no IP yet)\n- Destination IP: 255.255.255.255 (broadcast)\n- Source MAC: Client's MAC address\n- Destination MAC: FF:FF:FF:FF:FF:FF (broadcast)\n\n**Purpose:** Client searches for available DHCP servers on the network.\n\n**Packet Size:** 342 or 576 bytes",
+          "image": "/images/dhcp/dhcp_discover.svg",
+          "imagePosition": "right"
+        },
+        {
+          "id": "dhcp-offer",
+          "type": "split",
+          "title": "2. DHCP Offer",
+          "content": "**Server Responds:**\n\n- Source IP: Server's IP address\n- Destination IP: 255.255.255.255 (broadcast) or client IP\n- Offered IP: Available IP from the pool\n- Lease Time: Duration of the IP assignment (e.g., 72 hours)\n\n**Purpose:** Server proposes an IP address and network configuration to the client.\n\n**Note:** If multiple servers exist, client accepts the first offer received.",
+          "image": "/images/dhcp/dhcp_offer.svg",
+          "imagePosition": "left"
+        },
+        {
+          "id": "dhcp-request",
+          "type": "split",
+          "title": "3. DHCP Request",
+          "content": "**Client Accepts:**\n\n- Source IP: 0.0.0.0 (still no IP)\n- Destination IP: 255.255.255.255 (broadcast)\n- Requested IP: The offered IP address\n- Server Identifier: ID of the chosen server\n\n**Purpose:** Client broadcasts acceptance of the offer and requests the IP address.\n\n**ARP Check:** Client sends gratuitous ARP to detect IP conflicts before accepting.",
+          "image": "/images/dhcp/dhcp_request.svg",
+          "imagePosition": "right"
+        },
+        {
+          "id": "dhcp-ack",
+          "type": "split",
+          "title": "4. DHCP Acknowledgment",
+          "content": "**Server Confirms:**\n\n- Source IP: Server's IP address\n- Destination IP: Client's new IP or broadcast\n- Lease Binding: Server creates entry with client ID and lease time\n\n**Purpose:** Server confirms the lease and the client can now use the IP address.\n\n**Result:** IP address is bound to the client and will not be assigned to others during the lease period.",
+          "image": "/images/dhcp/dhcp_ack.svg",
+          "imagePosition": "left"
+        },
+        {
+          "id": "additional-messages",
+          "type": "keypoints",
+          "title": "Additional DHCP Messages",
+          "items": [
+            {
+              "title": "DHCP NACK (Negative Acknowledgment)",
+              "description": "Server rejects the request when the IP is invalid or the pool is exhausted."
+            },
+            {
+              "title": "DHCP Decline",
+              "description": "Client rejects the offered IP (e.g., if ARP detects a conflict)."
+            },
+            {
+              "title": "DHCP Release",
+              "description": "Client voluntarily releases the IP address back to the server."
+            },
+            {
+              "title": "DHCP Inform",
+              "description": "Client requests additional configuration parameters (already has an IP)."
+            }
+          ]
+        },
+        {
+          "id": "linux-implementation",
+          "type": "keypoints",
+          "title": "Linux DHCP Implementation",
+          "items": [
+            {
+              "title": "ISC DHCP Server",
+              "description": "Industry-standard DHCP server: dhcpd. Install: apt install isc-dhcp-server (Ubuntu) or dnf install dhcp-server (CentOS)."
+            },
+            {
+              "title": "Configuration File",
+              "description": "/etc/dhcp/dhcpd.conf - Define subnets, IP ranges, lease times, DNS servers, and gateways."
+            },
+            {
+              "title": "Service Management",
+              "description": "systemctl start dhcpd, systemctl enable dhcpd, systemctl status dhcpd."
+            },
+            {
+              "title": "Lease Database",
+              "description": "/var/lib/dhcpd/dhcpd.leases - Tracks active leases and client bindings."
+            },
+            {
+              "description": "journalctl -u dhcpd -f or /var/log/syslog for troubleshooting."
+            },
+            {
+              "title": "DHCP Failover (High Availability)",
+              "description": "Configure Primary/Secondary peers on VMs to sync leases via TCP 647. Ensures service continuity if one node fails."
+            }
+          ]
+        },
+        {
+          "id": "security-concerns",
+          "type": "keypoints",
+          "title": "Security Concerns",
+          "items": [
+            {
+              "title": "DHCP Starvation Attack",
+              "description": "Attackers flood DHCP requests to exhaust the IP pool. Mitigation: DHCP snooping, rate limiting."
+            },
+            {
+              "title": "Rogue DHCP Servers",
+              "description": "Fake servers assign malicious configurations. Mitigation: DHCP snooping, port security on switches."
+            },
+            {
+              "title": "Man-in-the-Middle Attacks",
+              "description": "Attackers intercept traffic via fake servers. Mitigation: Network segmentation, monitoring."
+            },
+            {
+              "title": "DNS Hijacking",
+              "description": "Malicious DNS servers redirect traffic. Mitigation: Validate DHCP server authenticity, use DNSSEC."
+            }
+          ]
+        },
+        {
+          "id": "isp-deployment",
+          "type": "keypoints",
+          "title": "DHCP in ISP Environments",
+          "items": [
+            {
+              "title": "Customer IP Assignment",
+              "description": "DHCP assigns dynamic IPs to residential customers. Reduces IP waste and simplifies management."
+            },
+            {
+              "title": "Lease Management",
+              "description": "Short leases (24-72 hours) for residential. Long leases or static IPs for business customers."
+            },
+            {
+              "title": "Failover & Redundancy",
+              "description": "Two DHCP servers in failover mode prevent service disruption. Critical for 24/7 ISP operations."
+            },
+            {
+              "title": "DHCP Relay Agents",
+              "description": "Relay DHCP requests across VLANs and subnets. Essential for multi-site ISP networks."
+            },
+            {
+              "title": "Integration with RADIUS",
+              "description": "DHCP works with RADIUS for authentication and accounting in ISP billing systems."
+            },
+            {
+              "title": "Why CentOS/Rocky?",
+              "description": "ISC DHCP on CentOS/Rocky provides 10-year support, proven stability, and telecom-grade reliability."
+            }
+          ]
+        }
+      ]
     }
   ]
 }
