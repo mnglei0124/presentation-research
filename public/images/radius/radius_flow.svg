@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600">
+  <defs>
+    <style>
+      .text { font-family: sans-serif; fill: #333; font-size: 14px; }
+      .title { font-family: sans-serif; fill: #333; font-size: 16px; font-weight: bold; }
+      .box { fill: #f0f4f8; stroke: #cbd5e1; stroke-width: 2; rx: 8; }
+      .client-box { fill: #e0f2fe; stroke: #0284c7; stroke-width: 2; rx: 8; }
+      .server-box { fill: #dcfce7; stroke: #16a34a; stroke-width: 2; rx: 8; }
+      .db-box { fill: #fef08a; stroke: #ca8a04; stroke-width: 2; rx: 8; }
+      .arrow { stroke: #64748b; stroke-width: 2; }
+      .dashed-arrow { stroke: #64748b; stroke-width: 2; stroke-dasharray: 5,5; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#64748b" />
+    </marker>
+  </defs>
+
+  <rect width="1000" height="600" fill="#ffffff" />
+
+  <!-- Components -->
+  <rect x="30" y="250" width="120" height="80" class="box" />
+  <text x="90" y="285" text-anchor="middle" class="title">User/Device</text>
+  <text x="90" y="305" text-anchor="middle" class="text">(Supplicant)</text>
+
+  <rect x="280" y="250" width="140" height="80" class="client-box" />
+  <text x="350" y="285" text-anchor="middle" class="title">NAS / Router</text>
+  <text x="350" y="305" text-anchor="middle" class="text">(RADIUS Client)</text>
+
+  <rect x="700" y="250" width="160" height="80" class="server-box" />
+  <text x="780" y="285" text-anchor="middle" class="title">RADIUS Server</text>
+  <text x="780" y="305" text-anchor="middle" class="text">(CPAR/Radiator)</text>
+
+  <rect x="720" y="50" width="120" height="80" class="db-box" />
+  <text x="780" y="85" text-anchor="middle" class="title">Database</text>
+  <text x="780" y="105" text-anchor="middle" class="text">(LDAP/SQL/AD)</text>
+
+  <!-- Flow 1: User to NAS -->
+  <path d="M 160 270 L 270 270" fill="none" class="arrow" marker-end="url(#arrowhead)" />
+  <text x="215" y="260" text-anchor="middle" class="text">1. Connect / Login</text>
+
+  <!-- Flow 2: NAS to Server -->
+  <path d="M 430 270 L 690 270" fill="none" class="arrow" marker-end="url(#arrowhead)" />
+  <text x="560" y="260" text-anchor="middle" class="title" fill="#0284c7">2. Access-Request</text>
+  <text x="560" y="240" text-anchor="middle" class="text">(PAP/CHAP/EAP)</text>
+
+  <!-- Flow 3: Server to DB -->
+  <path d="M 760 250 L 760 140" fill="none" class="arrow" marker-end="url(#arrowhead)" />
+  <text x="710" y="195" text-anchor="middle" class="text">3. Verify</text>
+
+  <!-- Flow 4: DB to Server -->
+  <path d="M 800 140 L 800 240" fill="none" class="dashed-arrow" marker-end="url(#arrowhead)" />
+  <text x="860" y="195" text-anchor="middle" class="text">4. Validated</text>
+
+  <!-- Flow 5: Server to NAS -->
+  <path d="M 690 310 L 430 310" fill="none" class="arrow" marker-end="url(#arrowhead)" />
+  <text x="560" y="330" text-anchor="middle" class="title" fill="#16a34a">5. Access-Accept</text>
+  <text x="560" y="350" text-anchor="middle" class="text">(+ Attrs / IP / QoS)</text>
+
+  <!-- Flow 6: NAS to User -->
+  <path d="M 270 310 L 160 310" fill="none" class="arrow" marker-end="url(#arrowhead)" />
+  <text x="215" y="330" text-anchor="middle" class="text">6. Access Granted</text>
+
+  <!-- Flow 7: Accounting Request -->
+  <!-- NAS center is 350. RADIUS center is 780. -->
+  <path d="M 370 330 L 370 430 L 760 430 L 760 340" fill="none" class="dashed-arrow" marker-end="url(#arrowhead)" />
+  <text x="565" y="420" text-anchor="middle" class="title" fill="#ca8a04">7. Accounting-Req (Start/Stop)</text>
+  
+  <!-- Flow 8: Accounting Response -->
+  <path d="M 800 330 L 800 480 L 330 480 L 330 340" fill="none" class="dashed-arrow" marker-end="url(#arrowhead)" />
+  <text x="565" y="470" text-anchor="middle" class="title" fill="#64748b">8. Accounting-Resp</text>
+
+</svg>

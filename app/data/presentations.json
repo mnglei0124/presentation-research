@@ -1108,6 +1108,170 @@
           ]
         }
       ]
+    },
+    {
+      "id": "radius-deep-dive",
+      "slug": "radius-deep-dive",
+      "title": "RADIUS & AAA Framework",
+      "description": "A technical deep dive into AAA concepts, the RADIUS protocol, and enterprise implementations like CPAR and Radiator.",
+      "thumbnail": "/images/radius/radius_thumbnail.png",
+      "template": "Slides",
+      "createdAt": "2026-02-26",
+      "accentColor": "from-blue-600 to-cyan-600",
+      "sections": [
+        {
+          "id": "hero",
+          "type": "hero",
+          "title": "RADIUS & AAA",
+          "subtitle": "Network Access Control",
+          "content": "Securing network boundaries with Authentication, Authorization, and Accounting."
+        },
+        {
+          "id": "what-is-aaa",
+          "type": "topic",
+          "title": "What is AAA?",
+          "content": "**Authentication:** Who are you? (e.g., Checking username and password).\n\n**Authorization:** What are you allowed to do? (e.g., Assigning a specific VLAN or IP address, enforcing QoS).\n\n**Accounting:** What did you do? (e.g., Tracking session start/stop times and data transferred for billing)."
+        },
+        {
+          "id": "what-is-radius",
+          "type": "keypoints",
+          "title": "What is RADIUS?",
+          "items": [
+            {
+              "title": "Remote Authentication Dial-In User Service",
+              "description": "An industry-standard networking protocol that provides centralized AAA management for users who connect and use a network service."
+            },
+            {
+              "title": "Client/Server Model",
+              "description": "The Network Access Server (NAS) is the RADIUS Client. It passes user credentials to the RADIUS Server, which processes them against a backend database."
+            },
+            {
+              "title": "UDP Protocol",
+              "description": "Historically uses UDP ports 1812 (Authentication/Authorization) and 1813 (Accounting)."
+            },
+            {
+              "title": "Combined Action",
+              "description": "RADIUS combines Authentication and Authorization into a single message exchange, unlike TACACS+ which separates them."
+            }
+          ]
+        },
+        {
+          "id": "how-radius-works",
+          "type": "split",
+          "title": "How RADIUS Works",
+          "content": "**The Authentication Flow:**\n\n1.  **Connection Request:** Supplicant attempts to connect to the network.\n2.  **Access-Request:** NAS encapsulates credentials and sends them to the RADIUS server.\n3.  **Verification:** RADIUS server checks its local database or an external directory (AD/LDAP).\n4.  **Access-Accept/Reject:** Server replies. If Accept, it includes authorization parameters (IP, VLAN).\n5.  **Access Granted:** NAS opens the port for the user.\n6.  **Accounting:** NAS sends Accounting-Request (Start) to track usage.",
+          "image": "/images/radius/radius_flow.svg",
+          "imagePosition": "right"
+        },
+        {
+          "id": "packet-types",
+          "type": "keypoints",
+          "title": "RADIUS Packet Types",
+          "items": [
+            {
+              "title": "Access-Request",
+              "description": "Sent by the NAS to the Server. Contains user credentials and NAS identifying information."
+            },
+            {
+              "title": "Access-Accept",
+              "description": "Sent by the Server to the NAS. Authentication passed. Contains authorization attributes (AVPs) like Framed-IP-Address."
+            },
+            {
+              "title": "Access-Reject",
+              "description": "Sent by the Server to the NAS. Authentication failed. The NAS denies access to the user."
+            },
+            {
+              "title": "Access-Challenge",
+              "description": "Sent by the Server to the NAS. Requires further information from the user (e.g., Multi-Factor Authentication token)."
+            },
+            {
+              "title": "Accounting-Request",
+              "description": "Sent by the NAS to record events (Start, Stop, Interim-Update) for billing and auditing."
+            }
+          ]
+        },
+        {
+          "id": "software-landscape",
+          "type": "keypoints",
+          "title": "RADIUS Software Landscape",
+          "items": [
+            {
+              "title": "FreeRADIUS",
+              "description": "The most widely used open-source RADIUS server. Extremely fast and customizable, powering many ISPs worldwide."
+            },
+            {
+              "title": "Cisco ISE (Identity Services Engine)",
+              "description": "Enterprise-focused, policy-driven NAC solution. Heavyweight, GUI-driven, integrates deeply with Cisco ecosystem."
+            },
+            {
+              "title": "Cisco Prime Access Registrar (CPAR)",
+              "description": "Service-provider focused AAA server. Designed for extreme scale, multi-tenancy, and complex telecom environments."
+            },
+            {
+              "title": "Radiator",
+              "description": "Highly programmable, commercial AAA server known for interoperability across virtually any vendor equipment."
+            }
+          ]
+        },
+        {
+          "id": "cpar-intro",
+          "type": "topic",
+          "title": "Cisco Prime Access Registrar (CPAR)",
+          "content": "CPAR is a 3GPP-compliant, carrier-grade AAA server. Unlike enterprise ISE, CPAR is built for ISPs, Mobile Network Operators (MNOs), and massive Wi-Fi deployments. It is designed to handle thousands of transactions per second (TPS) with extremely low latency."
+        },
+        {
+          "id": "cpar-deep-dive",
+          "type": "keypoints",
+          "title": "CPAR Deep Dive",
+          "items": [
+            {
+              "title": "Carrier-Grade Performance",
+              "description": "Optimized multi-threaded architecture capable of sustaining massive authentication loads without dropping packets."
+            },
+            {
+              "title": "Session Management",
+              "description": "Maintains a real-time state database of all active sessions, crucial for enforcing concurrency limits and accurate billing."
+            },
+            {
+              "title": "Multi-Protocol Support",
+              "description": "Supports RADIUS, Diameter (the successor to RADIUS used in 4G/5G), and TACACS+ natively."
+            },
+            {
+              "title": "Extensibility",
+              "description": "Uses C/C++ and Java extensions to customize authentication logic, enabling integration with legacy ISP billing databases."
+            }
+          ]
+        },
+        {
+          "id": "radiator-intro",
+          "type": "topic",
+          "title": "Radiator AAA Server",
+          "content": "Radiator is a commercial AAA server known as the 'Swiss Army Knife' of RADIUS. Developed in object-oriented Perl, its primary selling point is unparalleled flexibility. If you have a strange, non-standard AAA requirement, Radiator can usually solve it."
+        },
+        {
+          "id": "radiator-deep-dive",
+          "type": "keypoints",
+          "title": "Radiator Deep Dive",
+          "items": [
+            {
+              "title": "Perl-Based Agility",
+              "description": "Because it's written in Perl, network engineers can easily write custom Hooks (scripts) to modify packets on the fly during any stage of the authentication flow."
+            },
+            {
+              "title": "Extreme Interoperability",
+              "description": "Out-of-the-box support for over 60 different EAP types and integration with almost every SQL, NoSQL, and directory database."
+            },
+            {
+              "title": "Complex Routing Rules",
+              "description": "Can act as a RADIUS Proxy, making complex routing decisions based on realm names (e.g., user@domain1 goes to Server A, user@domain2 goes to Server B)."
+            },
+            {
+              "title": "Eduroam Backbone",
+              "description": "Radiator is the engine behind many national Eduroam proxy infrastructures due to its robust proxying capabilities."
+            }
+          ]
+        }
+      ]
     }
   ]
 
