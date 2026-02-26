@@ -901,6 +901,214 @@
           ]
         }
       ]
+    },
+    {
+      "id": "dns-deep-dive",
+      "slug": "dns-deep-dive",
+      "title": "DNS - Domain Name System",
+      "description": "A comprehensive technical presentation covering DNS fundamentals, the resolution process, software landscape, and deep dives into BIND and MaraDNS.",
+      "thumbnail": "/images/dns/dns_thumbnail.png",
+      "template": "Slides",
+      "createdAt": "2026-02-26",
+      "accentColor": "from-purple-600 to-indigo-600",
+      "sections": [
+        {
+          "id": "hero",
+          "type": "hero",
+          "title": "DNS",
+          "subtitle": "Domain Name System",
+          "content": "The internet's phonebook: translating human-readable names into IP addresses."
+        },
+        {
+          "id": "what-is-dns",
+          "type": "topic",
+          "title": "What is DNS?",
+          "content": "DNS (Domain Name System) is a hierarchical and decentralized naming system for computers, services, or other resources connected to the Internet or a private network. It primarily operates on UDP and TCP port 53, resolving names like `google.com` to IP addresses like `142.250.190.46`."
+        },
+        {
+          "id": "dns-hierarchy",
+          "type": "keypoints",
+          "title": "The DNS Hierarchy",
+          "items": [
+            {
+              "title": "Root Servers (.)",
+              "description": "The top of the hierarchy. There are 13 logical root server addresses globally. They know where the TLD servers are."
+            },
+            {
+              "title": "TLD Servers (.com, .org, .net)",
+              "description": "Top-Level Domain servers know which authoritative servers manage specific domains (like google.com)."
+            },
+            {
+              "title": "Authoritative Name Servers",
+              "description": "These hold the actual DNS records (A, MX, TXT) for a specific domain. The final answer."
+            },
+            {
+              "title": "Recursive Resolvers",
+              "description": "Servers (like 8.8.8.8, 1.1.1.1, or your ISP's DNS) that perform the full lookup process on behalf of the client."
+            }
+          ]
+        },
+        {
+          "id": "dns-resolution",
+          "type": "split",
+          "title": "The DNS Resolution Process",
+          "content": "1. **Query:** Browser asks Recursive Resolver for 'example.com'.\n2. **Root lookup:** Resolver queries Root Server (.).\n3. **TLD redirect:** Root returns TLD Server (.com) IP.\n4. **TLD lookup:** Resolver queries TLD Server.\n5. **Auth redirect:** TLD returns Authoritative Server IP.\n6. **Auth lookup:** Resolver queries Authoritative Server.\n7. **Resolution:** Auth Server returns IP for 'example.com'.\n8. **Response:** Resolver gives IP to Browser.",
+          "image": "/images/dns/cloudflare_dns_lookup.png",
+          "imagePosition": "right"
+        },
+        {
+          "id": "common-records",
+          "type": "keypoints",
+          "title": "Common DNS Record Types",
+          "items": [
+            {
+              "title": "A Record",
+              "description": "Address record. Maps a domain name to an IPv4 address."
+            },
+            {
+              "title": "AAAA Record",
+              "description": "IPv6 Address record. Maps a domain name to an IPv6 address."
+            },
+            {
+              "title": "CNAME",
+              "description": "Canonical Name. Maps an alias name to a true (canonical) domain name. (e.g., www pointing to the root domain)."
+            },
+            {
+              "title": "MX Record",
+              "description": "Mail Exchange. Specifies the mail servers responsible for accepting email messages on behalf of a domain."
+            },
+            {
+              "title": "TXT Record",
+              "description": "Text record. Used for holding arbitrary text, highly utilized for email security (SPF, DKIM, DMARC)."
+            },
+            {
+              "title": "NS Record",
+              "description": "Name Server record. Indicates which DNS servers are authoritative for a domain."
+            }
+          ]
+        },
+        {
+          "id": "software-landscape",
+          "type": "keypoints",
+          "title": "DNS Software Landscape",
+          "items": [
+            {
+              "title": "BIND (Berkeley Internet Name Domain)",
+              "description": "The de facto standard. Oldest, most feature-rich, handles both Authoritative and Recursive roles."
+            },
+            {
+              "title": "PowerDNS",
+              "description": "High performance, database-backed (MySQL/PostgreSQL) authoritative server. Great for ISPs and large deployments."
+            },
+            {
+              "title": "Unbound",
+              "description": "A very secure, validating, recursive, and caching DNS resolver. Focused strictly on recursive duties."
+            },
+            {
+              "title": "CoreDNS",
+              "description": "Modern, flexible, written in Go. Widely used in Kubernetes and cloud-native environments."
+            },
+            {
+              "title": "MaraDNS",
+              "description": "Tiny, lightweight, highly secure, focused on small footprint and embedded systems."
+            }
+          ]
+        },
+        {
+          "id": "bind-intro",
+          "type": "topic",
+          "title": "BIND DNS - The Industry Standard",
+          "content": "BIND 9, maintained by the Internet Systems Consortium (ISC), is the most widely deployed DNS server on the Internet. It is a full-featured software suite capable of acting as both an Authoritative Name Server and a Recursive Resolver."
+        },
+        {
+          "id": "bind-deep-dive",
+          "type": "keypoints",
+          "title": "BIND Deep Dive",
+          "items": [
+            {
+              "title": "Configuration Model",
+              "description": "Configured primarily via `/etc/named.conf`. Zone data is stored in plain text zone files."
+            },
+            {
+              "title": "Dual Role Capability",
+              "description": "Can serve public zones (authoritative) while simultaneously resolving queries for internal clients (recursive). Often separated in modern security models."
+            },
+            {
+              "title": "Advanced Features",
+              "description": "Supports DNSSEC (signing and validation), TSIG (secure zone transfers), Views (split-horizon DNS), and Dynamic DNS (DDNS)."
+            },
+            {
+              "title": "Enterprise Use Cases",
+              "description": "Root servers, TLD infrastructure, enterprise internal DNS, and traditional ISP resolving servers."
+            },
+            {
+              "title": "Drawbacks",
+              "description": "Complex configuration syntax, historically prone to vulnerabilities (though much improved in BIND 9), heavier resource footprint."
+            }
+          ]
+        },
+        {
+          "id": "maradns-intro",
+          "type": "topic",
+          "title": "MaraDNS - The Lightweight Alternative",
+          "content": "MaraDNS is a small, secure, and easy-to-configure DNS server. Designed with an intense focus on security and a minimal resource footprint, it splits functionality between MaraDNS (authoritative) and Deadwood (recursive)."
+        },
+        {
+          "id": "maradns-deep-dive",
+          "type": "keypoints",
+          "title": "MaraDNS Deep Dive",
+          "items": [
+            {
+              "title": "Security-First Design",
+              "description": "Written from scratch to avoid buffer overflows. Has a history of very few security vulnerabilities compared to BIND."
+            },
+            {
+              "title": "Split Architecture",
+              "description": "Authoritative serving is handled by MaraDNS. Recursive caching is handled by a separate, tiny program called Deadwood."
+            },
+            {
+              "title": "Configuration Model",
+              "description": "Uses a very simple configuration file (`mararc`). Zone files use a highly simplified custom syntax."
+            },
+            {
+              "title": "Use Cases",
+              "description": "Embedded routers, small IoT devices, lightweight local development environments, and secure, simple authoritative servers."
+            },
+            {
+              "title": "Drawbacks",
+              "description": "Lacks complex features like robust DNSSEC signing, views, or database backends. Not designed for massive enterprise load."
+            }
+          ]
+        },
+        {
+          "id": "bind-vs-maradns",
+          "type": "keypoints",
+          "title": "BIND vs MaraDNS Comparison",
+          "items": [
+            {
+              "title": "Complexity",
+              "description": "BIND: Very High | MaraDNS: Very Low"
+            },
+            {
+              "title": "Feature Set",
+              "description": "BIND: Everything (DNSSEC, Views, DDNS) | MaraDNS: Basic resolution and serving only"
+            },
+            {
+              "title": "Resource Usage",
+              "description": "BIND: High (Heavy memory footprint) | MaraDNS: Minimal (Can run on MBs of RAM)"
+            },
+            {
+              "title": "Security History",
+              "description": "BIND: Historically targeted, requires patching | MaraDNS: Excellent track record, designed for security"
+            },
+            {
+              "title": "When to Use?",
+              "description": "Use BIND for enterprise, complex topologies, or full DNSSEC. Use MaraDNS for simple, secure, low-resource embedded needs."
+            }
+          ]
+        }
+      ]
     }
   ]
+
 }

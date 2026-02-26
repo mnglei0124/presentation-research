@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <style>
+      .text { font-family: sans-serif; fill: #333; font-size: 14px; }
+      .title { font-family: sans-serif; fill: #333; font-size: 18px; font-weight: bold; }
+      .box { fill: #f0f4f8; stroke: #cbd5e1; stroke-width: 2; rx: 8; }
+      .root { fill: #fef08a; stroke: #eab308; stroke-width: 2; rx: 8; }
+      .tld { fill: #fed7aa; stroke: #f97316; stroke-width: 2; rx: 8; }
+      .auth { fill: #bbf7d0; stroke: #22c55e; stroke-width: 2; rx: 8; }
+      .arrow { stroke: #64748b; stroke-width: 2; stroke-dasharray: 4,4; }
+      .solid-arrow { stroke: #4f46e5; stroke-width: 3; marker-end: url(#arrowhead); }
+      .response-arrow { stroke: #22c55e; stroke-width: 2; marker-end: url(#arrowhead-green); }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#4f46e5" />
+    </marker>
+    <marker id="arrowhead-green" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#22c55e" />
+    </marker>
+  </defs>
+
+  <rect width="800" height="600" fill="#ffffff" />
+
+  <!-- Client -->
+  <rect x="50" y="250" width="120" height="80" class="box" />
+  <text x="110" y="285" text-anchor="middle" class="title">Client</text>
+  <text x="110" y="305" text-anchor="middle" class="text">Browser</text>
+
+  <!-- Recursive Resolver -->
+  <rect x="300" y="250" width="140" height="80" class="box" />
+  <text x="370" y="285" text-anchor="middle" class="title">Recursive</text>
+  <text x="370" y="305" text-anchor="middle" class="text">Resolver (ISP/8.8.8.8)</text>
+
+  <!-- Root Server -->
+  <rect x="600" y="50" width="150" height="80" class="root" />
+  <text x="675" y="85" text-anchor="middle" class="title">Root Server</text>
+  <text x="675" y="105" text-anchor="middle" class="text">Knows TLD IPs</text>
+
+  <!-- TLD Server -->
+  <rect x="600" y="250" width="150" height="80" class="tld" />
+  <text x="675" y="285" text-anchor="middle" class="title">TLD Server (.com)</text>
+  <text x="675" y="305" text-anchor="middle" class="text">Knows Auth IPs</text>
+
+  <!-- Authoritative Server -->
+  <rect x="600" y="450" width="150" height="80" class="auth" />
+  <text x="675" y="485" text-anchor="middle" class="title">Authoritative</text>
+  <text x="675" y="505" text-anchor="middle" class="text">Has Example.com A Record</text>
+
+  <!-- Arrows -->
+  <!-- Client to Resolver -->
+  <path d="M 170 280 L 290 280" class="solid-arrow" />
+  <text x="230" y="270" text-anchor="middle" class="text">1. Query</text>
+
+  <!-- Resolver to Root -->
+  <path d="M 370 250 L 370 90 L 590 90" class="solid-arrow" />
+  <text x="480" y="80" text-anchor="middle" class="text">2. Where is .com?</text>
+  
+  <path d="M 600 110 L 390 110 L 390 250" class="response-arrow" />
+  <text x="480" y="130" text-anchor="middle" fill="#22c55e" class="text">3. Ask TLD IP</text>
+
+  <!-- Resolver to TLD -->
+  <path d="M 440 280 L 590 280" class="solid-arrow" />
+  <text x="515" y="270" text-anchor="middle" class="text">4. Where is example.com?</text>
+
+  <path d="M 590 310 L 440 310" class="response-arrow" />
+  <text x="515" y="330" text-anchor="middle" fill="#22c55e" class="text">5. Ask Auth IP</text>
+
+  <!-- Resolver to Auth -->
+  <path d="M 370 330 L 370 470 L 590 470" class="solid-arrow" />
+  <text x="480" y="460" text-anchor="middle" class="text">6. IP for www.example.com?</text>
+
+  <path d="M 590 490 L 350 490 L 350 330" class="response-arrow" />
+  <text x="480" y="510" text-anchor="middle" fill="#22c55e" class="text">7. IP is 93.184.216.34</text>
+
+  <!-- Resolver to Client -->
+  <path d="M 300 310 L 170 310" class="response-arrow" />
+  <text x="230" y="330" text-anchor="middle" fill="#22c55e" class="text">8. Return IP</text>
+
+</svg>
