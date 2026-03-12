@@ -12,9 +12,14 @@ export interface SectionItem {
   icon?: string;
 }
 
+export interface TableColumn {
+  header: string;
+  accessor: string;
+}
+
 export interface Section {
   id: string;
-  type: 'hero' | 'content' | 'features' | 'cta' | 'milestone' | 'split' | 'topic' | 'definition' | 'diagram' | 'keypoints' | 'components' | 'list' | 'code' | 'references' | 'image';
+  type: 'hero' | 'content' | 'features' | 'cta' | 'milestone' | 'split' | 'topic' | 'definition' | 'diagram' | 'keypoints' | 'components' | 'list' | 'code' | 'references' | 'image' | 'table';
   title: string;
   subtitle?: string;
   content?: string;
@@ -24,6 +29,8 @@ export interface Section {
   year?: string;
   image?: string;
   imagePosition?: 'left' | 'right';
+  columns?: TableColumn[];
+  data?: Record<string, any>[];
 }
 
 export interface Presentation {

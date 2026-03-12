@@ -306,6 +306,50 @@ function ResearchSection({ section, topicIndex, accentColor }: ResearchSectionPr
         </section>
       );
 
+    case 'table':
+      return (
+        <section className="py-16 px-6">
+          <div className="max-w-6xl mx-auto">
+            <MotionWrapper>
+              {section.title && (
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8 text-center">
+                  {section.title}
+                </h3>
+              )}
+              {section.content && (
+                <p className="text-gray-600 dark:text-gray-400 mb-6 text-center max-w-3xl mx-auto">
+                  {section.content}
+                </p>
+              )}
+              <div className="overflow-x-auto bg-white dark:bg-gray-800/50 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700/50">
+                <table className="w-full text-left border-collapse">
+                  <thead>
+                    <tr className="bg-gray-50 dark:bg-gray-900/50 border-b border-gray-100 dark:border-gray-700/50">
+                      {section.columns?.map((col, i) => (
+                        <th key={i} className="px-6 py-4 font-semibold text-gray-900 dark:text-white text-sm uppercase tracking-wider">
+                          {col.header}
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-100 dark:divide-gray-700/50">
+                    {section.data?.map((row, i) => (
+                      <tr key={i} className="hover:bg-gray-50/50 dark:hover:bg-gray-700/25 transition-colors">
+                        {section.columns?.map((col, j) => (
+                          <td key={j} className="px-6 py-4 text-gray-600 dark:text-gray-300 text-sm whitespace-pre-wrap">
+                            {row[col.accessor]}
+                          </td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </MotionWrapper>
+          </div>
+        </section>
+      );
+
     default:
       return null;
   }

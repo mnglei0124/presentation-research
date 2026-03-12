@@ -1576,6 +1576,190 @@
           "content": "Building a modern ISP architecture requires using the right load balancing tool at the correct layer.\n\n• **TmcMARA**: Used at the network edge to handle massive, raw Layer 4 throughput and integrate with core routing protocols.\n• **HAProxy**: Used closer to applications for precise, intelligent Layer 7 routing and SSL decryption.\n\nTogether, they create the resilient, scalable, and high-performance foundation that the network relies on."
         }
       ]
+    },
+    {
+      "id": "internship-research-summary",
+      "slug": "internship-research-summary",
+      "title": "Internship Research Summary",
+      "description": "A comprehensive summary of all research topics covered, lessons learned, and future goals.",
+      "thumbnail": "/images/summary/sudalgaanii_tuluvluguu.jpg",
+      "template": "Research",
+      "createdAt": "2026-03-12",
+      "accentColor": "from-teal-500 to-emerald-600",
+      "sections": [
+        {
+          "id": "hero",
+          "type": "hero",
+          "title": "Research Summary",
+          "subtitle": "Internship Progress & Future Goals",
+          "content": "This presentation summarizes my research journey, the technologies I explored, the challenges I faced, and my short-term goals for integrating with the team."
+        },
+        {
+          "id": "study-plan",
+          "type": "table",
+          "title": "Study Plan (Судалгааны төлөвлөгөө)",
+          "content": "My scheduled timeline for researching various ISP, networking, and system administration topics over the course of the 12-week internship.",
+          "columns": [
+            { "header": "System subject", "accessor": "subject" },
+            { "header": "System name", "accessor": "name" },
+            { "header": "Timeline", "accessor": "weeks" }
+          ],
+          "data": [
+            { "subject": "Univision network", "name": "TriplePlay service", "weeks": "Week 1 - 2" },
+            { "subject": "Network", "name": "Access network\nFixed Core network\nGPON", "weeks": "Week 1 - 2" },
+            { "subject": "Virtualization", "name": "VMware\nCloudstack\nOther", "weeks": "Week 3" },
+            { "subject": "Linux", "name": "CentOS\nUbuntu", "weeks": "Week 4" },
+            { "subject": "Monitoring System", "name": "Cacti\nNCE\nOpmanager\nSolarwinds\nPRTG", "weeks": "Week 5" },
+            { "subject": "Kentik, ThousandEye", "name": "-", "weeks": "Week 5" },
+            { "subject": "Radius", "name": "Radiator\nCPAR", "weeks": "Week 6 - 7" },
+            { "subject": "Database", "name": "Oracle\nPostgreSQL", "weeks": "Week 8" },
+            { "subject": "DHCP", "name": "Linux based", "weeks": "Week 9" },
+            { "subject": "DNS", "name": "MaraDNS\nBIND DNS", "weeks": "Week 10" },
+            { "subject": "DPI", "name": "SIG\nAllot", "weeks": "Week 11" },
+            { "subject": "Load-Balancer", "name": "TMC MARA\nHAProxy", "weeks": "Week 12" }
+          ]
+        },
+        {
+          "id": "studied-topics",
+          "type": "list",
+          "title": "List of Studied Systems (Судалсан сэдвүүдийн жагсаалт)",
+          "items": [
+            {
+              "title": "Univision Network",
+              "description": "TriplePlay service"
+            },
+            {
+              "title": "Network",
+              "description": "Access network, Fixed Core network, GPON"
+            },
+            {
+              "title": "Virtualization",
+              "description": "VMware, Cloudstack, Other"
+            },
+            {
+              "title": "Linux",
+              "description": "CentOS, Ubuntu"
+            },
+            {
+              "title": "Network Routing & Visibility",
+              "description": "Kentik, ThousandEyes"
+            },
+            {
+              "title": "RADIUS",
+              "description": "Radiator, CPAR"
+            },
+            {
+              "title": "DHCP",
+              "description": "Linux based"
+            },
+            {
+              "title": "DNS",
+              "description": "MaraDNS, BIND DNS"
+            },
+            {
+              "title": "DPI",
+              "description": "SIG, Allot"
+            },
+            {
+              "title": "Load-Balancer",
+              "description": "TMC MARA, HAProxy"
+            }
+          ]
+        },
+        {
+          "id": "network-architecture",
+          "type": "split",
+          "title": "Network Architecture & GPON",
+          "content": "A deep dive into how ISPs build out their infrastructure.\n\n• **Access Network (GPON)**: The physical fiber layer connecting homes (ONT) to the central office (OLT) using passive optical splitters. Scales massively without active equipment in the field.\n• **Fixed Core & BRAS**: The intelligence layer. Handles subscriber authentication, IP assignment (public vs CGNAT), and policy enforcement before traffic hits the backbone.\n• **Triple Play Services**: Delivering Internet, IPTV (multicast), and VoIP over a single fiber strand by logically separating traffic into distinct VLANs and applying end-to-end Quality of Service (QoS).",
+          "image": "/images/research/gpon.png",
+          "imagePosition": "right"
+        },
+        {
+          "id": "virtualization-deep-dive",
+          "type": "components",
+          "title": "Server Virtualization",
+          "items": [
+            {
+              "title": "Hypervisor Fundamentals",
+              "description": "Understanding how a hypervisor abstracts physical hardware (CPU, RAM, Storage) and allocates it securely to multiple isolated Virtual Machines (VMs).",
+              "icon": "🖥️"
+            },
+            {
+              "title": "Type 1 vs Type 2",
+              "description": "Comparing Bare-Metal hypervisors (Type 1 like ESXi, used in enterprise datacenters) versus Hosted hypervisors (Type 2 like Workstation, used for local testing).",
+              "icon": "⚖️"
+            },
+            {
+              "title": "Enterprise Platforms",
+              "description": "Studied VMware vSphere for its robust, industry-standard ecosystem, and Apache CloudStack for building highly scalable, open-source Infrastructure-as-a-Service (IaaS) clouds.",
+              "icon": "☁️"
+            }
+          ]
+        },
+        {
+          "id": "linux-infrastructure",
+          "type": "topic",
+          "title": "Linux Infrastructure & Administration",
+          "content": "Linux is the foundation of modern networking and server infrastructure. My research focused on becoming proficient with the command line and understanding core OS concepts.\n\n• **Distributions**: Exploring CentOS (Rock-solid, enterprise-focused, RPM-based) vs. Ubuntu (Developer-friendly, massive community, APT-based).\n• **Filesystem Hierarchy**: Understanding the standard Linux directory structure (e.g., `/etc` for config, `/var` for variable data/logs, `/bin` for system binaries).\n• **System Administration**: Mastering essential commands for networking (`ip`, `ping`, `traceroute`), process management (`top`, `ps`), and package management (`yum`, `apt`)."
+        },
+        {
+          "id": "core-services",
+          "type": "keypoints",
+          "title": "Core Connectivity Services",
+          "items": [
+            {
+              "title": "DHCP (Dynamic Host Configuration Protocol)",
+              "description": "How devices automatically obtain IP addresses, subnet masks, and default gateways when joining the network, eliminating manual configuration."
+            },
+            {
+              "title": "DNS (Domain Name System)",
+              "description": "The 'phonebook of the internet'. Studied the recursive resolution process through Root, TLD, and Authoritative servers using implementations like MaraDNS and BIND."
+            },
+            {
+              "title": "RADIUS (Remote Authentication Dial-In User Service)",
+              "description": "The AAA framework (Authentication, Authorization, Accounting). Crucial for verifying subscriber credentials and enforcing bandwidth limits via system like Radiator and CPAR."
+            }
+          ]
+        },
+        {
+          "id": "traffic-management",
+          "type": "split",
+          "title": "Traffic Management (Load Balancing & DPI)",
+          "content": "Managing the massive flows of data generated by modern applications and subscribers.\n\n• **Load Balancers**: Distributing traffic across server farms to ensure high availability and scalability. Explored Layer 4 (TmcMARA for raw, network-level routing) and Layer 7 (HAProxy for intelligent, application-aware routing).\n• **DPI (Deep Packet Inspection)**: Going beyond IP headers to inspect the actual payload of packets. Solutions like SIG and Allot allow ISPs to enforce security policies, gather deep business intelligence, and intelligently shape traffic to optimize transit costs.",
+          "image": "/images/dpi/dpi_isp_impact.png",
+          "imagePosition": "left"
+        },
+        {
+          "id": "weaknesses-feedback",
+          "type": "keypoints",
+          "title": "Feedback & Self-Reflection (Миний сул талууд)",
+          "items": [
+            {
+              "title": "Presentation Skills",
+              "description": "Struggled with presenting the researched materials (уншиж судалсан юмаа ярихдаа муу). The PPT preparation was problematic in terms of structure, sequence, and content (PPT бэлдэхдээ асуудалтай байсан дараалал болон агуулгын хувьд)."
+            },
+            {
+              "title": "Systematic Research",
+              "description": "Faced challenges in studying topics systematically (юмыг хэрхэн системтэй судлах вэ гэдэг дээр асуудалтай байсан учраас удаж байсан). Not knowing how to approach complex topics step-by-step resulted in delays."
+            }
+          ]
+        },
+        {
+          "id": "short-term-goals",
+          "type": "keypoints",
+          "title": "Short-Term Goals (Хамгийн ойрын зорилго)",
+          "items": [
+            {
+              "title": "Master Team Operations",
+              "description": "Learn and become proficient in all tasks and responsibilities handled within the team (баг дотроо хийгддэг ажлуудыг бүгдийг нь сурах, чаддаг болох)."
+            },
+            {
+              "title": "Reduce Team Workload",
+              "description": "By mastering these skills, I aim to cover for my teammates when they are on vacation or unavailable, ultimately reducing the overall workload on the team (багийнхан маань амралт авах ч юмуу ямар нэг талаар байхгүй үед ажлыг нь нөхөж хийх, багийнхныхаа ачааллыг бууруулах)."
+            }
+          ]
+        }
+      ]
     }
   ]
 }
