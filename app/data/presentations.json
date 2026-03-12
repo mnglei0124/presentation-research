@@ -1278,7 +1278,7 @@
       "slug": "dpi-deep-dive",
       "title": "Deep Packet Inspection (DPI): Huawei SIG & Allot",
       "description": "A comprehensive deep dive into DPI technology, featuring Huawei's SIG/NE40E implementation and Allot Service Gateways.",
-      "thumbnail": "/images/virtualization/virtualization_architecture.png",
+      "thumbnail": "/images/dpi/dpi_isp_impact.png",
       "template": "Slides",
       "createdAt": "2026-03-06",
       "accentColor": "from-red-600 to-orange-600",
@@ -1353,7 +1353,7 @@
           "type": "split",
           "title": "Backend: Data Plane & Analytics",
           "content": "The backend handles the real-time, high-speed processing of network packets.\n\n• **Hardware Acceleration**: Utilizes specialized LPUs (Line Processing Units) and Network Processors (NPs).\n• **Line-Rate Inspection**: Performs non-blocking traffic classification and application recognition.\n• **Enforcement**: Executes microsecond-level policy enforcement (dropping, shaping, or marking packets).\n• **Examples**: NE40E Service Boards (e.g., VSUF-10) and dedicated SIG nodes.",
-          "image": "/images/virtualization/monolithic_architecture_vmw.png",
+          "image": "/images/dpi/dpi_isp_impact.png",
           "imagePosition": "right"
         },
         {
@@ -1361,7 +1361,7 @@
           "type": "split",
           "title": "Frontend: Management & Control",
           "content": "The frontend provides the interfaces for administrators to orchestrate the system.\n\n• **Policy Configuration**: Centralized creation and distribution of DPI policies to the backend.\n• **Signature Updates**: Managing and deploying the latest application and threat signature databases.\n• **Visibility**: Processing statistics to provide detailed reporting on traffic patterns and QoE (Quality of Experience).\n• **Examples**: Web UIs, iMaster NCE.",
-          "image": "/images/virtualization/partitioned_architecture_hv.png",
+          "image": "/images/dpi/allot_dpi_dashboard.png",
           "imagePosition": "left"
         },
         {
@@ -1478,7 +1478,7 @@
       "slug": "load-balancers-deep-dive",
       "title": "Load Balancers: TmcMARA & HAProxy",
       "description": "Understand core load balancing concepts and compare carrier-grade hardware (TmcMARA) with industry-standard software (HAProxy).",
-      "thumbnail": "/images/virtualization/virtualization_architecture.png",
+      "thumbnail": "/images/load-balancers/load_balancer_architecture.png",
       "template": "Slides",
       "createdAt": "2026-03-06",
       "accentColor": "from-indigo-600 to-purple-600",
@@ -1516,7 +1516,7 @@
           "type": "split",
           "title": "TmcMARA: Carrier-Grade Scale",
           "content": "Developed by MARA Systems, TmcMARA focuses heavily on massive Layer 3/Layer 4 throughput for ISP environments.\n\n• **Active/Active Clusters**: Linear scale-out reaching over 100 Gbps.\n• **ISP Integration**: Uses core routing protocols like OSPF, PBR, and WCCP v2.\n• **Use Cases**: Scaling local, transparent caching farms (CacheMARA) and huge DNS infrastructures.",
-          "image": "/images/virtualization/monolithic_architecture_vmw.png",
+          "image": "/images/load-balancers/tmcmara_hardware.png",
           "imagePosition": "right"
         },
         {
@@ -1524,7 +1524,7 @@
           "type": "split",
           "title": "HAProxy: Application Intelligence",
           "content": "HAProxy is an open-source software load balancer famous for its event-driven efficiency and deep Layer 7 capabilities.\n\n• **SSL/TLS Termination**: Offloads the heavy math of encrypting traffic from backend web servers.\n• **Session Stickiness**: Remembers users via cookies so their sessions never break.\n• **Use Cases**: Web application firewalls, API gateway routing, and highly granular HTTP routing rules.",
-          "image": "/images/virtualization/partitioned_architecture_hv.png",
+          "image": "/images/load-balancers/ha_proxy_layer7.png",
           "imagePosition": "left"
         },
         {
@@ -1545,6 +1545,35 @@
               "description": "Ensures requests from the same user IP always hit the exact same backend server."
             }
           ]
+        },
+        {
+          "id": "isp-advantages",
+          "type": "keypoints",
+          "title": "The Load Balancing Advantage for ISPs",
+          "items": [
+            {
+              "title": "High Availability",
+              "description": "Customers don't experience downtime even if backend servers fail, protecting critical SLAs."
+            },
+            {
+              "title": "Massive Scalability",
+              "description": "Seamlessly add capacity during traffic spikes like streaming major sporting events."
+            },
+            {
+              "title": "Bandwidth Optimization",
+              "description": "Intelligently steer traffic to local caches, saving expensive international transit costs."
+            },
+            {
+              "title": "Enhanced Security & Efficiency",
+              "description": "Absorb DDoS attacks at the edge and offload heavy cryptographic processing from applications."
+            }
+          ]
+        },
+        {
+          "id": "conclusion",
+          "type": "topic",
+          "title": "Conclusion: The Right Tool for the Layer",
+          "content": "Building a modern ISP architecture requires using the right load balancing tool at the correct layer.\n\n• **TmcMARA**: Used at the network edge to handle massive, raw Layer 4 throughput and integrate with core routing protocols.\n• **HAProxy**: Used closer to applications for precise, intelligent Layer 7 routing and SSL decryption.\n\nTogether, they create the resilient, scalable, and high-performance foundation that the network relies on."
         }
       ]
     }
