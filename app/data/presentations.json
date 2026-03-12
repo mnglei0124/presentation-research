@@ -1272,7 +1272,281 @@
           ]
         }
       ]
+    },
+    {
+      "id": "dpi-deep-dive",
+      "slug": "dpi-deep-dive",
+      "title": "Deep Packet Inspection (DPI): Huawei SIG & Allot",
+      "description": "A comprehensive deep dive into DPI technology, featuring Huawei's SIG/NE40E implementation and Allot Service Gateways.",
+      "thumbnail": "/images/virtualization/virtualization_architecture.png",
+      "template": "Slides",
+      "createdAt": "2026-03-06",
+      "accentColor": "from-red-600 to-orange-600",
+      "sections": [
+        {
+          "id": "hero",
+          "type": "hero",
+          "title": "Deep Packet Inspection (DPI)",
+          "subtitle": "Understanding Network Traffic Analysis",
+          "content": "A technical overview of DPI technology and its implementation in Huawei Service Intelligence Gateway (SIG) and NE40E routers."
+        },
+        {
+          "id": "what-is-dpi",
+          "type": "topic",
+          "title": "What is Deep Packet Inspection?",
+          "content": "Deep Packet Inspection (DPI) is an advanced method of network traffic analysis. Unlike traditional firewalling that only checks IP and Port headers (Layers 3 & 4), DPI examines the entire packet, including the payload, up to the Application Layer (Layer 7)."
+        },
+        {
+          "id": "how-it-works",
+          "type": "keypoints",
+          "title": "How DPI Works",
+          "items": [
+            {
+              "title": "Packet Interception",
+              "description": "Packets are intercepted via port mirroring or inline devices with DPI support."
+            },
+            {
+              "title": "Deep Analysis",
+              "description": "Examines both headers and the actual data payload to understand context."
+            },
+            {
+              "title": "Signature & Heuristic Matching",
+              "description": "Compares data against known signatures or analyzes behavioral patterns to identify applications or threats."
+            },
+            {
+              "title": "Decision Making",
+              "description": "Takes action (Allow, Block, Reroute, Log, Prioritize) based on defined policies."
+            }
+          ]
+        },
+        {
+          "id": "dpi-use-cases",
+          "type": "keypoints",
+          "title": "Key Use Cases for DPI",
+          "items": [
+            {
+              "title": "Network Security",
+              "description": "Detecting malware, preventing intrusions, and granularly controlling application access."
+            },
+            {
+              "title": "Traffic Management (QoS)",
+              "description": "Prioritizing business-critical apps (e.g., VoIP) while throttling non-essential traffic (e.g., BitTorrent)."
+            },
+            {
+              "title": "Policy & Compliance",
+              "description": "Enforcing organizational rules and preventing Data Loss (DLP)."
+            },
+            {
+              "title": "Analytics & Billing",
+              "description": "Providing ISPs with granular visibility into subscriber usage for zero-rating or tiered plans."
+            }
+          ]
+        },
+        {
+          "id": "huawei-architecture",
+          "type": "topic",
+          "title": "Huawei DPI Architecture",
+          "content": "Huawei's DPI solution, often integrated within the Service Intelligence Gateway (SIG) or NE40E routers, separates its operations into a high-performance Data Plane (Backend) and a Management Plane (Frontend)."
+        },
+        {
+          "id": "huawei-backend",
+          "type": "split",
+          "title": "Backend: Data Plane & Analytics",
+          "content": "The backend handles the real-time, high-speed processing of network packets.\n\n• **Hardware Acceleration**: Utilizes specialized LPUs (Line Processing Units) and Network Processors (NPs).\n• **Line-Rate Inspection**: Performs non-blocking traffic classification and application recognition.\n• **Enforcement**: Executes microsecond-level policy enforcement (dropping, shaping, or marking packets).\n• **Examples**: NE40E Service Boards (e.g., VSUF-10) and dedicated SIG nodes.",
+          "image": "/images/virtualization/monolithic_architecture_vmw.png",
+          "imagePosition": "right"
+        },
+        {
+          "id": "huawei-frontend",
+          "type": "split",
+          "title": "Frontend: Management & Control",
+          "content": "The frontend provides the interfaces for administrators to orchestrate the system.\n\n• **Policy Configuration**: Centralized creation and distribution of DPI policies to the backend.\n• **Signature Updates**: Managing and deploying the latest application and threat signature databases.\n• **Visibility**: Processing statistics to provide detailed reporting on traffic patterns and QoE (Quality of Experience).\n• **Examples**: Web UIs, iMaster NCE.",
+          "image": "/images/virtualization/partitioned_architecture_hv.png",
+          "imagePosition": "left"
+        },
+        {
+          "id": "allot-architecture",
+          "type": "topic",
+          "title": "Allot Service Gateway Architecture",
+          "content": "Allot's DPI solution centers on the Service Gateway, utilizing their Dynamic Actionable Recognition Technology (DART) engine. It is available as high-density hardware (SG-Tera) or as a Virtualized Edition (SG-VE) for modern NFV architectures."
+        },
+        {
+          "id": "allot-features",
+          "type": "split",
+          "title": "Allot: Key Capabilities",
+          "content": "Allot specializes in granular traffic management and integrated Security as a Service (SECaaS) for ISPs.\n\n• **DART Engine**: DPI without necessarily requiring SSL decryption via behavioral analysis.\n• **Traffic Management**: Automated congestion management based on perceived Quality of Experience (QoE).\n• **Security Integration**: Built-in DDoS mitigation, botnet detection, and subscriber web security.",
+          "image": "/images/dpi/allot_dpi_dashboard.png",
+          "imagePosition": "right"
+        },
+        {
+          "id": "isp-relevance",
+          "type": "keypoints",
+          "title": "Why ISPs Use Huawei DPI",
+          "items": [
+            {
+              "title": "Granular Bandwidth Control",
+              "description": "ISPs can manage heavy applications (like video streaming) to prevent network congestion during peak hours."
+            },
+            {
+              "title": "Value-Added Services",
+              "description": "Enables offerings like 'Clean Pipes' (DDoS protection) or application-specific data bundles (e.g., unlimited social media)."
+            },
+            {
+              "title": "Regulatory Compliance",
+              "description": "In some jurisdictions, ISPs are required to filter specific illegal content or maintain detailed traffic logs."
+            }
+          ]
+        },
+        {
+          "id": "sig-tracking",
+          "type": "keypoints",
+          "title": "Our SIG: What We Track & Why",
+          "items": [
+            {
+              "title": "Subscriber-Level Visibility",
+              "description": "The SIG device identifies every subscriber session and maps traffic to individual users, giving us per-user analytics across the entire network."
+            },
+            {
+              "title": "Website & Application Classification",
+              "description": "Every HTTP/HTTPS request is classified in real-time. We see which domains and applications each subscriber accesses — YouTube, Facebook, TikTok, gaming platforms, and more."
+            },
+            {
+              "title": "Traffic Volume Per Application",
+              "description": "We measure exactly how many gigabytes each application consumes per subscriber, per day. This reveals our true bandwidth cost drivers."
+            },
+            {
+              "title": "Session Duration & Patterns",
+              "description": "The SIG logs session start/stop times and connection counts, revealing peak usage patterns and enabling capacity planning down to the hour."
+            },
+            {
+              "title": "Protocol & Encrypted Traffic Analysis",
+              "description": "Even with HTTPS/TLS encryption, the SIG uses SNI inspection and behavioral heuristics to classify traffic without breaking encryption — identifying apps by their 'fingerprint'."
+            }
+          ]
+        },
+        {
+          "id": "traffic-analytics",
+          "type": "keypoints",
+          "title": "Turning Raw Data into Business Intelligence",
+          "items": [
+            {
+              "title": "Top Applications Report",
+              "description": "Weekly/monthly reports showing the Top 20 bandwidth-consuming applications. Typically: YouTube (~35%), Facebook (~12%), TikTok (~10%), Gaming (~8%), and others."
+            },
+            {
+              "title": "Subscriber Behavior Profiling",
+              "description": "Segmenting users into profiles — 'heavy streamers', 'gamers', 'social media users' — allows us to design targeted data plans that match real demand."
+            },
+            {
+              "title": "Peak Hour Congestion Analysis",
+              "description": "Identifying exactly which applications cause congestion during 6 PM–10 PM peaks lets us apply surgical QoS policies instead of blanket throttling."
+            },
+            {
+              "title": "Anomaly & Threat Detection",
+              "description": "Sudden traffic spikes from a single subscriber (e.g., 500 connections/sec) are flagged as potential botnet activity or DDoS sources originating from within our network."
+            }
+          ]
+        },
+
+        {
+          "id": "conclusion",
+          "type": "keypoints",
+          "title": "Conclusion: DPI as Our Competitive Advantage",
+          "items": [
+            {
+              "title": "From Blind Pipe to Smart Network",
+              "description": "Without DPI, an ISP is just selling raw bandwidth. With DPI via our SIG, we understand exactly what flows through our network and can make intelligent, data-driven decisions."
+            },
+            {
+              "title": "Revenue Growth Engine",
+              "description": "DPI enables new revenue streams: premium QoS tiers, security-as-a-service (Clean Pipe), zero-rated partner bundles, and targeted plan upselling based on actual usage patterns."
+            },
+            {
+              "title": "Operational Excellence",
+              "description": "Real-time traffic visibility means faster troubleshooting, proactive capacity planning, and reduced OPEX. We fix problems before customers even notice."
+            },
+            {
+              "title": "The Bottom Line",
+              "description": "DPI is not just a technical tool — it is the foundation of a modern, competitive ISP. It turns raw data into actionable intelligence that drives both subscriber satisfaction and profitability."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "load-balancers-deep-dive",
+      "slug": "load-balancers-deep-dive",
+      "title": "Load Balancers: TmcMARA & HAProxy",
+      "description": "Understand core load balancing concepts and compare carrier-grade hardware (TmcMARA) with industry-standard software (HAProxy).",
+      "thumbnail": "/images/virtualization/virtualization_architecture.png",
+      "template": "Slides",
+      "createdAt": "2026-03-06",
+      "accentColor": "from-indigo-600 to-purple-600",
+      "sections": [
+        {
+          "id": "hero",
+          "type": "hero",
+          "title": "Load Balancing Architecture",
+          "subtitle": "Traffic Management Strategies",
+          "content": "A high-level overview of load balancing concepts and a deep dive into two distinct architectures: TmcMARA and HAProxy."
+        },
+        {
+          "id": "what-is-lb",
+          "type": "topic",
+          "title": "What is a Load Balancer?",
+          "content": "A load balancer serves as the invisible 'traffic cop' sitting in front of servers. It routes client requests across all servers capable of fulfilling them in a manner that maximizes speed and capacity utilization, ensuring High Availability (HA)."
+        },
+        {
+          "id": "layer4-layer7",
+          "type": "keypoints",
+          "title": "Layer 4 vs. Layer 7 Balancing",
+          "items": [
+            {
+              "title": "Layer 4 (Transport)",
+              "description": "Blisteringly fast. Routes traffic based purely on IP addresses and ports without inspecting the payload."
+            },
+            {
+              "title": "Layer 7 (Application)",
+              "description": "CPU intensive but incredibly smart. Inspects HTTP headers, URLs, and cookies to make granular routing decisions."
+            }
+          ]
+        },
+        {
+          "id": "tmcmara-architecture",
+          "type": "split",
+          "title": "TmcMARA: Carrier-Grade Scale",
+          "content": "Developed by MARA Systems, TmcMARA focuses heavily on massive Layer 3/Layer 4 throughput for ISP environments.\n\n• **Active/Active Clusters**: Linear scale-out reaching over 100 Gbps.\n• **ISP Integration**: Uses core routing protocols like OSPF, PBR, and WCCP v2.\n• **Use Cases**: Scaling local, transparent caching farms (CacheMARA) and huge DNS infrastructures.",
+          "image": "/images/virtualization/monolithic_architecture_vmw.png",
+          "imagePosition": "right"
+        },
+        {
+          "id": "haproxy-architecture",
+          "type": "split",
+          "title": "HAProxy: Application Intelligence",
+          "content": "HAProxy is an open-source software load balancer famous for its event-driven efficiency and deep Layer 7 capabilities.\n\n• **SSL/TLS Termination**: Offloads the heavy math of encrypting traffic from backend web servers.\n• **Session Stickiness**: Remembers users via cookies so their sessions never break.\n• **Use Cases**: Web application firewalls, API gateway routing, and highly granular HTTP routing rules.",
+          "image": "/images/virtualization/partitioned_architecture_hv.png",
+          "imagePosition": "left"
+        },
+        {
+          "id": "lb-algorithms",
+          "type": "keypoints",
+          "title": "How They Choose a Server",
+          "items": [
+            {
+              "title": "Round Robin",
+              "description": "Distributes requests sequentially (A, then B, then C)."
+            },
+            {
+              "title": "Least Connections",
+              "description": "Sends new requests to the server with the fewest active connections."
+            },
+            {
+              "title": "Source IP Hashing",
+              "description": "Ensures requests from the same user IP always hit the exact same backend server."
+            }
+          ]
+        }
+      ]
     }
   ]
-
 }
