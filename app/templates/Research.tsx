@@ -239,18 +239,38 @@ function ResearchSection({ section, topicIndex, accentColor }: ResearchSectionPr
                   {section.title}
                 </h3>
               )}
-              <ul className="space-y-3">
+              <ul className="space-y-6">
                 {section.items?.map((item, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <div className={`w-6 h-6 rounded-full bg-linear-to-br ${accentColor} flex items-center justify-center shrink-0 mt-0.5`}>
-                      <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <li key={i} className="flex items-start gap-4">
+                    <div className={`w-8 h-8 rounded-full bg-linear-to-br ${accentColor} flex items-center justify-center shrink-0 mt-1 shadow-sm`}>
+                      <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
-                    <span className="text-gray-700 dark:text-gray-300">
-                      <strong>{item.title}</strong>
-                      {item.description && <span className="text-gray-500 dark:text-gray-400"> — {item.description}</span>}
-                    </span>
+                    <div className="flex-1 min-w-0 pt-1.5">
+                      <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1 mb-2">
+                        <span className="text-gray-900 dark:text-white text-lg font-semibold">
+                          {item.title}
+                        </span>
+                        {item.description && (
+                          <span className="text-gray-500 dark:text-gray-400 text-sm md:text-base">
+                            {item.description}
+                          </span>
+                        )}
+                      </div>
+                      
+                      {typeof item.progress === 'number' && (
+                        <div className="w-full h-3 bg-gray-100 dark:bg-gray-800 rounded-full overflow-hidden mt-3 shadow-inner">
+                          <motion.div
+                            initial={{ width: 0 }}
+                            whileInView={{ width: `${item.progress}%` }}
+                            transition={{ duration: 1, delay: i * 0.1, ease: "easeOut" }}
+                            viewport={{ once: true }}
+                            className={`h-full bg-linear-to-r ${accentColor} rounded-full`}
+                          />
+                        </div>
+                      )}
+                    </div>
                   </li>
                 ))}
               </ul>
@@ -348,6 +368,46 @@ function ResearchSection({ section, topicIndex, accentColor }: ResearchSectionPr
             </MotionWrapper>
           </div>
         </section>
+      );
+
+    case 'cta':
+    case 'cta':
+      return (
+        <motion.section 
+          initial={{ scale: 0.8, opacity: 0, borderRadius: "4rem" }}
+          whileInView={{ scale: 1, opacity: 1, borderRadius: "0rem" }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: false, margin: "-100px" }}
+          className="min-h-screen flex flex-col items-center justify-center px-6 relative overflow-hidden"
+        >
+          <div className="absolute inset-0 bg-gray-900 dark:bg-black" />
+          <div className={`absolute inset-0 bg-linear-to-br ${accentColor} opacity-20 dark:opacity-30`} />
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff12_1px,transparent_1px),linear-gradient(to_bottom,#ffffff12_1px,transparent_1px)] bg-size-[24px_24px]" />
+          
+          <div className="relative z-10 w-full max-w-4xl mx-auto text-center">
+            <MotionWrapper>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+                {section.title}
+              </h2>
+              {section.content && (
+                <p className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed">
+                  {section.content}
+                </p>
+              )}
+              {section.buttonText && section.buttonUrl && (
+                <a
+                  href={section.buttonUrl}
+                  className={`inline-flex items-center justify-center px-8 py-4 rounded-full text-lg font-semibold text-white bg-linear-to-r ${accentColor} hover:opacity-90 transition-opacity shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 duration-200`}
+                >
+                  {section.buttonText}
+                  <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </a>
+              )}
+            </MotionWrapper>
+          </div>
+        </motion.section>
       );
 
     default:

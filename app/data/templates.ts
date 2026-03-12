@@ -10,6 +10,7 @@ export interface SectionItem {
   title: string;
   description: string;
   icon?: string;
+  progress?: number;
 }
 
 export interface TableColumn {

@@ -1578,10 +1578,10 @@
       ]
     },
     {
-      "id": "internship-research-summary",
-      "slug": "internship-research-summary",
-      "title": "Internship Research Summary",
-      "description": "A comprehensive summary of all research topics covered, lessons learned, and future goals.",
+      "id": "research-summary",
+      "slug": "research-summary",
+      "title": "Судалгааны тайлан",
+      "description": "",
       "thumbnail": "/images/summary/sudalgaanii_tuluvluguu.jpg",
       "template": "Research",
       "createdAt": "2026-03-12",
@@ -1590,79 +1590,125 @@
         {
           "id": "hero",
           "type": "hero",
-          "title": "Research Summary",
-          "subtitle": "Internship Progress & Future Goals",
-          "content": "This presentation summarizes my research journey, the technologies I explored, the challenges I faced, and my short-term goals for integrating with the team."
+          "title": "Судалгааны тайлан",
+          "subtitle": "Progress & Future Goals",
+          "content": ""
         },
         {
           "id": "study-plan",
           "type": "table",
-          "title": "Study Plan (Судалгааны төлөвлөгөө)",
-          "content": "My scheduled timeline for researching various ISP, networking, and system administration topics over the course of the 12-week internship.",
+          "title": "Research plan",
+          "content": "My scheduled timeline for researching various topics over the course of the 12-week program.",
           "columns": [
             { "header": "System subject", "accessor": "subject" },
             { "header": "System name", "accessor": "name" },
             { "header": "Timeline", "accessor": "weeks" }
           ],
           "data": [
-            { "subject": "Univision network", "name": "TriplePlay service", "weeks": "Week 1 - 2" },
-            { "subject": "Network", "name": "Access network\nFixed Core network\nGPON", "weeks": "Week 1 - 2" },
-            { "subject": "Virtualization", "name": "VMware\nCloudstack\nOther", "weeks": "Week 3" },
+            {
+              "subject": "Univision network",
+              "name": "TriplePlay service",
+              "weeks": "Week 1 - 2"
+            },
+            {
+              "subject": "Network",
+              "name": "Access network\nFixed Core network\nGPON",
+              "weeks": "Week 1 - 2"
+            },
+            {
+              "subject": "Virtualization",
+              "name": "VMware\nCloudstack\nOther",
+              "weeks": "Week 3"
+            },
             { "subject": "Linux", "name": "CentOS\nUbuntu", "weeks": "Week 4" },
-            { "subject": "Monitoring System", "name": "Cacti\nNCE\nOpmanager\nSolarwinds\nPRTG", "weeks": "Week 5" },
-            { "subject": "Kentik, ThousandEye", "name": "-", "weeks": "Week 5" },
-            { "subject": "Radius", "name": "Radiator\nCPAR", "weeks": "Week 6 - 7" },
-            { "subject": "Database", "name": "Oracle\nPostgreSQL", "weeks": "Week 8" },
+            {
+              "subject": "Monitoring System",
+              "name": "Cacti\nNCE\nOpmanager\nSolarwinds\nPRTG",
+              "weeks": "Week 5"
+            },
+            {
+              "subject": "Kentik, ThousandEye",
+              "name": "-",
+              "weeks": "Week 5"
+            },
+            {
+              "subject": "Radius",
+              "name": "Radiator\nCPAR",
+              "weeks": "Week 6 - 7"
+            },
+            {
+              "subject": "Database",
+              "name": "Oracle\nPostgreSQL",
+              "weeks": "Week 8"
+            },
             { "subject": "DHCP", "name": "Linux based", "weeks": "Week 9" },
-            { "subject": "DNS", "name": "MaraDNS\nBIND DNS", "weeks": "Week 10" },
+            {
+              "subject": "DNS",
+              "name": "MaraDNS\nBIND DNS",
+              "weeks": "Week 10"
+            },
             { "subject": "DPI", "name": "SIG\nAllot", "weeks": "Week 11" },
-            { "subject": "Load-Balancer", "name": "TMC MARA\nHAProxy", "weeks": "Week 12" }
+            {
+              "subject": "Load-Balancer",
+              "name": "TMC MARA\nHAProxy",
+              "weeks": "Week 12"
+            }
           ]
         },
         {
           "id": "studied-topics",
           "type": "list",
-          "title": "List of Studied Systems (Судалсан сэдвүүдийн жагсаалт)",
+          "title": "List of Researched Topics",
           "items": [
             {
               "title": "Univision Network",
-              "description": "TriplePlay service"
+              "description": "TriplePlay service",
+              "progress": 80
             },
             {
               "title": "Network",
-              "description": "Access network, Fixed Core network, GPON"
+              "description": "Access network, Fixed Core network, GPON",
+              "progress": 80
             },
             {
               "title": "Virtualization",
-              "description": "VMware, Cloudstack, Other"
+              "description": "VMware, Cloudstack, Other",
+              "progress": 90
             },
             {
               "title": "Linux",
-              "description": "CentOS, Ubuntu"
+              "description": "CentOS, Ubuntu",
+              "progress": 85
             },
             {
               "title": "Network Routing & Visibility",
-              "description": "Kentik, ThousandEyes"
+              "description": "Kentik, ThousandEyes",
+              "progress": 75
             },
             {
               "title": "RADIUS",
-              "description": "Radiator, CPAR"
+              "description": "Radiator, CPAR",
+              "progress": 85
             },
             {
               "title": "DHCP",
-              "description": "Linux based"
+              "description": "Linux based",
+              "progress": 90
             },
             {
               "title": "DNS",
-              "description": "MaraDNS, BIND DNS"
+              "description": "MaraDNS, BIND DNS",
+              "progress": 85
             },
             {
               "title": "DPI",
-              "description": "SIG, Allot"
+              "description": "SIG, Allot",
+              "progress": 73
             },
             {
               "title": "Load-Balancer",
-              "description": "TMC MARA, HAProxy"
+              "description": "TMC MARA, HAProxy",
+              "progress": 82
             }
           ]
         },
@@ -1697,31 +1743,6 @@
           ]
         },
         {
-          "id": "linux-infrastructure",
-          "type": "topic",
-          "title": "Linux Infrastructure & Administration",
-          "content": "Linux is the foundation of modern networking and server infrastructure. My research focused on becoming proficient with the command line and understanding core OS concepts.\n\n• **Distributions**: Exploring CentOS (Rock-solid, enterprise-focused, RPM-based) vs. Ubuntu (Developer-friendly, massive community, APT-based).\n• **Filesystem Hierarchy**: Understanding the standard Linux directory structure (e.g., `/etc` for config, `/var` for variable data/logs, `/bin` for system binaries).\n• **System Administration**: Mastering essential commands for networking (`ip`, `ping`, `traceroute`), process management (`top`, `ps`), and package management (`yum`, `apt`)."
-        },
-        {
-          "id": "core-services",
-          "type": "keypoints",
-          "title": "Core Connectivity Services",
-          "items": [
-            {
-              "title": "DHCP (Dynamic Host Configuration Protocol)",
-              "description": "How devices automatically obtain IP addresses, subnet masks, and default gateways when joining the network, eliminating manual configuration."
-            },
-            {
-              "title": "DNS (Domain Name System)",
-              "description": "The 'phonebook of the internet'. Studied the recursive resolution process through Root, TLD, and Authoritative servers using implementations like MaraDNS and BIND."
-            },
-            {
-              "title": "RADIUS (Remote Authentication Dial-In User Service)",
-              "description": "The AAA framework (Authentication, Authorization, Accounting). Crucial for verifying subscriber credentials and enforcing bandwidth limits via system like Radiator and CPAR."
-            }
-          ]
-        },
-        {
           "id": "traffic-management",
           "type": "split",
           "title": "Traffic Management (Load Balancing & DPI)",
@@ -1732,32 +1753,53 @@
         {
           "id": "weaknesses-feedback",
           "type": "keypoints",
-          "title": "Feedback & Self-Reflection (Миний сул талууд)",
+          "title": "Миний сул талууд",
           "items": [
             {
-              "title": "Presentation Skills",
-              "description": "Struggled with presenting the researched materials (уншиж судалсан юмаа ярихдаа муу). The PPT preparation was problematic in terms of structure, sequence, and content (PPT бэлдэхдээ асуудалтай байсан дараалал болон агуулгын хувьд)."
+              "title": "Илтгэх ур чадвар",
+              "description": "Уншиж судалсан зүйлээ ярихдаа муу. PPT бэлдэхдээ асуудалтай байсан дараалал болон агуулгын хувьд."
             },
             {
-              "title": "Systematic Research",
-              "description": "Faced challenges in studying topics systematically (юмыг хэрхэн системтэй судлах вэ гэдэг дээр асуудалтай байсан учраас удаж байсан). Not knowing how to approach complex topics step-by-step resulted in delays."
+              "title": "Системтэй судалгаа",
+              "description": "Юмыг хэрхэн системтэй судлах вэ гэдэг дээр асуудалтай байсан учраас удаж байсан. Алхам алхмаар хэрхэн хандах талаар мэдлэг дутмаг байсан."
             }
           ]
         },
         {
           "id": "short-term-goals",
           "type": "keypoints",
-          "title": "Short-Term Goals (Хамгийн ойрын зорилго)",
+          "title": "Ойрын зорилго",
           "items": [
             {
-              "title": "Master Team Operations",
-              "description": "Learn and become proficient in all tasks and responsibilities handled within the team (баг дотроо хийгддэг ажлуудыг бүгдийг нь сурах, чаддаг болох)."
+              "title": "Багт хийгддэг ажлуудыг сурах",
+              "description": "Баг дотроо хийгддэг ажлуудыг бүгдийг нь сурах, чаддаг болох."
             },
             {
-              "title": "Reduce Team Workload",
-              "description": "By mastering these skills, I aim to cover for my teammates when they are on vacation or unavailable, ultimately reducing the overall workload on the team (багийнхан маань амралт авах ч юмуу ямар нэг талаар байхгүй үед ажлыг нь нөхөж хийх, багийнхныхаа ачааллыг бууруулах)."
+              "title": "Багийн ачааллыг бууруулах",
+              "description": "Багийнхан маань амралт авах ч эсвэл ямар нэг шалтгаанаар байхгүй үед ажлыг нь нөхөж хийх, багийнхныхаа ачааллыг бууруулах."
             }
           ]
+        },
+        {
+          "id": "long-term-goals",
+          "type": "keypoints",
+          "title": "Хэтийн зорилго",
+          "items": [
+            {
+              "title": "Шинэ шийдэл нэвтрүүлэх",
+              "description": "Систем дээрээ шинэ шийдлүүдийг олж хэрэгжүүлдэг мундаг болмоор байна."
+            },
+            {
+              "title": "Хэрэглэгчийн туршлагыг сайжруулах",
+              "description": "Univision системийн хэрэглэгчиддээ улам сайн experience-ийг өгөхөд хувь нэмрээ оруулмаар байна."
+            }
+          ]
+        },
+        {
+          "id": "thank-you",
+          "type": "cta",
+          "title": "Thank You!",
+          "content": "Thank you for the guidance, support, and opportunity to learn so much during this time."
         }
       ]
     }
